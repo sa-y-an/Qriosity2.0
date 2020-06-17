@@ -5,6 +5,5 @@ import quiz
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('user/', include(user.urls), name='user'),
-    path('quiz/', include(quiz.urls), name='quiz'),
+
 ]
