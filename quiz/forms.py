@@ -1,3 +1,5 @@
 from django import forms
 
-from .models import StaticQuestions, AudioQuestions
+
+class UserAnswer(forms.Form):
+    answer = forms.CharField()

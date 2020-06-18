@@ -35,10 +35,24 @@
         {% endif %}
       </div>
 
-      <form action=" ">
-        <input type="text" name="" id="" placeholder="Type your answer ...." />
-        <input type="submit" name="" id="" value="Submit" />
+      <form method="POST" , action="">
+        {% csrf_token %} {{ my_form.as_p}}
+        <input type="submit" name="" id="button" value="Submit" />
       </form>
+
+      <div class="message"></div>
     </div>
   </body>
+  <script>
+    let msg = document.querySelector(".message");
+    let buton = document.querySelector("#button");
+
+    buton.addEventListener("click", show);
+
+    function show() {
+      msg.innerHTML = "your answer is {{ ans }}";
+      msg.style.backgroundColor = "red";
+      // window.alert("{{ans}}");
+    }
+  </script>
 </html>
