@@ -11,7 +11,7 @@ class StaticQuestions(models.Model):
     description = models.TextField(blank=True, default='hello')
     image = models.ImageField(blank=True, upload_to='StaticQuestions/images')
     answer = models.CharField(blank=True, max_length=200)
-    intans = models.IntegerField(blank=True)
+    # intans = models.IntegerField(blank=True)
 
     def __str__(self):
         return self.title
@@ -26,7 +26,7 @@ class AudioQuestions(models.Model):
     file = models.FileField(upload_to='AudioQuestions/music')
     image = models.ImageField(blank=True, upload_to='AudioQuestions/images')
     answer = models.CharField(blank=True, max_length=200)
-    intans = models.IntegerField(blank=True)
+    # intans = models.IntegerField(blank=True)
 
     def __str__(self):
         return self.title
