@@ -19,7 +19,11 @@
 
       {% for question in squestions %}
       <div class="ques">
-        <h1>{{ question.title }}</h1>
+        <h1>
+          <a href="{% url 'quiz:stat' question.id %}" target="_blank"
+            >{{ question.title }}</a
+          >
+        </h1>
 
         <!-- description -->
         {% if question.description %}
@@ -45,7 +49,11 @@
       <!-- audioquestion -->
       <div class="audioquestions">
         {% for question in aquestions%}
-        <h1>{{ question.title }}</h1>
+        <h1>
+          <a href="{% url 'quiz:audio' question.id %}" target="_blank"
+            >{{ question.title }}</a
+          >
+        </h1>
 
         <!-- description -->
         {% if question.description %}

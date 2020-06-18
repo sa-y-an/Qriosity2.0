@@ -11,6 +11,11 @@ def quiz(request):
                                               'aquestions': aquestions})
 
 
-# def details(request):
-#     squestions = get_object_or_404(StaticQuestions,  pk=staticquestions_id)
-#     return render(request, 'quiz/squestions.html', {'squestions': squestions})
+def stat(request, qid):
+    question = get_object_or_404(StaticQuestions, pk=qid)
+    return render(request, 'quiz/stat.html', {"question": question})
+
+
+def audio(request, qid):
+    question = get_object_or_404(AudioQuestions, pk=qid)
+    return render(request, 'quiz/audio.html', {"question": question})
