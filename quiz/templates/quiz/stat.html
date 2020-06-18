@@ -1,24 +1,37 @@
-<div class="ques">
-  <h1>{{ question.title }}</h1>
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static Questions</title>
 
-  <!-- description -->
-  {% if question.description %}
-  <div>{{ question.description }}</div>
-  {% endif %}
+    <link rel="stylesheet" href="{% static 'quiz/stat.css'%}" />
+  </head>
+  <body>
+    <div class="ques">
+      <h1>{{ question.title }}</h1>
 
-  <!-- image -->
-  {% if question.image %}
-  <div>
-    <img src="{{ question.image.url }}" alt="{{question.title}}" />
-  </div>
-  {% endif %}
+      <!-- description -->
+      {% if question.description %}
+      <div>{{ question.description }}</div>
+      {% endif %}
 
-  <!-- url -->
-  {% if question.url %}
-  <div>
-    <a href="{{question.url}}" target="_blank" rel="noopener noreferrer">
-      Click for hint</a
-    >
-  </div>
-  {% endif %}
-</div>
+      <!-- image -->
+      {% if question.image %}
+      <div>
+        <img src="{{ question.image.url }}" alt="{{question.title}}" />
+      </div>
+      {% endif %}
+
+      <!-- url -->
+      {% if question.url %}
+      <div>
+        <a href="{{question.url}}" target="_blank" rel="noopener noreferrer">
+          Click for hint</a
+        >
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
