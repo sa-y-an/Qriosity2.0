@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import dj_database_url
 import os
 import django_heroku
 import psycopg2
@@ -85,10 +86,9 @@ WSGI_APPLICATION = 'Qriosity.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = os.environ['DATABASE_URL']
+# DATABASE_URL = os.environ['DATABASE_URL']
 
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 
 # Password validation
@@ -131,16 +131,14 @@ STATIC_URL = '/static/'
 django_heroku.settings(locals())
 
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(
+#     conn_max_age=600, ssl_require=True)
 
 try:
-  from .local_settings import *
+    from .local_settings import *
 except ImportError:
     print("You are in production mode now...")
-    
