@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Questions</title>
+    <link rel="stylesheet" href="{% static 'quiz/audio.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="audioquestions">
+        <h1>{{ question.title }}</h1>
+
+        <!-- description -->
+        {% if question.description %}
+        <div>{{ question.description }}</div>
+        {% endif %}
+
+        <!-- image -->
+        {% if question.image %}
+        <div>
+          <img src="{{ question.image.url }}" alt="{{question.title}}" />
+        </div>
+        {% endif %}
+
+        <!-- url -->
+        {% if question.url %}
+        <div>
+          <a href="{{question.url}}" target="_blank" rel="noopener noreferrer">
+            Click for hint</a
+          >
+        </div>
+        {% endif %}
+        <!-- audio  -->
+        {% if question.file.url %}
+        <audio src="{{ question.file.url }}" controls></audio>
+        {% endif %}
+      </div>
+
+      <form action=" ">
+        <input type="text" name="" id="" placeholder="Type your answer ...." />
+        <input type="submit" name="" id="" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

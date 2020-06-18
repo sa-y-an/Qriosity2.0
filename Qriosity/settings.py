@@ -59,7 +59,7 @@ ROOT_URLCONF = 'Qriosity.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,6 +130,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
 
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
@@ -137,4 +143,4 @@ try:
   from .local_settings import *
 except ImportError:
     print("You are in production mode now...")
-
+    
