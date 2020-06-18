@@ -7,3 +7,20 @@ body {
   background-color: black;
   color: aliceblue;
 }
+
+.container {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: cursive;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
