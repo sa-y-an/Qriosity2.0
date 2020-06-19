@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 img {
   max-height: 30vh;
   max-width: 30vw;
@@ -9,7 +14,7 @@ body {
 }
 
 .container {
-  background-color: black;
+  background-image: linear-gradient(black, darkblue);
   color: white;
   display: flex;
   flex-direction: column;
@@ -18,6 +23,8 @@ body {
   flex-wrap: wrap;
   align-items: center;
   font-family: cursive;
+  height: 100vh;
+  width: 100vw;
 }
 
 form {

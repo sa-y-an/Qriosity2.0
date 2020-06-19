@@ -43,12 +43,11 @@ def audio(request, qid):
         ans = 'error'
 
     question = get_object_or_404(AudioQuestions, pk=qid)
-    if (int(qid)+1 < 2):
+    if (int(qid)+1 < 3):
         question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
     else:
         question2 = -1
-    question = get_object_or_404(AudioQuestions, pk=qid)
-    return render(request, 'quiz/audio.html', {"question": question}, {"my_form": my_form}, {"question2": question2})
+    return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "question2": question2})
 
 
 def statend(request):

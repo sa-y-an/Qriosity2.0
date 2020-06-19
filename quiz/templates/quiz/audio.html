@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Audio Questions</title>
-    <link rel="stylesheet" href="{% static 'quiz/audio.css' %}" />
+    <link rel="stylesheet" href="{% static 'quiz/audio1.css' %}" />
   </head>
   <body>
     <div class="container">
@@ -39,7 +39,7 @@
       </div>
 
       {% if question2 != -1 %}
-      <form method="POST" , action="{% url 'quiz:stat' question2.id %}">
+      <form method="POST" , action="{% url 'quiz:audio' question2.id %}">
         {% csrf_token %} {{ my_form.as_p}}
         <input type="submit" name="" id="button" value="Submit" />
       </form>
