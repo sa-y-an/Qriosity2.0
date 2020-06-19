@@ -14,7 +14,11 @@
         You have completed the static questions <br />
         click the button below for audio questions
       </p>
-      <button type="submit" value="Go to Audio Page"></button>
+      <a href="{% url 'quiz:audio' 1 %}">
+        <button type="submit" value="Go to Audio Page">
+          GO to audio questions
+        </button>
+      </a>
     </div>
   </body>
 </html>
