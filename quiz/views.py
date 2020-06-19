@@ -24,7 +24,7 @@ def stat(request, qid):
         ans = 'error'
 
     question = get_object_or_404(StaticQuestions, pk=qid)
-    if (int(qid)+1 < StaticQuestions.objects.count()):
+    if (int(qid)+1 <= StaticQuestions.objects.count()):
         question2 = get_object_or_404(StaticQuestions, pk=int(qid)+1)
     else:
         question2 = -1
@@ -43,7 +43,7 @@ def audio(request, qid):
         ans = 'error'
 
     question = get_object_or_404(AudioQuestions, pk=qid)
-    if (int(qid)+1 < AudioQuestions.object.count()):
+    if (int(qid)+1 <= AudioQuestions.objects.count()):
         question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
     else:
         question2 = -1
