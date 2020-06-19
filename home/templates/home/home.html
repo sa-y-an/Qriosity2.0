@@ -11,21 +11,53 @@
 </head>
 
 
-<body>
-    <!-- <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=664256484123435&autoLogAppEvents=1" nonce="uv90qZJk"></script> -->
-    <p>Hello Qriosity Home.</p>
-    <a href="user">User</a><br />
-    <a href="quiz">Quiz</a><br>
-    <!-- <a href="{% url 'social:begin' 'facebook' %}" class="fb connect">Sign in with Facebook</a> -->
-    <!-- <a href="{% url 'social:begin' 'facebook' %}">
-        <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width=""></div>
-    </a> -->
-    <!-- <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width="">
-        <a href="{% url 'social:begin' 'facebook' %}">a</a>
-    </div> -->
+  <body>
+    <div class="cursor"></div>
+    <div class="veil"></div>
+    <div class="container">
+      <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
 
-    <a href="{% url 'social:begin' 'facebook' %}">
+        <nav>
+          <ul>
+            <li>
+              <a href="{% url 'home:rules' %}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'users:users' %}">User</a>
+            </li>
+            <li>
+              <a href="#"> Leader Board </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="content">
+        <div class="nonauth">
+          <div><h1 class="glow">Qriosity 2.0</h1></div>
+          <br />
+          <div class="para">
+            <p class="box-text1" id="demo">
+              Curiosity, like a mystery has a surface innocence, surprise, the
+              revelation of a concealed meaning and the catharsis of solution.
+            </p>
+
+            <p class="box-text2" id="demo2">
+              Qriosity, being the cryptic extravaganza it is, is one of the most
+              popular events of IEEE. It draws participation across all streams,
+              departments and years, with students battling it out for the
+              glory.
+            </p>
+          </div>
+        </div>
+        <button class="btn" type="submit" value="Play" class="dare">
+          <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a>
+        </button>
+      </div>
+    </div>
+   <a href="{% url 'social:begin' 'facebook' %}">
         <button class="loginBtn loginBtn--facebook">
        Login with Facebook </button></a>
     <br>
@@ -34,6 +66,20 @@
         Login with Google
       </button>
     </a>
-</body>
-
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+  <script src="{% static 'home/home_main.js'%}"></script>
 </html>
+
+
+    <!-- <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=664256484123435&autoLogAppEvents=1" nonce="uv90qZJk"></script> -->
+    <!-- <a href="{% url 'social:begin' 'facebook' %}" class="fb connect">Sign in with Facebook</a> -->
+    <!-- <a href="{% url 'social:begin' 'facebook' %}">
+        <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width=""></div>
+    </a> -->
+    <!-- <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width="">
+        <a href="{% url 'social:begin' 'facebook' %}">a</a>
+    </div> -->
+
+   

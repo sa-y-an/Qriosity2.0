@@ -35,10 +35,29 @@
         {% endif %}
       </div>
 
-      <form action=" ">
-        <input type="text" name="" id="" placeholder="Type your answer ...." />
-        <input type="submit" name="" id="" value="Submit" />
+      {% if question2 != -1 %}
+      <form method="POST" , action="{% url 'quiz:stat' question2.id %}">
+        {% csrf_token %} {{ my_form.as_p}}
+        <input type="submit" name="" id="button" value="Submit" />
       </form>
+      {% else %}
+      <form method="POST" , action="{% url 'quiz:statend' %}">
+        {% csrf_token %} {{ my_form.as_p}}
+        <input type="submit" name="" id="button" value="Submit" />
+      </form>
+      {% endif %}
+      <div class="message"></div>
     </div>
   </body>
+  <script>
+    let msg = document.querySelector(".message");
+    let buton = document.querySelector("#button");
+
+    buton.addEventListener("click", show);
+
+    function show() {
+      msg.innerHTML = "your answer is submitted ";
+      msg.style.backgroundColor = "red";
+    }
+  </script>
 </html>
