@@ -67,7 +67,10 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'user'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
-    
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']  
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
+
 ROOT_URLCONF = 'Qriosity.urls'
 
 TEMPLATES = [
