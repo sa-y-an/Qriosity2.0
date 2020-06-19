@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
-  <head>
+{% load static %}
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-  </head>
+</head>
 
-  <link rel="stylesheet" href="{% static 'home/homestyle.css'%}" />
+<link rel="stylesheet" href="{% static 'home/homestyle.css'%}" />
 
-  <body>
+<body>
     <p>Hello Qriosity Home.</p>
     <a href="user">User</a><br />
-    <a href="quiz">Quiz</a>
-  </body>
+    <a href="quiz">Quiz</a><br>
+    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+</body>
+
 </html>
