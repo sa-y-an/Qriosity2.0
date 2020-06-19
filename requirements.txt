@@ -7,3 +7,5 @@ gunicorn
 django-heroku
 psycopg2-binary
 dj-database-url
+Pillow
+social-auth-app-django
