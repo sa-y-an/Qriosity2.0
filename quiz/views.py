@@ -8,11 +8,7 @@ def quiz(request):
 
     squestions = StaticQuestions.objects.all()
     aquestions = AudioQuestions.objects.all()
-    if (request.method == "POST"):
-        my_form = UserAnswer(request.POST)
-        if my_form.is_valid():
-            print(my_form.cleaned_data.get("answer"))
-            ans = my_form.cleaned_data.get("answer")
+
     return render(request, 'quiz/quiz.html', {'squestions': squestions,
                                               'aquestions': aquestions})
 
@@ -40,6 +36,14 @@ def audio(request, qid):
     question = get_object_or_404(AudioQuestions, pk=qid)
     return render(request, 'quiz/audio.html', {"question": question})
 
+
+def statend(request):
+    if (request.method == "POST"):
+        my_form = UserAnswer(request.POST)
+        if my_form.is_valid():
+            print(my_form.cleaned_data.get("answer"))
+            ans = my_form.cleaned_data.get("answer")
+    return render(request, 'quiz/statend.html')
 
 # https://gist.github.com/kissgyorgy/6110380
 # while integrating with postgress

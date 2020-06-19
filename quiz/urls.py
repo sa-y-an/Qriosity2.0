@@ -8,5 +8,6 @@ urlpatterns = [
     path('', views.quiz, name='quiz'),
     path('stat/<int:qid>', views.stat, name='stat'),
     path('audio/<int:qid>', views.audio, name='audio'),
+    path('stat/finished', views.statend, name='statend'),
 
 ]

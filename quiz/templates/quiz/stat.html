@@ -41,7 +41,7 @@
         <input type="submit" name="" id="button" value="Submit" />
       </form>
       {% else %}
-      <form method="POST" , action="{% url 'quiz:quiz' %}">
+      <form method="POST" , action="{% url 'quiz:statend' %}">
         {% csrf_token %} {{ my_form.as_p}}
         <input type="submit" name="" id="button" value="Submit" />
       </form>
