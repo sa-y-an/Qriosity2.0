@@ -5,3 +5,7 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, 'home/home.html')
+
+
+def rules(request):
+    return render(request, 'home/rules.html')
