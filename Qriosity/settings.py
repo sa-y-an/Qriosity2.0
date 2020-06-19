@@ -144,7 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-django_heroku.settings(locals())
+
 
 
 
@@ -159,3 +159,5 @@ try:
   from .local_settings import *
 except ImportError:
     print("You are in production mode now...")
+
+django_heroku.settings(locals())

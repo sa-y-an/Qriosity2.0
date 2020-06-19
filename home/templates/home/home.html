@@ -6,16 +6,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="stylesheet" href="{% static 'home/homestyle.css'%}" />
+
 </head>
 
-<link rel="stylesheet" href="{% static 'home/homestyle.css'%}" />
 
 <body>
+    <!-- <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=664256484123435&autoLogAppEvents=1" nonce="uv90qZJk"></script> -->
     <p>Hello Qriosity Home.</p>
     <a href="user">User</a><br />
     <a href="quiz">Quiz</a><br>
-    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-    <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+    <!-- <a href="{% url 'social:begin' 'facebook' %}" class="fb connect">Sign in with Facebook</a> -->
+    <!-- <a href="{% url 'social:begin' 'facebook' %}">
+        <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width=""></div>
+    </a> -->
+    <!-- <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width="">
+        <a href="{% url 'social:begin' 'facebook' %}">a</a>
+    </div> -->
+
+    <a href="{% url 'social:begin' 'facebook' %}">
+        <button class="loginBtn loginBtn--facebook">
+       Login with Facebook </button></a>
+    <br>
+    <a href="{% url 'social:begin' 'google-oauth2' %}">
+        <button class="loginBtn loginBtn--google">
+        Login with Google
+      </button>
+    </a>
 </body>
 
 </html>
