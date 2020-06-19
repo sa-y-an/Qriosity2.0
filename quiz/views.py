@@ -33,8 +33,22 @@ def stat(request, qid):
 
 
 def audio(request, qid):
+    my_form = UserAnswer()
+    if request.method == 'POST':
+        my_form = UserAnswer(request.POST)
+        if my_form.is_valid():
+            print(my_form.cleaned_data.get("answer"))
+            ans = my_form.cleaned_data.get("answer")
+    else:
+        ans = 'error'
+
     question = get_object_or_404(AudioQuestions, pk=qid)
-    return render(request, 'quiz/audio.html', {"question": question})
+    if (int(qid)+1 < 2):
+        question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
+    else:
+        question2 = -1
+    question = get_object_or_404(AudioQuestions, pk=qid)
+    return render(request, 'quiz/audio.html', {"question": question}, {"my_form": my_form}, {"question2": question2})
 
 
 def statend(request):
@@ -44,6 +58,15 @@ def statend(request):
             print(my_form.cleaned_data.get("answer"))
             ans = my_form.cleaned_data.get("answer")
     return render(request, 'quiz/statend.html')
+
+
+def audend(request):
+    if (request.method == "POST"):
+        my_form = UserAnswer(request.POST)
+        if my_form.is_valid():
+            print(my_form.cleaned_data.get("answer"))
+            ans = my_form.cleaned_data.get("answer")
+    return render(request, 'quiz/audend.html')
 
 # https://gist.github.com/kissgyorgy/6110380
 # while integrating with postgress
