@@ -35,11 +35,17 @@
         {% endif %}
       </div>
 
-      <form method="POST" , action="">
+      {% if question2 != -1 %}
+      <form method="POST" , action="{% url 'quiz:stat' question2.id %}">
         {% csrf_token %} {{ my_form.as_p}}
         <input type="submit" name="" id="button" value="Submit" />
       </form>
-
+      {% else %}
+      <form method="POST" , action="{% url 'quiz:quiz' %}">
+        {% csrf_token %} {{ my_form.as_p}}
+        <input type="submit" name="" id="button" value="Submit" />
+      </form>
+      {% endif %}
       <div class="message"></div>
     </div>
   </body>
@@ -52,7 +58,6 @@
     function show() {
       msg.innerHTML = "your answer is {{ ans }}";
       msg.style.backgroundColor = "red";
-      // window.alert("{{ans}}");
     }
   </script>
 </html>
