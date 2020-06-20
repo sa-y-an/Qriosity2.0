@@ -69,7 +69,7 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'user'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']  
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
 
 ROOT_URLCONF = 'Qriosity.urls'
@@ -77,7 +77,7 @@ ROOT_URLCONF = 'Qriosity.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends', 
+                'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
         },
@@ -105,9 +105,9 @@ WSGI_APPLICATION = 'Qriosity.wsgi.application'
 #     }
 # }
 
-# DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ['DATABASE_URL']
 
-# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 
 # Password validation
@@ -242,7 +242,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-    
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
