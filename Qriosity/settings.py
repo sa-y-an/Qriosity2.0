@@ -69,8 +69,8 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'user'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
+# SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']
+# SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
 
 ROOT_URLCONF = 'Qriosity.urls'
 
@@ -105,9 +105,9 @@ WSGI_APPLICATION = 'Qriosity.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = os.environ['DATABASE_URL']
+# DATABASE_URL = os.environ['DATABASE_URL']
 
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 
 # Password validation
@@ -218,7 +218,7 @@ WSGI_APPLICATION = 'Qriosity.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = os.environ['DATABASE_URL']
+# DATABASE_URL = os.environ['DATABASE_URL']
 
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
@@ -273,8 +273,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(
+#     conn_max_age=600, ssl_require=True)
 
 
 try:
