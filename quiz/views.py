@@ -14,40 +14,71 @@ def quiz(request):
 
 
 def stat(request, qid):
-    my_form = UserAnswer()
-    if request.method == 'POST':
-        my_form = UserAnswer(request.POST)
-        if my_form.is_valid():
-            print(my_form.cleaned_data.get("answer"))
-            ans = my_form.cleaned_data.get("answer")
-    else:
-        ans = 'error'
 
-    question = get_object_or_404(StaticQuestions, pk=qid)
-    if (int(qid)+1 <= StaticQuestions.objects.count()):
-        question2 = get_object_or_404(StaticQuestions, pk=int(qid)+1)
-    else:
-        question2 = -1
+    if qid == 1:
+        my_form = UserAnswer()
+        ans = 4
+        question = get_object_or_404(StaticQuestions, pk=qid)
+        if (int(qid)+1 <= StaticQuestions.objects.count()):
+            question2 = get_object_or_404(StaticQuestions, pk=int(qid)+1)
+        else:
+            question2 = -1
 
-    return render(request, 'quiz/stat.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
+        return render(request, 'quiz/stat.html', {"question": question, "my_form": my_form, "question2": question2})
+    else:
+        if request.method == 'GET':
+            return render(request, 'quiz/smart.html')
+        elif request.method == 'POST':
+            my_form = UserAnswer()
+            if request.method == 'POST':
+                my_form = UserAnswer(request.POST)
+            if my_form.is_valid():
+                print(my_form.cleaned_data.get("answer"))
+                ans = my_form.cleaned_data.get("answer")
+            else:
+                ans = 'error'
+
+            question = get_object_or_404(StaticQuestions, pk=qid)
+            if (int(qid)+1 <= StaticQuestions.objects.count()):
+                question2 = get_object_or_404(StaticQuestions, pk=int(qid)+1)
+            else:
+                question2 = -1
+
+            return render(request, 'quiz/stat.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
 
 
 def audio(request, qid):
-    my_form = UserAnswer()
-    if request.method == 'POST':
-        my_form = UserAnswer(request.POST)
-        if my_form.is_valid():
-            print(my_form.cleaned_data.get("answer"))
-            ans = my_form.cleaned_data.get("answer")
-    else:
-        ans = 'error'
 
-    question = get_object_or_404(AudioQuestions, pk=qid)
-    if (int(qid)+1 <= AudioQuestions.objects.count()):
-        question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
+    if qid == 1:
+        my_form = UserAnswer()
+        ans = 4
+        question = get_object_or_404(AudioQuestions, pk=qid)
+        if (int(qid)+1 <= AudioQuestions.objects.count()):
+            question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
+        else:
+            question2 = -1
+
+        return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "question2": question2})
     else:
-        question2 = -1
-    return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "question2": question2})
+        if request.method == 'GET':
+            return render(request, 'quiz/smart.html')
+        elif request.method == 'POST':
+            my_form = UserAnswer()
+            if request.method == 'POST':
+                my_form = UserAnswer(request.POST)
+            if my_form.is_valid():
+                print(my_form.cleaned_data.get("answer"))
+                ans = my_form.cleaned_data.get("answer")
+            else:
+                ans = 'error'
+
+            question = get_object_or_404(AudioQuestions, pk=qid)
+            if (int(qid)+1 <= AudioQuestions.objects.count()):
+                question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
+            else:
+                question2 = -1
+
+            return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
 
 
 def statend(request):
