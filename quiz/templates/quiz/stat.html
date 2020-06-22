@@ -76,14 +76,14 @@
         harea.style.fontSize = "1.3em";
         harea.innerHTML = `You have lost some points \n your hint is \n
       {{question.hint}}`;
+      } else {
+        buton.addEventListener("click", show);
+
+        function show() {
+          msg.innerHTML = "your answer is submitted ";
+          msg.style.backgroundColor = "red";
+        }
       }
-    }
-
-    buton.addEventListener("click", show);
-
-    function show() {
-      msg.innerHTML = "your answer is submitted ";
-      msg.style.backgroundColor = "red";
     }
   </script>
 </html>
