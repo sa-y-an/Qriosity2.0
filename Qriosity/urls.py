@@ -18,7 +18,8 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-
+import user
+import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,8 +27,9 @@ urlpatterns = [
     path('quiz/', include('quiz.urls')),
     path('', include('home.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
-    path('login/', auth_views.LoginView, name='login'),
-    path('logout/', auth_views.LogoutView, name='logout'),
+    #path('login/', home.views.home, name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    #path('user/',user.views.user,name='user'),
     
 ]
 

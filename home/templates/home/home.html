@@ -1,83 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
+{% load static %}
 
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'home/homestyle.css'%}" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="cursor"></div>
     <div class="veil"></div>
     <div class="container">
-      <header>
-        <h1>
-          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
-        </h1>
+        <header>
+            <h1>
+                <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+            </h1>
 
-        <nav>
-          <ul>
-            <li>
-              <a href="{% url 'home:rules' %}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'users:users' %}">User</a>
-            </li>
-            <li>
-              <a href="#"> Leader Board </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <div class="content">
-        <div class="nonauth">
-          <div><h1 class="glow">Qriosity 2.0</h1></div>
-          <br />
-          <div class="para">
-            <p class="box-text1" id="demo">
-              Curiosity, like a mystery has a surface innocence, surprise, the
-              revelation of a concealed meaning and the catharsis of solution.
-            </p>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{% url 'home:rules' %}">Rules</a>
+                    </li>
+                    <li>
+                        <a href="#"> Leader Board </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <div class="content">
+            <div class="nonauth">
+                <div>
+                    <h1 class="glow">Qriosity 2.0</h1>
+                </div>
+                <br />
+                <div class="para">
+                    <p class="box-text1" id="demo">
+                        Curiosity, like a mystery has a surface innocence, surprise, the revelation of a concealed meaning and the catharsis of solution.
+                    </p>
 
-            <p class="box-text2" id="demo2">
-              Qriosity, being the cryptic extravaganza it is, is one of the most
-              popular events of IEEE. It draws participation across all streams,
-              departments and years, with students battling it out for the
-              glory.
-            </p>
-          </div>
-        </div>
-        <br />
-        <div class="socialLogin">
-          <h2>
-            Login to Feature in leaderboard
-          </h2>
-          <div class="icon3">
-            <a href="{% url 'social:begin' 'facebook' %}">
-              <button class="loginBtn loginBtn--facebook">
+                    <p class="box-text2" id="demo2">
+                        Qriosity, being the cryptic extravaganza it is, is one of the most popular events of IEEE. It draws participation across all streams, departments and years, with students battling it out for the glory.
+                    </p>
+                </div>
+            </div>
+            <br /> {% if user.is_authenticated %}
+            <button class="btn" type="submit" value="Play" class="dare">
+              <!-- <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a> -->
+              <a href="{% url 'user:dashboard' %}">Dashboard</a>
+            </button> {% else %}
+            <div class="socialLogin">
+                <h2>
+                    Login to Feature in Leaderboard
+                </h2>
+                <div class="icon3">
+                    <a href="{% url 'social:begin' 'facebook' %}">
+                        <button class="loginBtn loginBtn--facebook">
                 Login with Facebook
               </button>
-            </a>
-            <br />
-            <a href="{% url 'social:begin' 'google-oauth2' %}">
-              <button class="loginBtn loginBtn--google">
+                    </a>
+                    <br />
+                    <a href="{% url 'social:begin' 'google-oauth2' %}">
+                        <button class="loginBtn loginBtn--google">
                 Login with Google
               </button>
-            </a>
-          </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+
         </div>
-        <br />
-        <button class="btn" type="submit" value="Play" class="dare">
-          <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a>
-        </button>
-      </div>
     </div>
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
-  <script src="{% static 'home/home_main.js'%}"></script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+<script src="{% static 'home/home_main.js'%}"></script>
+
 </html>
 
 <!-- <div id="fb-root"></div>

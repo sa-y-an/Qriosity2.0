@@ -64,13 +64,18 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-LOGIN_URL = 'login'
+LOGIN_URL = '/'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'user'
+LOGIN_REDIRECT_URL = '/user/dashboard'
+LOGOUT_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']  
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
+#FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+#SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = ['first_name', 'last_name']
+
+
 
 ROOT_URLCONF = 'Qriosity.urls'
 
