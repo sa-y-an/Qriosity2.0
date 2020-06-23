@@ -2,3 +2,6 @@
 .vscode
 *.pyc
 local_settings.py
+__pycache__/
+*.pot
+*.log
