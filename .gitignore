@@ -5,3 +5,4 @@ local_settings.py
 __pycache__/
 *.pot
 *.log
+.__pycache__/local_settings.cpython-38.pyc
