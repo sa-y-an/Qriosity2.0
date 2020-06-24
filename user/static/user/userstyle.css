@@ -111,3 +111,19 @@ html {
   box-shadow: 0 0 6px 3px #fff, /* inner white */ 0 0 10px 6px #f0f,
     /* middle magenta */ 0 0 28px 18px #0ff;
 }
+
+.btn {
+  padding: 10px;
+  font-size: 1.5em;
+  border-radius: 24px;
+  background-color: black;
+  color: white;
+  border-color: black;
+  pointer-events: all !important;
+}
+
+.btn:hover {
+  background-color: rgb(108, 163, 211);
+  border-color: rgb(108, 163, 211);
+  pointer-events: all !important;
+}

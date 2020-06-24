@@ -38,6 +38,15 @@
         {% endif %}
       </div>
 
+      <div class="hint">
+        <h4>
+          Click below to acess hint
+          <br />
+          But you will loose points
+        </h4>
+        <button value="hint" class="hbutt">Hint</button>
+      </div>
+
       {% if question2 != -1 %}
       <form method="POST" , action="{% url 'quiz:audio' question2.id %}">
         {% csrf_token %} {{ my_form.as_p}}
@@ -54,14 +63,32 @@
     </div>
   </body>
   <script>
-    let msg = document.querySelector(".message");
-    let buton = document.querySelector("#button");
+    let msg = document.querySelector(".message"),
+      buton = document.querySelector("#button"),
+      hbutton = document.querySelector(".hbutt"),
+      harea = document.querySelector(".hint");
 
-    buton.addEventListener("click", show);
+    hbutton.addEventListener("click", points);
 
-    function show() {
-      msg.innerHTML = "your answer is submitted ";
-      msg.style.backgroundColor = "red";
+    function points() {
+      let r = window.confirm(
+        "you will loose ponits \n are u sure \n u want to continue"
+      );
+      if (r == true) {
+        harea.style.backgroundColor = "red";
+        harea.style.color = "yellow";
+        harea.style.fontFamily = "Roboto";
+        harea.style.fontSize = "1.3em";
+        harea.innerHTML = `You have lost some points \n your hint is \n
+      {{question.hint}}`;
+      } else {
+        buton.addEventListener("click", show);
+
+        function show() {
+          msg.innerHTML = "your answer is submitted ";
+          msg.style.backgroundColor = "red";
+        }
+      }
     }
   </script>
 </html>
