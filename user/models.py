@@ -8,7 +8,6 @@ class Player(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=100, blank=True)
     image = models.CharField(max_length=200,blank=True)
-    timestamp = models.DateTimeField(default=datetime.now)
     score = models.IntegerField(default=0)
     rank = models.IntegerField(default=0)
     last_submit = models.DateTimeField(default=datetime.now)

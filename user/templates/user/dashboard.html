@@ -18,11 +18,10 @@
                 Qriosity 2.0
             </h1>
             <nav class="nav-bar">
-                <ul>
+                <ul>{% if user.name %}
                     <li class="list1"><a href="#" target="_blank">Play</a></li>
                     <li class="list1"><a href="#" target="_blank">Rules</a></li>
-                    <li class="list1"><a href="#" target="_blank">LeaderBoard</a></li>
-                    {% if user.name %}
+                    <li class="list1"><a href="{% url 'user:leaderboard' %}" target="_blank">LeaderBoard</a></li>
                     <li class="list1"><a href="{% url 'logout' %}">Logout</a></li>{% endif %}
                 </ul>
             </nav>
@@ -36,16 +35,24 @@
 
             </div>
         </div>
-        <button class="btn" type="submit" value="Play" class="dare">
+        <div class="button">
+            <button class="btn" type="submit" value="Play" class="dare">
             <!-- <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a> -->
             <a href="{% url 'quiz:quiz' %}">Dare</a>
-          </button> {% else %}
+          </button>
+        </div>
+        {% else %}
         <div class="content">
             <div id="message">
                 You are not logged in.
             </div>
         </div>
-        <a href="/"><button>Press Here to Login </button></a> {% endif %}
+        <div class="button">
+            <button class="btn" type="submit" value="Play" class="dare">
+                <!-- <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a> -->
+                <a href="/">Click here to Login</a>
+              </button>
+        </div> {% endif %}
     </div>
 
 

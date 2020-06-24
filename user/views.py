@@ -6,12 +6,13 @@ import datetime
 
 # Create your views here.
 
+current_leaderboard= None
 
 def dashboard(request):
     if request.user:
         if request.user.is_authenticated:
             player=models.Player.objects.get(user=request.user)
-            return render(request, 'user/user.html', {'user':player})
+            return render(request, 'user/dashboard.html', {'user':player})
         else:
             return redirect('home:home')
     else:
@@ -28,7 +29,7 @@ def save_profile(backend, user, response, *args, **kwargs):
             player = models.Player.objects.get(user=profile)
         except:
             player = models.Player(user=profile)
-            player.timestamp = datetime.datetime.now()
+            player.last_submit = datetime.datetime.now()
             player.name = response.get('name')
             player.image = response.get('picture')
             player.email = response.get('email')
@@ -43,5 +44,16 @@ def save_profile(backend, user, response, *args, **kwargs):
             player.email = response.get('email')
             player.image = "http://graph.facebook.com/%s/picture?type=large" \
                 % response["id"]
-            player.timestamp = datetime.datetime.now()
+            player.last_submit = datetime.datetime.now()
             player.save()
+
+
+@login_required(login_url='/')
+def leaderboard(request):
+    global current_leaderboard
+    current_leaderboard = models.Player.objects.order_by('-score','-last_submit')
+    return render(request, 'user/leaderboard.html', {'leaderboard':current_leaderboard})
+
+
+def privacy_policy_fb(request):
+    return render(request,"user/privacypolicy.html")

@@ -20,13 +20,13 @@
 
             <nav>
                 <ul>
+                    {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'home:rules' %}">Rules</a>
                     </li>
                     <li>
-                        <a href="#"> Leader Board </a>
+                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
                     </li>
-                    {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'logout' %}">Logout</a>
                     </li>
