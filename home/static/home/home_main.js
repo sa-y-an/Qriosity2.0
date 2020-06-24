@@ -3,6 +3,9 @@ let navLinks = document.querySelectorAll(".nav_head li");
 
 window.addEventListener("mousemove", cursor);
 
+let rule = document.querySelector(".rules"),
+    btnrule = document.querySelector(".rulebtn");
+
 function cursor(e) {
     mouseCursor.style.top = e.pageY + "px";
     mouseCursor.style.left = e.pageX + "px";
@@ -54,4 +57,14 @@ tl2
         ease: "power2.out",
     });
 
+
+
+btnrule.addEventListener("click", showrules);
+
+function showrules() {
+    let tlr = gsap.timeline({ default: { duraration: 1, } });
+
+    tlr.to(".content", { opacity: 0, pointerEvents: "none" })
+        .to(rule, { opacity: 1, pointerEvents: "all" });
+}
 
