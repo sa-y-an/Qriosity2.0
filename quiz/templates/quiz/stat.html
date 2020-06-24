@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'quiz/stat.css'%}" />
   </head>
   <body>
+    <div id="particles-js"></div>
     <div class="container">
       <div class="ques">
         <h1>{{ question.title }}</h1>
@@ -40,7 +41,7 @@
           <br />
           But you will loose points
         </h4>
-        <button value="hint" class="hbutt">Hint</button>
+        <button value="hint" class="hbutt btn">Hint</button>
       </div>
 
       {% if question2 != -1 %}
@@ -85,5 +86,16 @@
         }
       }
     }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'quiz/particles.json' %}",
+      function () {
+        console.log("particles.js config loaded ..............");
+      }
+    );
   </script>
 </html>
