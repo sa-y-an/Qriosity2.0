@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -71,8 +71,8 @@ LOGIN_REDIRECT_URL = '/user/dashboard'
 LOGOUT_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
+# SOCIAL_AUTH_FACEBOOK_KEY = os.environ['FB_APP_ID']
+# SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
 #FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 #SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = ['first_name', 'last_name']
 
@@ -110,11 +110,11 @@ WSGI_APPLICATION = 'Qriosity.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = os.environ['DATABASE_URL']
+# DATABASE_URL = os.environ['DATABASE_URL']
 
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-DATABASES = {}
+# DATABASES={}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -164,8 +164,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(
+#     conn_max_age=600, ssl_require=True)
 
 try:
     from .local_settings import *

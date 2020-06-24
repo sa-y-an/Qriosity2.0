@@ -47,13 +47,13 @@ header {
   justify-content: space-around;
   align-items: center;
   align-content: space-around;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 10px;
   flex-wrap: wrap;
   border-radius: 50px;
-  box-shadow: 0px 0 6px 6px rgb(85, 87, 212);
-  top: 5px;
+  box-shadow: 0px 0px 3px 3px rgb(85, 87, 212);
+  margin-top: 10px;
 }
 
 header h1 {
