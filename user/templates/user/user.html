@@ -22,18 +22,24 @@
                     <li class="list1"><a href="#" target="_blank">Play</a></li>
                     <li class="list1"><a href="#" target="_blank">Rules</a></li>
                     <li class="list1"><a href="#" target="_blank">LeaderBoard</a></li>
-                    {% if user.is_authenticated %}
+                    {% if user.name %}
                     <li class="list1"><a href="{% url 'logout' %}">Logout</a></li>{% endif %}
                 </ul>
             </nav>
         </header>
-        {% if user.is_authenticated %}
+        {% if user.name %}
         <div class="content">
+            <img src="{{ user.image }}" alt="">
+            <br><br>
             <div id="message">
-                Hello Qriosity User {{ user.username }} {{ first_name }} {{ last_name }} {{ uid }}
+                Hello Qriosity User {{ user.name }}
+
             </div>
         </div>
-        <a href="{% url 'quiz:quiz' %}">Dare</a> {% else %}
+        <button class="btn" type="submit" value="Play" class="dare">
+            <!-- <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a> -->
+            <a href="{% url 'quiz:quiz' %}">Dare</a>
+          </button> {% else %}
         <div class="content">
             <div id="message">
                 You are not logged in.
