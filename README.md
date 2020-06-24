@@ -1,7 +1,7 @@
 <h3 align="center">Qriosity</h3>
 
 > upcomming IEEE sb-event
-> stay tuned.
+> stay tuned
 
 <hr>
   <p align="center">
