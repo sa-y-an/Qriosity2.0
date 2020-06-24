@@ -4,12 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'home/login1.css'%}" />
+    <link rel="stylesheet" href="{% static 'home/login.css'%}" />
     <title>Login</title>
   </head>
   <body>
     <div class="container">
-      <!-- <header>
+      <header>
         <h1>
           <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
         </h1>
@@ -24,17 +24,16 @@
             </li>
           </ul>
         </nav>
-      </header> -->
+      </header>
       <div class="socialLogin">
-        <h1>
+        <h3>
           Login to be Featured
-        </h1>
+        </h3>
         <br />
         <div class="icon3">
           <a href="{% url 'social:begin' 'google-oauth2' %}">
             <button class="google-log"></button>
           </a>
-          <br />
           <a href="{% url 'social:begin' 'facebook' %}">
             <button class="fb-log"></button>
           </a>
