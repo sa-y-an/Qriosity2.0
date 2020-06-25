@@ -1,5 +1,7 @@
+{% extends "user/base.html" %} 
 <!DOCTYPE html>
 {% load static %}
+{% block body %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,6 +11,7 @@
   </head>
   <body>
     <body bgcolor="#0F1231">
+        <div class="container">
       <div class="container-fluid">
         <div class="table2">
           <div class="image">
@@ -40,7 +43,9 @@
           </table>
         </div>
       </div>
+    </div>
     </body>
     </div>
   </body>
+  {% endblock %}
 </html>
