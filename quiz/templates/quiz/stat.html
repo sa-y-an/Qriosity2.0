@@ -22,7 +22,7 @@
         <!-- image -->
         {% if question.image %}
         <div>
-          <img src="{{ question.image.url }}" alt="{{question.title}}" />
+          <img src="{{ MEDIA_URL }}{{ question.image.url }}" alt="{{question.title}}" />
         </div>
         {% endif %}
 
