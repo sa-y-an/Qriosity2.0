@@ -8,9 +8,9 @@
 
 <h3 align="center">Qriosity</h3>
 
-> An upcoming IEEE sb-event
-> stay tuned
-> Django based Quiz web-app
+> An upcoming IEEE sb-event<br>
+> stay tuned<br>
+> Django based Quiz web-app<br>
 
 <hr>
   <p align="center">
