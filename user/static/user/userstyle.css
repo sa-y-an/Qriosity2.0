@@ -127,3 +127,8 @@ html {
   border-color: rgb(108, 163, 211);
   pointer-events: all !important;
 }
+
+.content img {
+  max-height: 30vh;
+  max-width: 30vw;
+}
