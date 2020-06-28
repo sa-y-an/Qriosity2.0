@@ -6,6 +6,7 @@ from .forms import UserAnswer
 import datetime
 # Create your views here.
 
+
 @login_required(login_url='/')
 def quiz(request):
 
@@ -14,6 +15,7 @@ def quiz(request):
 
     return render(request, 'quiz/quiz.html', {'squestions': squestions,
                                               'aquestions': aquestions})
+
 
 @login_required(login_url='/')
 def stat(request, qid):
@@ -38,6 +40,15 @@ def stat(request, qid):
             if my_form.is_valid():
                 print(my_form.cleaned_data.get("answer"))
                 ans = my_form.cleaned_data.get("answer")
+                question = get_object_or_404(StaticQuestions, pk=int(qid) - 1)
+                print(question.answer)
+
+                if (str(ans) == str(question.answer)):
+                    player = Player.objects.get(user=request.user)
+                    player.score += 1
+                    player.last_submit = datetime.datetime.now()
+                    player.save()
+
             else:
                 ans = 'error'
 
@@ -49,7 +60,8 @@ def stat(request, qid):
 
             return render(request, 'quiz/stat.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
 
-@login_required(login_url='/')
+
+@ login_required(login_url='/')
 def audio(request, qid):
 
     if qid == 1:
@@ -83,7 +95,8 @@ def audio(request, qid):
 
             return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
 
-@login_required(login_url='/')
+
+@ login_required(login_url='/')
 def statend(request):
     if (request.method == "POST"):
         my_form = UserAnswer(request.POST)
@@ -92,7 +105,8 @@ def statend(request):
             ans = my_form.cleaned_data.get("answer")
     return render(request, 'quiz/statend.html')
 
-@login_required(login_url='/')
+
+@ login_required(login_url='/')
 def audend(request):
     if (request.method == "POST"):
         my_form = UserAnswer(request.POST)

@@ -76,7 +76,8 @@ SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['FB_SECRET']
 #FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 #SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = ['first_name', 'last_name']
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id,first_name,email,last_name,gender,picture,link'}
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id,first_name,email,last_name,gender,picture,link'}
 #SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
 
@@ -172,9 +173,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'home/static/home/'),
-    os.path.join(BASE_DIR,'quiz/static/quiz/'),
-    os.path.join(BASE_DIR,'user/static/user/')
+    os.path.join(BASE_DIR, 'home/static/home/'),
+    os.path.join(BASE_DIR, 'quiz/static/quiz/'),
+    os.path.join(BASE_DIR, 'user/static/user/')
 ]
 
 

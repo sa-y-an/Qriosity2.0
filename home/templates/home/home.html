@@ -1,93 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+  {% load static %}
 
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'home/style.css'%}" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="cursor"></div>
     <div class="veil"></div>
     <div class="container">
-        <div class="head1">
-            <header>
-                <h1>
-                    <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
-                </h1>
+      <div class="head1">
+        <header>
+          <h1>
+            <a class="navbar-brand" href="{% url 'home:home' %}"
+              >Qriosity 2.0</a
+            >
+          </h1>
 
-                <nav>
-                    <ul>
-                        {% if user.is_authenticated %}
-                        <li>
-                            <a class="rulebtn">Rules</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}">Logout</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </header>
+          <nav>
+            <ul>
+              {% if user.is_authenticated %}
+              <li>
+                <a class="rulebtn">Rules</a>
+              </li>
+              <li>
+                <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+              </li>
+              <li>
+                <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+              </li>
+              <li>
+                <a href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li>
+                <a class="rulebtn">Rules</a>
+              </li>
+              <li>
+                <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+              </li>
+              <li>
+                <a href="{% url 'home:login' %}">Login</a>
+              </li>
+
+              {% endif %}
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+      <div class="rules">
+        <h2>Rules & Regulations:</h2>
+        <ol>
+          <li>All Questions Are Compulsory.</li>
+          <li>
+            You Cannot Submit Answer twice. <br />
+            Subjective- first submission will only be accepted and updated.
+          </li>
+          <li>Admin decision is final.</li>
+          <li>Electronic gadgets are prohibited.</li>
+          <li>All the Best!</li>
+        </ol>
+      </div>
+
+      <div class="content">
+        <div class="nonauth">
+          <div>
+            <h1 class="texthead">Qriosity 2.0</h1>
+          </div>
+          <br />
+          <div class="para">
+            <p class="box-text1" id="demo">
+              Curiosity, like a mystery has a surface innocence, surprise, the
+              revelation of a concealed meaning and the catharsis of solution.
+            </p>
+          </div>
         </div>
+        <br />
 
-        <div class="rules">
-            <h2>Rules & Regulations:</h2>
-            <ol>
-                <li>All Questions Are Compulsory.</li>
-                <li>
-                    You Cannot Submit Answer twice. <br /> Subjective- first submission will only be accepted and updated.
-                </li>
-                <li>Admin decision is final.</li>
-                <li>Electronic gadgets are prohibited.</li>
-                <li>All the Best!</li>
-            </ol>
-        </div>
-
-        <div class="content">
-            <div class="nonauth">
-                <div>
-                    <h1 class="texthead">Qriosity 2.0</h1>
-                </div>
-                <br />
-                <div class="para">
-                    <p class="box-text1" id="demo">
-                        Curiosity, like a mystery has a surface innocence, surprise, the revelation of a concealed meaning and the catharsis of solution.
-                    </p>
-                </div>
-            </div>
-            <br /> {% if user.is_authenticated %}
-            <button class="btn" type="submit" value="Play" class="dare">
+        <button class="btn" type="submit" value="Play" class="dare">
           <!-- <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a> -->
-          <a href="{% url 'user:dashboard' %}">Dashboard</a>
-        </button> {% else %}
-            <div class="socialLogin">
-                <div class="loghead">
-                    Login to be Featured
-                </div>
-                <div class="icon3">
-                    <a href="{% url 'social:begin' 'google-oauth2' %}">
-                        <button class="google-log"></button>
-                    </a>
-                    <br />
-                    <a href="{% url 'social:begin' 'facebook' %}">
-                        <button class="fb-log"></button>
-                    </a>
-                </div>
-            </div>
-            {% endif %}
-        </div>
+          {% if user.is_authenticated %}
+          <a href="{% url 'quiz:stat' 1 %}">Dare</a>
+          {% else %}
+          <a href="{% url 'home:login' %}">Dare</a>
+          {% endif %}
+        </button>
+      </div>
     </div>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
-<script src="{% static 'home/home_main.js'%}"></script>
-
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+  <script src="{% static 'home/home_main.js'%}"></script>
 </html>
 
 <!-- <div id="fb-root"></div>
