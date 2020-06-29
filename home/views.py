@@ -9,6 +9,6 @@ def not_logged_in(user):
 def home(request):
     return render(request, 'home/home.html')
 
-@user_passes_test(not_logged_in)
+@user_passes_test(not_logged_in, login_url='/user/dashboard', redirect_field_name=None)
 def login(request):
     return render(request, 'home/login.html')
