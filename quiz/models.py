@@ -10,6 +10,7 @@ class StaticQuestions(models.Model):
     url = models.URLField(blank=True)
     description = models.TextField(blank=True, default='hello')
     image = models.ImageField(blank=True, upload_to='StaticQuestions/images')
+    image_url=models.URLField(blank=True)
     answer = models.CharField(blank=True, max_length=200)
     hint = models.TextField(blank=True, default='hint')
     # intans = models.IntegerField(blank=True)
