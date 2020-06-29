@@ -12,6 +12,7 @@ def dashboard(request):
     if request.user:
         if request.user.is_authenticated:
             player=models.Player.objects.get(user=request.user)
+            print("In dashboard - Name - {}  User - {}".format(player.name,player.user))
             return render(request, 'user/dashboard.html', {'user':player})
         else:
             return redirect('home:home')
@@ -27,6 +28,7 @@ def save_profile(backend, user, response, *args, **kwargs):
         profile = user
         try :
             player = models.Player.objects.get(user=profile)
+            print("In save_profile_try - Name - {}  User - {}".format(player.name,player.user))
         except:
             player = models.Player(user=profile)
             player.last_submit = datetime.datetime.now()
@@ -34,10 +36,12 @@ def save_profile(backend, user, response, *args, **kwargs):
             player.image = response.get('picture')
             player.email = response.get('email')
             player.save()
+            print("In save_profile_except - Name - {}  User - {}".format(player.name,player.user))
     elif backend.name == 'facebook':
         profile = user
         try:
             player = models.Player.objects.get(user=profile)
+            print("In save_profile_try - Name - {}  User - {}".format(player.name,player.user))
         except:
             player = models.Player(user=profile)
             player.name = response.get('first_name')+" "+response.get('last_name')
@@ -46,6 +50,7 @@ def save_profile(backend, user, response, *args, **kwargs):
                 % response["id"]
             player.last_submit = datetime.datetime.now()
             player.save()
+            print("In save_profile_except - Name - {}  User - {}".format(player.name,player.user))
 
 
 @login_required(login_url='/login',redirect_field_name=None)
