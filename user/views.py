@@ -48,7 +48,7 @@ def save_profile(backend, user, response, *args, **kwargs):
             player.save()
 
 
-@login_required(login_url='/')
+@login_required(login_url='/login',redirect_field_name=None)
 def leaderboard(request):
     global current_leaderboard
     current_leaderboard = models.Player.objects.order_by('-score','-last_submit')
