@@ -1,7 +1,12 @@
+{% load static %}
+<html>
+
 <head>
     <title>Leaderboard</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap' type="text/css">
+    <link rel="stylesheet" href="{% static 'user/leaderboard.css' %}" />
     <style>
         table {
             font-family: arial, sans-serif;
@@ -26,11 +31,12 @@
     </style>
 </head>
 
-<body><br>
-    <br>
-    <br>
-    <div class="container-fluid">
-        <table>
+<body>
+
+    <div class="parallax"></div>
+
+    <!-- <div class="container-fluid" style="width: 50%;">
+        <table align="center">
             <tr style="background-color:chocolate">
                 <th>Rank</th>
                 <th>Name</th>
@@ -46,5 +52,77 @@
             {% endfor %}
 
         </table>
+    </div> -->
+
+
+
+
+
+
+    <div class="center">
+        <br><br><br> <br><br><br><br>
+        <h1 style="text-align: center;">LeaderBoard</h1>
+        <!-- <div class="top3">
+            <div class="two item">
+                <div class="pos">
+                    2
+                </div>
+                <div class="pic" style="background-image: url(&#39;https://randomuser.me/api/portraits/men/44.jpg&#39;)"></div>
+                <div class="name">
+                    Edgar Soto
+                </div>
+                <div class="score">
+                    6453
+                </div>
+            </div>
+            <div class="one item">
+                <div class="pos">
+                    1
+                </div>
+                <div class="pic" style="background-image: url(&#39;https://randomuser.me/api/portraits/men/31.jpg&#39;)"></div>
+                <div class="name">
+                    Clifford James
+                </div>
+                <div class="score">
+                    6794
+                </div>
+            </div>
+            <div class="three item">
+                <div class="pos">
+                    3
+                </div>
+                <div class="pic" style="background-image: url(&#39;https://randomuser.me/api/portraits/women/91.jpg&#39;)"></div>
+                <div class="name">
+                    Nevaeh Silva
+                </div>
+                <div class="score">
+                    6034
+                </div>
+            </div>
+        </div> -->
+
+        <div class="list">
+            <br> {% for i in leaderboard %}
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    {{ i.name }}
+                </div>
+                <div class="score">
+                    {{ i.score }}
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
     </div>
+
+
+
+    <div class="parallax"></div>
 </body>
+
+</html>
