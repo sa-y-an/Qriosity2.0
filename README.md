@@ -15,7 +15,13 @@
 > for running it locally use
 
 ```sh
-python manage.py runserver --settings=Qriosity.dev_settings
+python local.py runserver
+```
+
+> insted of
+
+```sh
+python manage.py runserver
 ```
 
 <hr>
