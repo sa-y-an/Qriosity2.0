@@ -10,35 +10,20 @@ from .forms import UserDetails
 current_leaderboard = None
 
 
+def logout(request):
+    return render(request, 'user/logout.html')
+
+
 def dashboard(request):
-    if request.method == "POST":
-        my_form = UserDetails(request.POST)
-        if my_form.is_valid():
-            # my form is valid
-            print(my_form.cleaned_data)
-            models.PlayerDetails.objects.create(**my_form.cleaned_data)
-
-            if request.user:
-                if request.user.is_authenticated:
-                    player = models.Player.objects.get(user=request.user)
-                    return render(request, 'user/dashboard.html', {'user': player})
-                else:
-                    return redirect('home:home')
-            else:
-                return redirect('home:home')
-
-        else:
-            print(my_form.errors)
-
-    if request.method == "GET":
-        if request.user:
-            if request.user.is_authenticated:
-                player = models.Player.objects.get(user=request.user)
-                return render(request, 'user/dashboard.html', {'user': player})
-            else:
-                return redirect('home:home')
+    if request.user:
+        if request.user.is_authenticated:
+            player = models.Player.objects.get(user=request.user)
+            print("In dashboard - Name - {}  User - {}".format(player.name, player.user))
+            return render(request, 'user/dashboard.html', {'user': player})
         else:
             return redirect('home:home')
+    else:
+        return redirect('home:home')
 
 
 def save_profile(backend, user, response, *args, **kwargs):
@@ -80,9 +65,31 @@ def privacy_policy_fb(request):
     return render(request, "user/privacypolicy.html")
 
 
+# @login_required(login_url='logout/')
 def UserData(request):
     my_form = UserDetails()
     context = {
         "form": my_form
     }
     return render(request, "user/details.html", context)
+
+
+def Formdata(request):
+    if request.method == "POST":
+        my_form = UserDetails(request.POST)
+        if my_form.is_valid():
+            # my form is valid
+            form_data = my_form.cleaned_data
+            # print(form_data['college'])
+            p1 = models.Player.objects.get(user=request.user)
+            r = models.PlayerDetails(
+                user_name=p1, college=form_data['college'], year=form_data['year'], contact=form_data['contact'])
+            r.save()
+            # models.PlayerDetails.objects.create(**my_form.cleaned_data
+
+        else:
+            z = my_form.errors
+            print(z)
+    p1 = models.Player.objects.get(user=request.user)
+    r = models.PlayerDetails(user_name=p1)
+    return render(request, 'user/form_status.html', r)

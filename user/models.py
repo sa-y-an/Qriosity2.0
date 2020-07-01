@@ -19,7 +19,8 @@ class Player(models.Model):
 
 
 class PlayerDetails(models.Model):
-    user_name = models.ForeignKey(Player, on_delete=models.CASCADE)
+    user_name = models.OneToOneField(
+        Player, on_delete=models.CASCADE, primary_key=True)
     college = models.CharField(default="none", max_length=400)
     year = models.CharField(default="1", max_length=10)
     contact = models.IntegerField(default=1, blank=True)

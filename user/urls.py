@@ -9,4 +9,6 @@ urlpatterns = [
     path('leaderboard/', views.leaderboard, name='leaderboard'),
     path('privacypolicy', views.privacy_policy_fb, name="privacypolicy"),
     path('details/', views.UserData, name="details"),
+    path('form/', views.Formdata, name="formdata"),
+    path('details/logout/', views.logout, name="logout"),
 ]

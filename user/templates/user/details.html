@@ -22,7 +22,7 @@
       </header>
 
       <div class="content">
-        <form action="{% url 'user:dashboard' %}" method="POST">
+        <form action="{% url 'user:formdata' %}" method="POST">
           {% csrf_token %} {{ form.as_p }}
 
           <input type="submit" value="Save" />
