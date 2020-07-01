@@ -60,11 +60,10 @@ tl2
 
 
 btnrule.addEventListener("click", showrules);
-
 function showrules() {
     let tlr = gsap.timeline({ default: { duraration: 1, } });
 
-    tlr.to(".content", { opacity: 0, pointerEvents: "none" })
-        .to(rule, { opacity: 1, pointerEvents: "all" });
+    tlr.to(".details", { opacity: 0, pointerEvents: "none" })
+        .to(".rules", { opacity: 1, pointerEvents: "all" });
 }
 
