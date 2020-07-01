@@ -6,7 +6,7 @@
 ![GitHub](https://img.shields.io/github/license/sayan-mondal-tech/Qriosity2.0)
 ![GitHub](https://img.shields.io/badge/Qriosity2.0-build-lightgrey)
 
-<h3 align="center">Qriosity</h3>
+<h3 align="center">Qriosity 2.0</h3>
 
 > An upcoming IEEE sb-event<br>
 > stay tuned<br>
