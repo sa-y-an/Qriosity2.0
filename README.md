@@ -14,7 +14,9 @@
 
 > for running it locally use
 
-> python manage.py runserver --settings=Qriosity.dev_settings
+```sh
+python manage.py runserver --settings=Qriosity.dev_settings
+```
 
 <hr>
   <p align="center">
