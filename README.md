@@ -12,6 +12,10 @@
 > stay tuned<br>
 > Django based Quiz web-app<br>
 
+> for running it locally use
+
+> python manage.py runserver --settings=Qriosity.dev_settings
+
 <hr>
   <p align="center">
     Contributors:
