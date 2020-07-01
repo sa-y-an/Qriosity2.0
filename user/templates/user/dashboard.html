@@ -19,6 +19,9 @@
           <ul>
             {% if user.name %}
             <li class="list1"><a href="#" target="_blank">Play</a></li>
+            <li class="list1">
+              <a href="{% url 'user:formdata' %}"> Change Contact Details</a>
+            </li>
             <li class="list1"><a href="#" target="_blank">Rules</a></li>
             <li class="list1">
               <a href="{% url 'user:leaderboard' %}" target="_blank"
