@@ -5,31 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Status</title>
   </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+      background-color: black;
+      color: white;
+    }
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+  </style>
   <body>
-    <h1>
-      Your Status are as follows
-    </h1>
+    <div class="container">
+      <h1>
+        Your Contact Status are as follows
+      </h1>
 
-    <div class="box">
-      <h2>
-        college : {{details.college}}
-      </h2>
-      <h2>
-        year : {{details.year}}
-      </h2>
-      <h2>
-        contact number : {{details.contact}}
-      </h2>
-    </div>
+      <div class="box">
+        <h2>
+          college : {{details.college}}
+        </h2>
+        <h2>
+          year : {{details.year}}
+        </h2>
+        <h2>
+          contact number : {{details.contact}}
+        </h2>
+      </div>
 
-    <div>
-      your contact details
-    </div>
+      <div>
+        your contact details
+      </div>
 
-    <div>
-      <a href="{% url 'user:details'%}">
-        <button value="Update Contact">Update Contact</button>
-      </a>
+      <div>
+        <a href="{% url 'user:details'%}">
+          <button value="Update Contact">Update Contact</button>
+        </a>
+      </div>
     </div>
   </body>
 </html>
