@@ -7,52 +7,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'home/style.css'%}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/qw4.png' %}"
+      type="image/png"
+    />
   </head>
 
   <body>
     <div class="cursor"></div>
     <div class="veil"></div>
     <div class="container">
-      <div class="head1">
-        <header>
-          <h1>
-            <a class="navbar-brand" href="{% url 'home:home' %}"
-              >Qriosity 2.0</a
-            >
-          </h1>
+      <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
 
-          <nav>
-            <ul>
-              {% if user.is_authenticated %}
-              <li>
-                <a class="rulebtn">Rules</a>
-              </li>
-              <li>
-                <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-              </li>
-              <li>
-                <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-              </li>
-              <li>
-                <a href="{% url 'logout' %}">Logout</a>
-              </li>
-              {% else %}
-              <li>
-                <a class="rulebtn">Rules</a>
-              </li>
-              <li>
-                <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-              </li>
-              <li>
-                <a href="{% url 'home:login' %}">Login</a>
-              </li>
+        <nav>
+          <ul>
+            {% if user.is_authenticated %}
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'home:login' %}">Login</a>
+            </li>
 
-              {% endif %}
-            </ul>
-          </nav>
-        </header>
-      </div>
-
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
       <div class="rules">
         <h2>Rules & Regulations:</h2>
         <ol>
@@ -68,9 +68,9 @@
       </div>
 
       <div class="content">
-        <div class="nonauth">
-          <div>
-            <h1 class="texthead">Qriosity 2.0</h1>
+        <div class="details">
+          <div class="title">
+            <img src="{% static 'home/qriositywhite.png' %}" />
           </div>
           <br />
           <div class="para">
@@ -79,17 +79,17 @@
               revelation of a concealed meaning and the catharsis of solution.
             </p>
           </div>
-        </div>
-        <br />
 
-        <button class="btn" type="submit" value="Play" class="dare">
-          <!-- <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a> -->
-          {% if user.is_authenticated %}
-          <a href="{% url 'quiz:stat' 1 %}">Start</a>
-          {% else %}
-          <a href="{% url 'home:login' %}">Start</a>
-          {% endif %}
-        </button>
+          <br />
+          <button class="btn" type="submit" value="Play" class="dare">
+            <!-- <a href="{% url 'quiz:quiz' %}" target="_blank"> Dare </a> -->
+            {% if user.is_authenticated %}
+            <a href="{% url 'quiz:stat' 1 %}">Start</a>
+            {% else %}
+            <a href="{% url 'home:login' %}">Start</a>
+            {% endif %}
+          </button>
+        </div>
       </div>
     </div>
   </body>
