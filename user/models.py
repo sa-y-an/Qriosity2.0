@@ -21,9 +21,10 @@ class Player(models.Model):
 class PlayerDetails(models.Model):
     user_name = models.OneToOneField(
         Player, on_delete=models.CASCADE, primary_key=True)
+    full_name = models.CharField(default="your name", max_length=400)
     college = models.CharField(default="none", max_length=400)
     year = models.CharField(default="1", max_length=10)
-    contact = models.IntegerField(default=1, blank=True)
+    contact = models.BigIntegerField(default=1, blank=True)
 
     def __str__(self):
         return self.college
