@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404 , Http404
 from django.contrib.auth.decorators import login_required
 from .import models
 import datetime
@@ -93,5 +93,12 @@ def Formdata(request):
             z = my_form.errors
             print(z)
     p1 = models.Player.objects.get(user=request.user)
-    r = get_object_or_404(models.PlayerDetails, user_name=p1)
-    return render(request, 'user/form_status.html', {"details": r})
+    
+    try:
+        r = models.PlayerDetails.objects.get(user_name=p1)
+        
+        return render(request, 'user/form_status.html', {"details": r})
+    except models.PlayerDetails.DoesNotExist:
+        render(request, "user/details.html", context)
+    
+    
