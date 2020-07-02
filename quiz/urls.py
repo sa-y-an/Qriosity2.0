@@ -5,7 +5,7 @@ app_name = 'quiz'
 
 
 urlpatterns = [
-    path('stageone/<int:qid>', views.StageOne, name='stat'),
+    path('', views.StageOne, name='stat'),
     # path('audio/<int:qid>', views.audio, name='audio'),
     # path('stat/finished', views.statend, name='statend'),
     # path('audio/finished', views.audend, name='audend'),

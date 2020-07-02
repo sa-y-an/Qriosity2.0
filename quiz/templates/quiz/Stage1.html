@@ -12,11 +12,22 @@
       </header>
 
       <div class="content">
-        {{question.title}}
-        <br />
-        {{question.description}}
-        <br />
-        {{question.hint}}
+        <h2>
+          Question Level : {{ question.level }}
+        </h2>
+        <h1>{{ question.title }}</h1>
+
+        <!-- description -->
+        {% if question.description %}
+        <div>{{ question.description }}</div>
+        {% endif %}
+
+        <!-- image -->
+        {% if question.image %}
+        <div>
+          <img src="{{ question.image_url }}" alt="{{question.title}}" />
+        </div>
+        {% endif %}
       </div>
     </div>
   </body>
