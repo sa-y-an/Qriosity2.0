@@ -15,7 +15,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      /* justify-content: center; */
       height: 100vh;
       width: 100vw;
       background-color: black;
@@ -28,33 +28,130 @@
       justify-content: center;
       padding: 10px;
     }
+
+    header {
+      width: 100vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
+      padding: 10px;
+      flex-wrap: wrap;
+      min-height: 10vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      box-shadow: 0px 0 6px 6px #d99236;
+    }
+
+    header h1 {
+      color: white;
+      flex: 1.5;
+      flex-shrink: 0;
+      display: flex;
+      margin-left: 5px;
+    }
+
+    nav {
+      flex: 1;
+      flex-shrink: 0;
+    }
+    nav ul,
+    a:any-link {
+      text-decoration: none;
+      list-style: none;
+      color: white;
+      text-align: justify;
+    }
+
+    header a:hover {
+      color: rgb(161, 173, 201);
+      text-emphasis: bold;
+      text-shadow: 0 0 3px #11e3f1;
+      transform: scale(1.1);
+    }
+    header nav {
+      flex: 1;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: row;
+      /* flex-wrap: wrap; */
+      justify-content: space-around;
+      align-items: center;
+      align-content: space-around;
+      font-family: "Roboto", sans-serif;
+    }
+    header nav ul {
+      display: flex;
+      flex-direction: row;
+      /* flex-wrap: wrap; */
+      justify-content: space-around;
+      align-items: center;
+      align-content: space-around;
+      width: 100%;
+    }
+    .content {
+      height: 80vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
   <body>
     <div class="container">
-      <h1>
-        Your Contact Status are as follows
-      </h1>
+      <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
 
-      <div class="box">
-        <h2>
-          college : {{details.college}}
-        </h2>
-        <h2>
-          year : {{details.year}}
-        </h2>
-        <h2>
-          contact number : {{details.contact}}
-        </h2>
-      </div>
+        <nav>
+          <ul>
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-      <div>
-        your contact details
-      </div>
+      <div class="content">
+        <h1>
+          Your Contact Status are as follows
+        </h1>
 
-      <div>
-        <a href="{% url 'user:details'%}">
-          <button value="Update Contact">Update Contact</button>
-        </a>
+        <div class="box">
+          <h2>
+            college : {{details.college}}
+          </h2>
+          <h2>
+            year : {{details.year}}
+          </h2>
+          <h2>
+            contact number : {{details.contact}}
+          </h2>
+        </div>
+
+        <div>
+          your contact details
+        </div>
+
+        <div>
+          <a href="{% url 'user:details'%}">
+            <button value="Update Contact">Update Contact</button>
+          </a>
+        </div>
       </div>
     </div>
   </body>
