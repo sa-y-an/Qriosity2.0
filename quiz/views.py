@@ -7,7 +7,7 @@ import datetime
 # Create your views here.
 
 
-@login_required(login_url='/login',redirect_field_name=None)
+@login_required(login_url='/login', redirect_field_name=None)
 def quiz(request):
 
     squestions = StaticQuestions.objects.all()
@@ -17,7 +17,7 @@ def quiz(request):
                                               'aquestions': aquestions})
 
 
-@login_required(login_url='/login',redirect_field_name=None)
+@login_required(login_url='/login', redirect_field_name=None)
 def stat(request, qid):
 
     if qid == 1:
@@ -61,7 +61,7 @@ def stat(request, qid):
             return render(request, 'quiz/stat.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
 
 
-@ login_required(login_url='/login',redirect_field_name=None)
+@ login_required(login_url='/login', redirect_field_name=None)
 def audio(request, qid):
 
     if qid == 1:
@@ -96,7 +96,7 @@ def audio(request, qid):
             return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
 
 
-@ login_required(login_url='/login',redirect_field_name=None)
+@ login_required(login_url='/login', redirect_field_name=None)
 def statend(request):
     if (request.method == "POST"):
         my_form = UserAnswer(request.POST)
@@ -106,7 +106,7 @@ def statend(request):
     return render(request, 'quiz/statend.html')
 
 
-@ login_required(login_url='/login',redirect_field_name=None)
+@ login_required(login_url='/login', redirect_field_name=None)
 def audend(request):
     if (request.method == "POST"):
         my_form = UserAnswer(request.POST)

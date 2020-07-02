@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
 * {
   margin: 0;
@@ -29,7 +30,7 @@ html {
   /* justify-content: center; */
   align-items: center;
   text-align: center;
-  background: url("back11.jpg");
+  background: url("the-imitation-game-2.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -43,37 +44,42 @@ html {
 header {
   width: 100vw;
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  align-content: space-around;
-  background-color: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 10px;
   flex-wrap: wrap;
-  border-radius: 50px;
-  box-shadow: 0px 0px 3px 3px rgb(85, 87, 212);
-  margin-top: 10px;
+  min-height: 10vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0 6px 6px #d99236;
 }
 
 header h1 {
   color: white;
-  flex: 2;
+  flex: 1.5;
   flex-shrink: 0;
-  margin-left: 10px;
+  display: flex;
+  margin-left: 5px;
+}
+
+nav {
+  flex: 1;
+  flex-shrink: 0;
 }
 nav ul,
 a:any-link {
   text-decoration: none;
   list-style: none;
   color: white;
+  text-align: justify;
 }
 
 header a:hover {
   color: rgb(161, 173, 201);
-  text-decoration: none;
+  text-emphasis: bold;
   text-shadow: 0 0 3px #11e3f1;
-  font-size: 1.2em;
+  transform: scale(1.1);
 }
 header nav {
   flex: 1;
@@ -106,6 +112,7 @@ header nav ul {
   transform-origin: 100% 100%;
   /* box-shadow: 60px 40px 20px 10px #0ff; */
   backdrop-filter: blur();
+  z-index: 1;
   box-shadow: 0 0 6px 3px #fff, /* inner white */ 0 0 10px 6px #f0f,
     /* middle magenta */ 0 0 28px 18px #0ff;
 }
@@ -125,9 +132,10 @@ header nav ul {
   pointer-events: all;
   margin-top: 10vh;
   width: 80vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 15em;
-  box-shadow: 0px 0 6px 6px rgb(104, 85, 212);
+  min-height: 70vh;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* border-radius: 15em; */
+  /* box-shadow: 0px 0 6px 6px rgb(104, 85, 212); */
 }
 
 .socialLogin {
@@ -207,18 +215,30 @@ header nav ul {
   padding: 10px;
   border-radius: 25px;
   font-size: 1em;
-  background-color: black;
-  color: white;
-  border-color: black;
+  background-color: white;
+  border-color: white;
   margin-bottom: 1em;
+  color: black;
+  text-shadow: lightblue;
+}
+
+.btn a {
+  color: rgb(14, 34, 60);
+  font-weight: bold;
 }
 
 .btn:hover {
-  background-color: rgb(108, 163, 211);
-  border-color: rgb(108, 163, 211);
+  background-color: rgb(107, 149, 190);
+  border-color: rgb(113, 147, 182);
+  color: aliceblue;
 }
 
-.nonauth {
+.title img {
+  max-height: 10vh;
+  max-width: 80vw;
+}
+
+.details {
   font-family: "Satisfy", cursive;
   font-size: 1.2em;
 }
@@ -242,6 +262,36 @@ header nav ul {
   pointer-events: none;
   padding: 15px;
   padding-left: 5vw;
+}
+
+.box-text1 {
+  font-family: "Quicksand", sans-serif;
+}
+
+.details {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border: 5px transparent;
+  border-radius: 100px;
+  box-shadow: 0px 0 6px 6px #d99236;
+}
+
+footer {
+  height: 5vh;
+  width: 100vw;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+
+.ieee {
+  display: flex;
+  height: 5vh;
 }
 
 @media screen and (max-width: 480px) {
