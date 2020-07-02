@@ -12,7 +12,7 @@ class Player(models.Model):
     score = models.IntegerField(default=0)
     rank = models.IntegerField(default=0)
     last_submit = models.DateTimeField(default=datetime.now)
-    question_level = models.IntegerField(default=0)
+    question_level = models.IntegerField(default=1)
 
     def __str__(self):
         return self.name
