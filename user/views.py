@@ -14,6 +14,7 @@ def logout(request):
     return render(request, 'user/logout.html')
 
 
+@login_required(login_url='/')
 def dashboard(request):
     if request.user:
         if request.user.is_authenticated:
