@@ -33,8 +33,14 @@
       </header>
 
       <div class="content">
+       
         <form action="{% url 'user:formdata' %}" method="POST">
+          <h2 >
+            Fill your details
+          </h2>
+          
           {% csrf_token %} {{ form.as_p }}
+       
 
           <button type="submit" class="btn btn-primary mb1 bg-blue"> Submit </button>
         </form>

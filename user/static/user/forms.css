@@ -110,6 +110,7 @@ form p {
   background-color: var(--button-background-color);
   border-radius: var(--border-radius);
   padding: 10px;
+  border-radius: 30px;
 }
 
 .btn-primary:hover {
@@ -124,4 +125,27 @@ form p {
 .btn-primary:disabled,
 .btn-primary.is-disabled {
   opacity: 0.5;
+}
+
+label {
+  padding: 20px;
+}
+
+input {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  color: #a26d28;
+  border-radius: 30px;
+}
+
+.box {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  color: #a26d28;
+  border-radius: 30px;
 }
