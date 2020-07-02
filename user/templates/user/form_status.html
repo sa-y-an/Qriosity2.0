@@ -42,23 +42,21 @@
 
         <div class="box">
           <h2>
-            college : {{details.college}}
+            College : {{details.college}}
           </h2>
           <h2>
-            year : {{details.year}}
+            Year : {{details.year}}
           </h2>
           <h2>
-            contact number : {{details.contact}}
+            Contact Number : {{details.contact}}
           </h2>
         </div>
 
-        <div>
-          your contact details
-        </div>
-
-        <div>
+        <div class="submit">
           <a href="{% url 'user:details'%}">
-            <button value="Update Contact">Update Contact</button>
+            <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
+              Update Contact
+            </button>
           </a>
         </div>
       </div>
