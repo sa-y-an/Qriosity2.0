@@ -29,6 +29,11 @@
         </div>
         {% endif %}
       </div>
+
+      <form action="{% url 'quiz:answer'%}" method="post">
+        {% csrf_token %} {{ form.as_p}}
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </body>
 </html>

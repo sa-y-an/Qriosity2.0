@@ -12,9 +12,7 @@ class Stage_1(models.Model):
     image = models.ImageField(blank=True, upload_to='StaticQuestions/images')
     image_url = models.URLField(blank=True)
     hint = models.TextField(blank=True, default='hint')
-    answer_x = models.CharField(blank=True, max_length=200)
-    answer_y = models.CharField(blank=True, max_length=200)
-    answer_z = models.CharField(blank=True, max_length=200)
+    answer = models.CharField(blank=True, max_length=400)
 
     def __int__(self):
         return self.level
