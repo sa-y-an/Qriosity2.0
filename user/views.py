@@ -84,7 +84,8 @@ def Formdata(request):
             # print(form_data['college'])
             p1 = models.Player.objects.get(user=request.user)
             r = models.PlayerDetails(
-                user_name=p1, college=form_data['college'], year=form_data['year'], contact=form_data['contact'])
+                user_name=p1, college=form_data['college'], year=form_data['year'], contact=form_data['contact'],
+                full_name=form_data['full_name'])
             r.save()
             # models.PlayerDetails.objects.create(**my_form.cleaned_data
 
