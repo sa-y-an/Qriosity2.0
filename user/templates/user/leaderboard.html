@@ -7,6 +7,7 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap' type="text/css">
     <link rel="stylesheet" href="{% static 'user/leaderboard.css' %}" />
+
     <style>
         table {
             font-family: arial, sans-serif;
@@ -29,11 +30,34 @@
             background-color: lemonchiffon;
         }
     </style>
+
+    <script>
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function() {
+            myFunction()
+        };
+
+        // Get the navbar
+        var navbar = document.getElementById("navbar");
+
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
+
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+
 </head>
 
 <body>
 
-    <div class="parallax"></div>
+
 
     <!-- <div class="container-fluid" style="width: 50%;">
         <table align="center">
@@ -54,14 +78,56 @@
         </table>
     </div> -->
 
+    <!-- 
+    <div class="cursor"></div>
+    <div class="veil"></div> -->
+
+    <!-- <div class="container"> -->
+
+    <header>
+        <h1>
+            <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
+
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="rulebtn">Rules</a>
+                </li>
+                <li>
+                    <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                </li>
+                <li>
+                    <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+                </li>
+                <li>
+                    <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="rulebtn">Rules</a>
+                </li>
+                <li>
+                    <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                </li>
+                <li>
+                    <a href="{% url 'home:login' %}">Login</a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <!-- </div> -->
 
 
-
-
-
+    <div class="parallax"></div>
     <div class="center">
-        <br><br><br> <br><br><br><br>
-        <h1 style="text-align: center;">LeaderBoard</h1>
+        <h1 style="text-align: center; color:black">LeaderBoard</h1>
         <!-- <div class="top3">
             <div class="two item">
                 <div class="pos">
@@ -116,6 +182,127 @@
                 </div>
             </div>
             {% endfor %}
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+            <div class="item">
+                <div class="pos">
+                    {{ forloop.counter }}
+                </div>
+                <div class="pic" style="background-image: url({{ i.image }});"></div>
+                <div class="name">
+                    Sarthak Roy Chaudhary
+                </div>
+                <div class="score">
+                    100
+                </div>
+            </div>
+
 
         </div>
     </div>
