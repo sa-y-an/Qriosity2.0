@@ -36,6 +36,7 @@ def Stage1Answer(request):
             if (str(ans) == str(question.answer)):
                 player.score += 3
                 player.question_level += 1
+                player.save()
                 question_level = player.question_level
                 question = get_object_or_404(
                     Stage_1, level=int(question_level))
