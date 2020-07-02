@@ -14,7 +14,7 @@ def logout(request):
     return render(request, 'user/logout.html')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/login', redirect_field_name=None)
 def dashboard(request):
     if request.user:
         if request.user.is_authenticated:
@@ -54,7 +54,7 @@ def save_profile(backend, user, response, *args, **kwargs):
             player.save()
 
 
-@login_required(login_url='/')
+@login_required(login_url='/login', redirect_field_name=None)
 def leaderboard(request):
     global current_leaderboard
     current_leaderboard = models.Player.objects.order_by(
