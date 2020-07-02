@@ -1,23 +1,34 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Details</title>
   </head>
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'user/forms.css' %}" />
+  
   <body>
     <div class="container">
+    <div class="container">
       <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
         <nav>
-          <h1>Navbar</h1>
+          <ul>
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
         </nav>
       </header>
 
@@ -27,6 +38,7 @@
 
           <input type="submit" value="Save" />
         </form>
+      </div>
       </div>
     </div>
   </body>
