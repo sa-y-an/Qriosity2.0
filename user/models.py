@@ -19,8 +19,7 @@ class Player(models.Model):
 
 
 class PlayerDetails(models.Model):
-    user_name = models.OneToOneField(
-        Player, on_delete=models.CASCADE, primary_key=True)
+    user_name = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
     full_name = models.CharField(default="your name", max_length=400)
     college = models.CharField(default="none", max_length=400)
     year = models.CharField(default="1", max_length=10)
