@@ -1,49 +1,52 @@
 <!DOCTYPE html> {% load static%}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Static Questions</title>
 
     <link rel="stylesheet" href="{% static 'quiz/stat.css'%}" />
-</head>
+  </head>
 
-<body>
-    <div id="particles-js"></div>
+  <body>
     <div class="container">
-        <div class="ques">
-            <h1>{{ question.title }}</h1>
+      <div class="ques">
+        <h2>
+          Question Level : {{ question.level }}
+        </h2>
+        <h1>{{ question.title }}</h1>
 
-            <!-- description -->
-            {% if question.description %}
-            <div>{{ question.description }}</div>
-            {% endif %}
+        <!-- description -->
+        {% if question.description %}
+        <div>{{ question.description }}</div>
+        {% endif %}
 
-            <!-- image -->
-            {% if question.image %}
-            <div>
-                <img src="{{ question.image_url }}" alt="{{question.title}}" />
-            </div>
-            {% endif %}
+        <!-- image -->
+        {% if question.image %}
+        <div>
+          <img src="{{ question.image_url }}" alt="{{question.title}}" />
+        </div>
+        {% endif %}
 
-            <!-- url -->
-            {% if question.url %}
-            <div>
-                <a href="{{question.url}}" target="_blank" rel="noopener noreferrer">
+        <!-- url -->
+        {% if question.url %}
+        <div>
+          <a href="{{question.url}}" target="_blank" rel="noopener noreferrer">
             Click for hint</a
           >
         </div>
         {% endif %}
       </div>
-      <div class="hint">
-        <h4>
-          Click below to acess hint
-          <br />
-          But you will loose points
-        </h4>
-        <button value="hint" class="hbutt btn">Hint</button>
-      </div>
+      <form method="POST" action="{ url 'quiz:hint'}" method="POST">
+        <div class="hint">
+          <h4>
+            Click below to acess hint
+            <br />
+            But you will loose points
+          </h4>
+          <button value="hint" class="hbutt btn">Hint</button>
+        </div>
+      </form>
 
       {% if question2 != -1 %}
       <form method="POST" , action="{% url 'quiz:stat' question2.id %}">
@@ -72,31 +75,8 @@
         "you will loose ponits \n are u sure \n u want to continue"
       );
       if (r == true) {
-        harea.style.backgroundColor = "red";
-        harea.style.color = "yellow";
-        harea.style.fontFamily = "Roboto";
-        harea.style.fontSize = "1.3em";
-        harea.innerText = `You have lost some points \n your hint is \n
-      {{question.hint}}`;
-      } else {
-        buton.addEventListener("click", show);
-
-        function show() {
-          msg.innerHTML = "your answer is submitted ";
-          msg.style.backgroundColor = "red";
-        }
+        window.location.replace("{% url 'quiz:hint'%}");
       }
     }
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS.load(
-      "particles-js",
-      "{% static 'quiz/particles.json' %}",
-      function () {
-        console.log("particles.js config loaded ..............");
-      }
-    );
   </script>
 </html>
