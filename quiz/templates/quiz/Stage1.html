@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stage 1</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        Header
+      </header>
+
+      <div class="content">
+        <h2>
+          Question Level : {{ question.level }}
+        </h2>
+        <h1>{{ question.title }}</h1>
+
+        <!-- description -->
+        {% if question.description %}
+        <div>{{ question.description }}</div>
+        {% endif %}
+
+        <!-- image -->
+        {% if question.image %}
+        <div>
+          <img src="{{ question.image_url }}" alt="{{question.title}}" />
+        </div>
+        {% endif %}
+      </div>
+
+      <form action="{% url 'quiz:answer'%}" method="post">
+        {% csrf_token %} {{ form.as_p}}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

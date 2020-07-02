@@ -1,5 +1,6 @@
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
-from .models import StaticQuestions, AudioQuestions
+from .models import Stage_1
 from django.contrib.auth.decorators import login_required
 from user.models import Player
 from .forms import UserAnswer
@@ -7,113 +8,43 @@ import datetime
 # Create your views here.
 
 
-@login_required(login_url='/login', redirect_field_name=None)
-def quiz(request):
-
-    squestions = StaticQuestions.objects.all()
-    aquestions = AudioQuestions.objects.all()
-
-    return render(request, 'quiz/quiz.html', {'squestions': squestions,
-                                              'aquestions': aquestions})
+def StageOne(request):
+    player = get_object_or_404(Player, user=request.user)
+    question_level = player.question_level
+    question = get_object_or_404(Stage_1, level=int(question_level))
+    my_form = UserAnswer
+    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form})
 
 
-@login_required(login_url='/login', redirect_field_name=None)
-def stat(request, qid):
-
-    if qid == 1:
-        my_form = UserAnswer()
-        ans = 4
-        question = get_object_or_404(StaticQuestions, pk=qid)
-        if (int(qid)+1 <= StaticQuestions.objects.count()):
-            question2 = get_object_or_404(StaticQuestions, pk=int(qid)+1)
-        else:
-            question2 = -1
-
-        return render(request, 'quiz/stat.html', {"question": question, "my_form": my_form, "question2": question2})
-    else:
-        if request.method == 'GET':
-            return render(request, 'quiz/smart.html')
-        elif request.method == 'POST':
-            my_form = UserAnswer()
-            if request.method == 'POST':
-                my_form = UserAnswer(request.POST)
-            if my_form.is_valid():
-                print(my_form.cleaned_data.get("answer"))
-                ans = my_form.cleaned_data.get("answer")
-                question = get_object_or_404(StaticQuestions, pk=int(qid) - 1)
-                print(question.answer)
-
-                if (str(ans) == str(question.answer)):
-                    player = Player.objects.get(user=request.user)
-                    player.score += 1
-                    player.last_submit = datetime.datetime.now()
-                    player.save()
-
-            else:
-                ans = 'error'
-
-            question = get_object_or_404(StaticQuestions, pk=qid)
-            if (int(qid)+1 <= StaticQuestions.objects.count()):
-                question2 = get_object_or_404(StaticQuestions, pk=int(qid)+1)
-            else:
-                question2 = -1
-
-            return render(request, 'quiz/stat.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
+def Stage1Hint(request):
+    player = get_object_or_404(Player, user=request.user)
+    player.score -= 1
+    question_level = player.question_level
+    question = get_object_or_404(Stage_1, level=int(question_level))
+    return render(request, 'quiz/Stage1.html', {"question": question})
 
 
-@ login_required(login_url='/login', redirect_field_name=None)
-def audio(request, qid):
+def Stage1Answer(request):
+    if request.method == "POST":
+        player = get_object_or_404(Player, user=request.user)
+        question_level = player.question_level
+        question = get_object_or_404(Stage_1, level=int(question_level))
 
-    if qid == 1:
-        my_form = UserAnswer()
-        ans = 4
-        question = get_object_or_404(AudioQuestions, pk=qid)
-        if (int(qid)+1 <= AudioQuestions.objects.count()):
-            question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
-        else:
-            question2 = -1
-
-        return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "question2": question2})
-    else:
-        if request.method == 'GET':
-            return render(request, 'quiz/smart.html')
-        elif request.method == 'POST':
-            my_form = UserAnswer()
-            if request.method == 'POST':
-                my_form = UserAnswer(request.POST)
-            if my_form.is_valid():
-                print(my_form.cleaned_data.get("answer"))
-                ans = my_form.cleaned_data.get("answer")
-            else:
-                ans = 'error'
-
-            question = get_object_or_404(AudioQuestions, pk=qid)
-            if (int(qid)+1 <= AudioQuestions.objects.count()):
-                question2 = get_object_or_404(AudioQuestions, pk=int(qid)+1)
-            else:
-                question2 = -1
-
-            return render(request, 'quiz/audio.html', {"question": question, "my_form": my_form, "ans": ans, "question2": question2})
-
-
-@ login_required(login_url='/login', redirect_field_name=None)
-def statend(request):
-    if (request.method == "POST"):
         my_form = UserAnswer(request.POST)
         if my_form.is_valid():
-            print(my_form.cleaned_data.get("answer"))
             ans = my_form.cleaned_data.get("answer")
-    return render(request, 'quiz/statend.html')
+            if (str(ans) == str(question.answer)):
+                player.score += 3
+                player.question_level += 1
+                player.save()
+                question_level = player.question_level
+                question = get_object_or_404(
+                    Stage_1, level=int(question_level))
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form})
+            else:
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form})
+        else:
+            return HttpResponse('<h2> Form data not valid</h2>')
 
-
-@ login_required(login_url='/login', redirect_field_name=None)
-def audend(request):
-    if (request.method == "POST"):
-        my_form = UserAnswer(request.POST)
-        if my_form.is_valid():
-            print(my_form.cleaned_data.get("answer"))
-            ans = my_form.cleaned_data.get("answer")
-    return render(request, 'quiz/audend.html')
-
-# https://gist.github.com/kissgyorgy/6110380
-# while integrating with postgress
+    else:
+        return HttpResponseNotFound('<h1>Page not found</h1>')
