@@ -176,11 +176,13 @@ form {
   margin: 20px;
   padding: 10px;
   align-items: center;
+  text-align: center;
 }
 
 #search {
   margin: 20px;
   padding: 10px;
+  text-align: center;
 }
 
 .leader {
