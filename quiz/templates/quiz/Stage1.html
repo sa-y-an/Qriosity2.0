@@ -48,6 +48,16 @@
         <h2>
           Question Level : {{ question.level }}
         </h2>
+
+        {% if value %}
+        <div class="wrong">
+          Your previous Answer was wrong
+          <br />
+          Please try again
+          <br />
+          You can take the hint (you will loose points)
+        </div>
+        {% endif %}
         <h1>{{ question.title }}</h1>
 
         <!-- description -->

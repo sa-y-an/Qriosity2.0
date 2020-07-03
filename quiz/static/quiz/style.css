@@ -152,3 +152,9 @@ form {
   padding: 10px;
   margin: 10px;
 }
+
+.wrong {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}

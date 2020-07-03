@@ -7,6 +7,8 @@ from .forms import UserAnswer
 import datetime
 # Create your views here.
 
+value = False
+
 
 def StageOne(request):
 
@@ -19,7 +21,7 @@ def StageOne(request):
         return render(request, 'quiz/end.html')
     question = get_object_or_404(Stage_1, level=int(question_level))
     my_form = UserAnswer
-    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form})
+    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
 
 
 def Stage1Hint(request):
@@ -48,6 +50,7 @@ def Stage1Answer(request):
             ans = my_form.cleaned_data.get("answer")
 
             if (str(ans) == str(question.answer)):
+                value = False
                 player.score += 3
                 player.question_level += 1
 
@@ -62,9 +65,10 @@ def Stage1Answer(request):
                 if player.question_level > Stage_1.objects.count():
                     return render(request, 'quiz/end.html')
                 else:
-                    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form})
+                    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
             else:
-                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form})
+                value = True
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
         else:
             return HttpResponse('<h2> Form data not valid</h2>')
 
