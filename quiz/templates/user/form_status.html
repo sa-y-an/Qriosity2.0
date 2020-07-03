@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Status</title>
+    <link rel="stylesheet" href="{% static 'user/forms.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
+
+        <nav>
+          <ul>
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="content">
+        <h1>
+          Your Contact Status are as follows
+        </h1>
+
+        <div class="box">
+          <h2>
+            Name : {{details.full_name}}
+          </h2>
+          <h2>
+            College : {{details.college}}
+          </h2>
+          <h2>
+            Year : {{details.year}}
+          </h2>
+          <h2>
+            Contact Number : {{details.contact}}
+          </h2>
+        </div>
+
+        <div class="submit">
+          <a href="{% url 'user:details'%}">
+            <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
+              Update Contact
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

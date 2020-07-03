@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>
+    here is your hint
+  </h1>
+  <p>
+    {{question.hint}}
+  </p>
+
+  <a href="{% url 'quiz:individual' question.id%}">
+    <button>return to question</button>
+  </a>
+</div>

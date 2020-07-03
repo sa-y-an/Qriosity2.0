@@ -88,13 +88,19 @@
           </div>
 
           <br />
-          <button class="btn" type="submit" value="Play" class="dare">
+          
             {% if user.is_authenticated %}
-            <a href="{% url 'quiz:stageone'  %}">Start</a>
+            <a href="{% url 'quiz:stageone'  %}">
+              <button class="btn" type="submit" value="Play" class="dare">
+              Start
+              </button></a>
             {% else %}
-            <a href="{% url 'home:login' %}">Start</a>
+            <a href="{% url 'home:login' %}">
+              <button class="btn" type="submit" value="Play" class="dare">
+              Start</a>
+            </button>
             {% endif %}
-          </button>
+          
         </div>
       </div>
 

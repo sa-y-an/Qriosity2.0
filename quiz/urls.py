@@ -7,9 +7,8 @@ app_name = 'quiz'
 urlpatterns = [
     path('', views.StageOne, name='stageone'),
     path('answer/', views.Stage1Answer, name="answer"),
-    path('hint/', views.Stage1Hint, name="hint")
-    # path('audio/<int:qid>', views.audio, name='audio'),
-    # path('stat/finished', views.statend, name='statend'),
-    # path('audio/finished', views.audend, name='audend'),
-
+    path('hint/', views.Stage1Hint, name="hint"),
+    path('stage2/', views.Index, name="index"),
+    path('<int:qid>', views.Individual, name="individual"),
+    path('hint2/', views.hint2, name="hint2"),
 ]
