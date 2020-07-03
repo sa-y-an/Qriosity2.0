@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stat END</title>
+    <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
+
+        <nav>
+          <ul>
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="content">
+        <p>
+          Thanks for Playing with US <br />
+          You have completed the static questions <br />
+          Stage 2 will begin Soon
+        </p>
+
+        <a href="{% url 'quiz:index'%}">
+          <button class="btn btn-primary mb1 bg-blue">Stage 2</button>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

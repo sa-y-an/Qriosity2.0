@@ -9,5 +9,20 @@
     />
     <title>Hint</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <p>
+        Your Hint for Question {{ question.level}} is
+      </p>
+      <p>
+        {{ question.hint}}
+      </p>
+
+      <a href="{% url  'quiz:stageone' %}">
+        <button>
+          Go back to Question page
+        </button>
+      </a>
+    </div>
+  </body>
 </html>
