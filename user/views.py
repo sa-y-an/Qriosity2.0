@@ -59,7 +59,9 @@ def leaderboard(request):
     global current_leaderboard
     current_leaderboard = models.Player.objects.order_by(
         '-score', '-last_submit')
-    return render(request, 'user/leaderboard.html', {'leaderboard': current_leaderboard})
+    leader = models.Player.objects.order_by(
+        '-score', '-last_submit')[:1]
+    return render(request, 'user/leaderboard.html', {'leaderboard': current_leaderboard, 'leader': leader})
 
 
 def privacy_policy_fb(request):

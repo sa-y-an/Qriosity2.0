@@ -51,6 +51,27 @@
           </ul>
         </nav>
       </header>
+
+      <div class="search">
+        <h3>
+          Search Your Name
+        </h3>
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="search your name ......"
+        />
+      </div>
+      {% for i in leader %}
+      <div class="leader">
+        <h3>
+          Leading the Chart Now is {{ i.name}}
+        </h3>
+        <br />
+        <img src="{{ i.image }}" alt="{{ i.name }}" />
+      </div>
+      {% endfor %}
       <div class="content">
         <div class="item">
           <div class="pos">
