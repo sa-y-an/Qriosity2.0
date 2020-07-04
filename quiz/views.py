@@ -17,8 +17,10 @@ def StageOne(request):
     player.save()
 
     if player.question_level > Stage_1.objects.count():
+        formp = UserAnswer
+        check = False
+        return render(request, 'quiz/end.html', {"form": formp, "check": check})
 
-        return render(request, 'quiz/end.html')
     question = get_object_or_404(Stage_1, level=int(question_level))
     my_form = UserAnswer
     return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
@@ -42,7 +44,9 @@ def Stage1Answer(request):
         try:
             question = Stage_1.objects.get(level=int(question_level))
         except Stage_1.DoesNotExist:
-            return render(request, 'quiz/end.html')
+            formp = UserAnswer
+            check = False
+            return render(request, 'quiz/end.html', {"form": formp, "check": check})
 
         my_form = UserAnswer(request.POST)
         if my_form.is_valid():
@@ -60,10 +64,14 @@ def Stage1Answer(request):
                     question = Stage_1.objects.get(
                         level=int(question_level))
                 except Stage_1.DoesNotExist:
-                    return render(request, 'quiz/end.html')
+                    formp = UserAnswer
+                    check = False
+                    return render(request, 'quiz/end.html', {"form": formp, "check": check})
 
                 if player.question_level > Stage_1.objects.count():
-                    return render(request, 'quiz/end.html')
+                    formp = UserAnswer
+                    check = False
+                    return render(request, 'quiz/end.html', {"form": formp, "check": check})
                 else:
                     return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
             else:
@@ -114,3 +122,21 @@ def hint2(request):
         player.save()
         question = Stage_2(pk=qid)
         return render(request, 'quiz/hint2.html', {"question": question})
+
+
+def Passcode(request):
+    code = "ENIGMACODE"
+    if request.method == "POST":
+        my_form = UserAnswer(request.POST)
+        if my_form.is_valid():
+            print(my_form.cleaned_data)
+            ans = my_form.cleaned_data.get("answer")
+
+            if (str(ans) == str(code)):
+                return render(request, "quiz/index.html")
+            else:
+                check = True
+                formp = UserAnswer
+                return render(request, "quiz/end.html", {"check": check, "form": formp})
+        else:
+            return HttpResponse("<h1>form data invalid </h1>")
