@@ -13,14 +13,15 @@ class Player(models.Model):
     rank = models.IntegerField(default=0)
     last_submit = models.DateTimeField(default=datetime.now)
     question_level = models.IntegerField(default=1)
-    level2 = models.IntegerField(default=1)
+    level2 = models.IntegerField(default=-1)
 
     def __str__(self):
         return self.name
 
 
 class PlayerDetails(models.Model):
-    user_name = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
+    user_name = models.OneToOneField(
+        Player, on_delete=models.CASCADE, primary_key=True)
     full_name = models.CharField(default="your name", max_length=400)
     college = models.CharField(default="none", max_length=400)
     year = models.CharField(default="1", max_length=10)

@@ -11,19 +11,24 @@ value = False
 
 
 def StageOne(request):
-
     player = get_object_or_404(Player, user=request.user)
-    question_level = player.question_level
-    player.save()
+    # print(player.level2)
 
-    if player.question_level > Stage_1.objects.count():
-        formp = UserAnswer
-        check = False
-        return render(request, 'quiz/end.html', {"form": formp, "check": check})
+    if player.level2 < 0:
+        player = get_object_or_404(Player, user=request.user)
+        question_level = player.question_level
+        player.save()
 
-    question = get_object_or_404(Stage_1, level=int(question_level))
-    my_form = UserAnswer
-    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
+        if player.question_level > Stage_1.objects.count():
+            formp = UserAnswer
+            check = False
+            return render(request, 'quiz/end.html', {"form": formp, "check": check})
+
+        question = get_object_or_404(Stage_1, level=int(question_level))
+        my_form = UserAnswer
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
+    if player.level2 > -1:
+        return render(request, 'quiz/index.html', {"player": player})
 
 
 def Stage1Hint(request):
@@ -87,7 +92,8 @@ def Stage1Answer(request):
 # make a new player model and include level2
 def Index(request):
     questions = Stage_2.objects.all()
-    return render(request, 'quiz/index.html', {"questions": questions})
+    player = get_object_or_404(Player, user=request.user)
+    return render(request, 'quiz/index.html', {"questions": questions, "player": player})
 
 
 def Individual(request, qid):
@@ -129,10 +135,14 @@ def Passcode(request):
     if request.method == "POST":
         my_form = UserAnswer(request.POST)
         if my_form.is_valid():
-            print(my_form.cleaned_data)
+            # print(my_form.cleaned_data)
             ans = my_form.cleaned_data.get("answer")
 
             if (str(ans) == str(code)):
+                player = get_object_or_404(Player, user=request.user)
+                player.level2 = 0
+                player.save()
+                print(player.level2)
                 return render(request, "quiz/index.html")
             else:
                 check = True
