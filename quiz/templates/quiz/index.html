@@ -10,6 +10,14 @@
     }
     .questions {
       text-align: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: black;
+      border-radius: 50px;
+    }
+    .propic {
+      height: 20vh;
+      width: 20vh;
+      border-radius: 100px;
     }
   </style>
 </head>
@@ -41,18 +49,26 @@
       </ul>
     </nav>
   </header>
+
   <div class="content">
     <h2>
       Welcome {{player.name }} to Stage 2
     </h2>
+    <img src="{{player.image}}" alt="{{ player.name }}" class="propic" />
     <br />
     <h3>
       To view/answer a question click on its title
     </h3>
+    <br />
+    <hr width="100%" />
+    <br />
+
     {% for i in q %}
     <div class="questions">
+      <div class="number">
+        Question No. {{i.level}}
+      </div>
       <div class="title">
-        {{i.level}}
         <a href="{% url 'quiz:individual' i.id %}">
           {{ i.title }}
         </a>
