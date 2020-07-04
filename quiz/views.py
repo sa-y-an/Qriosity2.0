@@ -10,6 +10,7 @@ import datetime
 value = False
 
 
+@login_required(login_url='/login', redirect_field_name=None)
 def StageOne(request):
     player = get_object_or_404(Player, user=request.user)
     # print(player.level2)
@@ -32,6 +33,7 @@ def StageOne(request):
         return render(request, 'quiz/index.html', {"player": player, "q": q})
 
 
+@login_required(login_url='/login', redirect_field_name=None)
 def Stage1Hint(request):
     player = get_object_or_404(Player, user=request.user)
     player.score -= 1
@@ -91,12 +93,14 @@ def Stage1Answer(request):
 
 
 # make a new player model and include level2
+@login_required(login_url='/login', redirect_field_name=None)
 def Index(request):
     q = StageTwo.objects.all()
     player = get_object_or_404(Player, user=request.user)
     return render(request, 'quiz/index.html', {"q": q, "player": player})
 
 
+@login_required(login_url='/login', redirect_field_name=None)
 def Individual(request, qid):
     p = get_object_or_404(Player, user=request.user)
     p.level2 = int(qid)
@@ -121,6 +125,7 @@ def Individual(request, qid):
             return HttpResponse('<h2> Your Form data was Invalid </h2>')
 
 
+@login_required(login_url='/login', redirect_field_name=None)
 def hint2(request):
     if request.method == "POST":
         player = get_object_or_404(Player, user=request.user)
@@ -131,6 +136,7 @@ def hint2(request):
         return render(request, 'quiz/hint2.html', {"question": question})
 
 
+@login_required(login_url='/login', redirect_field_name=None)
 def Passcode(request):
     code = "ENIGMACODE"
     if request.method == "POST":
