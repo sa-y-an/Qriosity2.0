@@ -8,6 +8,9 @@
     .content {
       justify-content: start;
     }
+    .questions {
+      text-align: center;
+    }
   </style>
 </head>
 <div class="container">
@@ -49,7 +52,10 @@
     {% for i in q %}
     <div class="questions">
       <div class="title">
-        <p>{{ i.title }}</p>
+        {{i.level}}
+        <a href="{% url 'quiz:individual' i.id %}">
+          {{ i.title }}
+        </a>
       </div>
       <div class="description">
         {{i.description}}
