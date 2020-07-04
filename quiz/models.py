@@ -18,7 +18,7 @@ class Stage_1(models.Model):
         return self.level
 
 
-class Stage_2(models.Model):
+class StageTwo(models.Model):
     title = models.CharField(blank=True, max_length=200)
     description = models.TextField(blank=True, default='hello')
     background = models.FileField(blank=True, upload_to='AudioQuestions/music')
@@ -27,6 +27,7 @@ class Stage_2(models.Model):
     files = models.FileField(blank=True, upload_to='AudioQuestions/music')
     hint = models.TextField(blank=True, default='hint')
     answer = models.CharField(blank=True, max_length=400)
+    level = models.IntegerField(default=1)
 
     def __str__(self):
         return self.title

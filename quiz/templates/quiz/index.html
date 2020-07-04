@@ -46,38 +46,25 @@
     <h3>
       To view/answer a question click on its title
     </h3>
-    <div class="audioquestions">
-      {% for question in questions%}
-      <a href="{% url 'quiz:individual' question.id%}" target="_blank">
-        <h1>{{ question.title }}</h1>
-      </a>
-      <!-- description -->
-      {% if question.description %}
-      <div>{{ question.description }}</div>
-      {% endif %}
-
-      <!-- image -->
-      {% if question.image %}
-      <div>
-        <img src="{{ question.image.url }}" alt="{{question.title}}" />
+    {% for i in q %}
+    <div class="questions">
+      <div class="title">
+        <p>{{ i.title }}</p>
       </div>
-      {% endif %}
-
-      <!-- url -->
-      {% if question.url %}
-      <div>
-        <a href="{{question.url}}" target="_blank" rel="noopener noreferrer">
-          Click for hint</a
-        >
+      <div class="description">
+        {{i.description}}
       </div>
-      {% endif %}
-      <br />
-
-      <!-- audio  -->
-      {% if question.files.url %}
-      <audio src="{{ question.files.url }}" controls></audio>
+      {% if i.image %}
+      <div class="image">
+        <img src="{{i.image}}" alt="{{i.title}}" />
+      </div>
       {% endif %}
     </div>
+    {% if i.files%}
+    <div class="files">
+      <audio src="{{i.files.url}}" controls></audio>
+    </div>
+    {% endif %}
   </div>
+  {% endfor %}
 </div>
-{% endfor %}

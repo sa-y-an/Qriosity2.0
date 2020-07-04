@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
-from .models import Stage_1, Stage_2
+from .models import Stage_1, StageTwo
 from django.contrib.auth.decorators import login_required
 from user.models import Player
 from .forms import UserAnswer
@@ -28,7 +28,8 @@ def StageOne(request):
         my_form = UserAnswer
         return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
     if player.level2 > -1:
-        return render(request, 'quiz/index.html', {"player": player})
+        q = StageTwo.objects.all()
+        return render(request, 'quiz/index.html', {"player": player, "q": q})
 
 
 def Stage1Hint(request):
@@ -91,25 +92,25 @@ def Stage1Answer(request):
 
 # make a new player model and include level2
 def Index(request):
-    questions = Stage_2.objects.all()
+    q = StageTwo.objects.all()
     player = get_object_or_404(Player, user=request.user)
-    return render(request, 'quiz/index.html', {"questions": questions, "player": player})
+    return render(request, 'quiz/index.html', {"q": q, "player": player})
 
 
 def Individual(request, qid):
     p = get_object_or_404(Player, user=request.user)
     p.level2 = int(qid)
     p.save()
-    question = get_object_or_404(Stage_2, pk=qid)
+    question = get_object_or_404(StageTwo, pk=qid)
     my_form = UserAnswer
     if request.method == "GET":
         return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
     if request.method == "POST":
         my_form = UserAnswer(request.POST)
         if my_form.is_valid():
-            player = Player(user=request.user)
+            player = get_object_or_404(Player, user=request.user)
             ans = my_form.cleaned_data.get("answer")
-            organs = get_object_or_404(Stage_2, pk=qid).answer
+            organs = get_object_or_404(StageTwo, pk=qid).answer
             if (str(organs) == str(ans)):
                 player.score += 5
                 player.save()
@@ -122,11 +123,11 @@ def Individual(request, qid):
 
 def hint2(request):
     if request.method == "POST":
-        player = Player(user=request.user)
+        player = get_object_or_404(Player, user=request.user)
         qid = int(player.level2)
         player.score -= 1
         player.save()
-        question = Stage_2(pk=qid)
+        question = StageTwo(pk=qid)
         return render(request, 'quiz/hint2.html', {"question": question})
 
 
@@ -142,8 +143,9 @@ def Passcode(request):
                 player = get_object_or_404(Player, user=request.user)
                 player.level2 = 0
                 player.save()
-                print(player.level2)
-                return render(request, "quiz/index.html")
+                # print(player.level2)
+                q = StageTwo.objects.all()
+                return render(request, "quiz/index.html", {"q": q})
             else:
                 check = True
                 formp = UserAnswer
