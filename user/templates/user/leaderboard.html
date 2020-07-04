@@ -61,8 +61,10 @@
           name="search"
           id="search"
           placeholder="search your name ......"
+          onkeyup="SearchFn()"
         />
       </div>
+      <div class="searchResult"></div>
       {% for i in leader %}
       <div class="leader">
         <h3>
@@ -103,5 +105,24 @@
         {% endfor %}
       </div>
     </div>
+    <script>
+      function SearchFn() {
+
+        for (i = 1 ; i < {{n}}+1 ; i ++) {
+        let inp = document.querySelector("#search").value;
+        let msg = document.querySelector('.searchResult')
+        let org = document.querySelectorAll(".item")[i];
+        if ( org.querySelector(".name").innerText.toUpperCase().indexOf(inp.toUpperCase()) > -1 )
+        {
+          org.style.display = ""
+
+        }
+        else
+        {
+          org.style.display = "none"
+        }
+      }
+      }
+    </script>
   </body>
 </html>

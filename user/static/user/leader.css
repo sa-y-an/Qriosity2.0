@@ -188,8 +188,15 @@ form {
 .leader {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.leader h3 {
+  color: #a26d28;
 }
 
 .leader img {
-  height: 20vh;
+  height: 30vh;
+  width: 30vh;
+  box-shadow: 2px 2px 5px 2px #a26d28;
 }
