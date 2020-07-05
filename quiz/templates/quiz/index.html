@@ -1,45 +1,92 @@
+{% load static %}
 <head>
+  <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
   <style>
     img {
       max-height: 30vh;
     }
+    .content {
+      justify-content: start;
+    }
+    .questions {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: black;
+      border-radius: 50px;
+    }
+    .propic {
+      height: 20vh;
+      width: 20vh;
+      border-radius: 100px;
+    }
   </style>
 </head>
 <div class="container">
-  <h3>
-    To view/answer a question click on its title
-  </h3>
-  <div class="audioquestions">
-    {% for question in questions%}
-    <a href="{% url 'quiz:individual' question.id%}" target="_blank">
-      <h1>{{ question.title }}</h1>
-    </a>
-    <!-- description -->
-    {% if question.description %}
-    <div>{{ question.description }}</div>
-    {% endif %}
+  <header>
+    <h1>
+      <a class="navbar-brand" href="{% url 'home:home' %}"
+        >Qriosity 2.0 (Stage 2)
+      </a>
+    </h1>
 
-    <!-- image -->
-    {% if question.image %}
-    <div>
-      <img src="{{ question.image.url }}" alt="{{question.title}}" />
-    </div>
-    {% endif %}
+    <nav>
+      <ul>
+        <li>
+          <a class="rulebtn">Rules</a>
+        </li>
+        <li>
+          <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+        </li>
+        <li>
+          <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+        </li>
+        <li>
+          <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- url -->
-    {% if question.url %}
-    <div>
-      <a href="{{question.url}}" target="_blank" rel="noopener noreferrer">
-        Click for hint</a
-      >
-    </div>
-    {% endif %}
+  <div class="content">
+    <h2>
+      Welcome {{player.name }} to Stage 2
+    </h2>
+    <img src="{{player.image}}" alt="{{ player.name }}" class="propic" />
+    <br />
+    <h3>
+      To view/answer a question click on its title
+    </h3>
+    <br />
+    <hr width="50%" color="#C98732" />
     <br />
 
-    <!-- audio  -->
-    {% if question.files.url %}
-    <audio src="{{ question.files.url }}" controls></audio>
+    {% for i in q %}
+    <div class="questions">
+      <div class="number">
+        Question No. {{i.level}}
+      </div>
+      <div class="title">
+        <a href="{% url 'quiz:individual' i.id %}">
+          {{ i.title }}
+        </a>
+      </div>
+      <div class="description">
+        {{i.description}}
+      </div>
+      {% if i.image %}
+      <div class="image">
+        <img src="{{i.image}}" alt="{{i.title}}" />
+      </div>
+      {% endif %}
+    </div>
+    {% if i.files%}
+    <div class="files">
+      <audio src="{{i.files.url}}" controls></audio>
+    </div>
     {% endif %}
   </div>
+  {% endfor %}
 </div>
-{% endfor %}

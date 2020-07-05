@@ -42,9 +42,24 @@
           Stage 2 will begin Soon
         </p>
 
-        <a href="{% url 'quiz:index'%}">
-          <button class="btn btn-primary mb1 bg-blue">Stage 2</button>
-        </a>
+        {% if check %}
+        <p>
+          please try again,
+          <br />
+          your answer was incorrect
+        </p>
+        {% endif %}
+
+        <form action="{% url 'quiz:passcode' %}" method="POST">
+          {% csrf_token %}
+          <h1>
+            Enter The passcode below
+          </h1>
+          {{form.as_p}}
+          <button class="btn btn-primary mb1 bg-blue" type="submit">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
   </body>
