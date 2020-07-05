@@ -68,3 +68,9 @@ form {
   background-color: rgb(108, 163, 211);
   border-color: rgb(108, 163, 211);
 }
+
+.wrong {
+  background-color: rgb(233, 204, 77, 0.7);
+  color: red;
+  font-weight: bold;
+}
