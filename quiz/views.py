@@ -151,7 +151,8 @@ def Passcode(request):
                 player.save()
                 # print(player.level2)
                 q = StageTwo.objects.all()
-                return render(request, "quiz/index.html", {"q": q})
+                player = get_object_or_404(Player, user=request.user)
+                return render(request, "quiz/index.html", {"q": q, "player": player})
             else:
                 check = True
                 formp = UserAnswer
