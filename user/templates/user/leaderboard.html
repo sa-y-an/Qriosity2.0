@@ -15,6 +15,26 @@
       type="text/css"
     />
     <link rel="stylesheet" href="{% static 'user/leaderboard.css' %}" />
+    <style>
+      .topper {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .tname {
+        text-shadow: 2px 2px 5px 2px #d79b58;
+        text-shadow: 1px 1px #d79b58;
+      }
+      .tpic {
+        height: 30vh;
+        width: 30vh;
+        box-shadow: 2px 2px 5px 2px #d79b58;
+        margin-bottom: 20px;
+        border-radius: 50px;
+      }
+    </style>
   </head>
 
   <body>
@@ -70,6 +90,14 @@
     <br /><br /><br />
 
     <div class="content">
+      <div class="topper">
+        {% for top in leader%}
+        <h2 class="tname">
+          Leading The Charts Now is {{top.name}}
+        </h2>
+        <img src="{{top.image}}" alt="{{top.name}}" class="tpic" />
+        {% endfor %}
+      </div>
       <div class="box">
         <div>
           <h1 style="text-align: center; color: black;">LeaderBoard</h1>
@@ -84,7 +112,6 @@
             placeholder="Search Your Name ......"
           />
         </div>
-        <div class="searchResult"></div>
         <div class="list">
           <br />
           {% for i in leaderboard %}
