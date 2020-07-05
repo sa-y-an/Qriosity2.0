@@ -1,11 +1,51 @@
+{% load static %}
 <head>
   <style>
     img {
       max-height: 30vh;
     }
+    .question {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
   </style>
-  <div class="container">
-    <div class="audioquestions">
+  <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
+</head>
+
+<div class="container">
+  <header>
+    <h1>
+      <a class="navbar-brand" href="{% url 'home:home' %}"
+        >Qriosity 2.0 (Stage 2)
+      </a>
+    </h1>
+
+    <nav>
+      <ul>
+        <li>
+          <a class="rulebtn">Rules</a>
+        </li>
+        <li>
+          <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+        </li>
+        <li>
+          <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+        </li>
+        <li>
+          <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <div class="question">
       <h1>{{ question.title }}</h1>
 
       <!-- description -->
@@ -35,22 +75,22 @@
       <audio src="{{ question.files.url }}" controls></audio>
       {% endif %}
     </div>
-
-    <form action="{% url 'quiz:hint2'%}" method="post">
+    <form action="{% url 'quiz:hint2' question.level %}" method="POST">
       {% csrf_token %}
       <h3>
         Click For Hint But You will loose points
       </h3>
-      <button type="submit">
+      <br />
+      <button type="submit" class="btn btn-primary mb1 bg-blue">
         Hint
       </button>
     </form>
 
     <form action="" method="POST">
       {% csrf_token %} {{form.as_p}}
-      <button type="submit">
+      <button type="submit" class="btn btn-primary mb1 bg-blue">
         Submit
       </button>
     </form>
   </div>
-</head>
+</div>

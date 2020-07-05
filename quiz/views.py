@@ -43,6 +43,7 @@ def Stage1Hint(request):
     return render(request, 'quiz/hints.html', {"question": question})
 
 
+@login_required(login_url='/login', redirect_field_name=None)
 def Stage1Answer(request):
 
     if request.method == "POST":
@@ -92,7 +93,6 @@ def Stage1Answer(request):
         return HttpResponseNotFound('<h1>Page not found</h1>')
 
 
-# make a new player model and include level2
 @login_required(login_url='/login', redirect_field_name=None)
 def Index(request):
     q = StageTwo.objects.all()
@@ -105,7 +105,7 @@ def Individual(request, qid):
     p = get_object_or_404(Player, user=request.user)
     p.level2 = int(qid)
     p.save()
-    question = get_object_or_404(StageTwo, pk=qid)
+    question = get_object_or_404(StageTwo, level=qid)
     my_form = UserAnswer
     if request.method == "GET":
         return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
@@ -114,7 +114,7 @@ def Individual(request, qid):
         if my_form.is_valid():
             player = get_object_or_404(Player, user=request.user)
             ans = my_form.cleaned_data.get("answer")
-            organs = get_object_or_404(StageTwo, pk=qid).answer
+            organs = get_object_or_404(StageTwo, level=qid).answer
             if (str(organs) == str(ans)):
                 player.score += 5
                 player.save()
@@ -126,14 +126,17 @@ def Individual(request, qid):
 
 
 @login_required(login_url='/login', redirect_field_name=None)
-def hint2(request):
+def hint2(request, hint2):
     if request.method == "POST":
         player = get_object_or_404(Player, user=request.user)
-        qid = int(player.level2)
+        # qid = int(player.level2)
         player.score -= 1
         player.save()
-        question = StageTwo(pk=qid)
+        question = get_object_or_404(StageTwo, level=hint2)
+        print(question.title)
         return render(request, 'quiz/hint2.html', {"question": question})
+    if request.method == "GET":
+        return render(request, 'quiz/smart.html')
 
 
 @login_required(login_url='/login', redirect_field_name=None)
