@@ -133,7 +133,7 @@ def hint2(request, hint2):
         player.score -= 1
         player.save()
         question = get_object_or_404(StageTwo, level=hint2)
-        print(question.title)
+        # print(question.title)
         return render(request, 'quiz/hint2.html', {"question": question})
     if request.method == "GET":
         return render(request, 'quiz/smart.html')
