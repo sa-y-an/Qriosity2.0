@@ -13,6 +13,7 @@
       background-color: rgba(255, 255, 255, 0.5);
       color: black;
       border-radius: 50px;
+      margin: 10px;
     }
     .propic {
       height: 20vh;
@@ -86,7 +87,6 @@
     <div class="files">
       <audio src="{{i.files.url}}" controls></audio>
     </div>
-    {% endif %}
+    {% endif %} {% endfor %}
   </div>
-  {% endfor %}
 </div>

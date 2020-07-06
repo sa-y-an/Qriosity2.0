@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from .models import Stage_1, StageTwo
 from django.contrib.auth.decorators import login_required
-from user.models import Player
+from user.models import Player, Solved
 from .forms import UserAnswer
 import datetime
 # Create your views here.
@@ -101,31 +101,6 @@ def Index(request):
 
 
 @login_required(login_url='/login', redirect_field_name=None)
-def Individual(request, qid):
-    p = get_object_or_404(Player, user=request.user)
-    p.level2 = int(qid)
-    p.save()
-    question = get_object_or_404(StageTwo, level=qid)
-    my_form = UserAnswer
-    if request.method == "GET":
-        return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
-    if request.method == "POST":
-        my_form = UserAnswer(request.POST)
-        if my_form.is_valid():
-            player = get_object_or_404(Player, user=request.user)
-            ans = my_form.cleaned_data.get("answer")
-            organs = get_object_or_404(StageTwo, level=qid).answer
-            if (str(organs) == str(ans)):
-                player.score += 5
-                player.save()
-                return render(request, 'quiz/solved.html')
-            else:
-                return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
-        else:
-            return HttpResponse('<h2> Your Form data was Invalid </h2>')
-
-
-@login_required(login_url='/login', redirect_field_name=None)
 def hint2(request, hint2):
     if request.method == "POST":
         player = get_object_or_404(Player, user=request.user)
@@ -162,3 +137,70 @@ def Passcode(request):
                 return render(request, "quiz/end.html", {"check": check, "form": formp})
         else:
             return HttpResponse("<h1>form data invalid </h1>")
+
+
+# individual questions of stage 2
+@login_required(login_url='/login', redirect_field_name=None)
+def Individual(request, qid):
+    # solved class has 2 objects 1. level_on 2. solved
+
+    player = get_object_or_404(Player, user=request.user)
+    s = player.solved_set.all()
+    question = get_object_or_404(StageTwo, level=qid)
+    p = get_object_or_404(Player, user=request.user)
+    p.level2 = int(qid)
+    p.save()            # sets the current level of the user to the visiting question
+
+    flag = False        # player solved it or not
+    for i in s:         # checks if player have already visited the question
+        if (i.level_on == qid):
+            if (i.solved == True):  # checks if player have solved the question
+                flag = True
+                # then returns the solved page
+                return render(request, 'quiz/solved.html')
+            else:
+                flag = True
+                if request.method == "GET":     # if the player comes for the question
+                    my_form = UserAnswer
+                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+                if request.method == "POST":    # if the player submits the question
+                    my_form = UserAnswer(request.POST)
+                    if my_form.is_valid():
+                        ans = my_form.cleaned_data.get("answer")
+                        organs = get_object_or_404(StageTwo, level=qid).answer
+                        if (str(organs) == str(ans)):   # if the answer is correct
+                            player.score += 5
+                            i.solved = True         # the question is set to solved corrosponding to that level
+                            i.save()
+                            player.save()
+                            return render(request, 'quiz/solved.html')
+                        else:   # returns the same question
+                            return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+                    else:
+                        return HttpResponse('<h2> Your Form data was Invalid </h2>')
+                        # invalid form data submitted by tampering with developer console
+
+    if (flag == False):  # the player didnot visited the question before
+        # creates a Solved object with level_on = question level and solved set to False
+        player.solved_set.create(level_on=qid, solved=False)
+
+        if request.method == "GET":
+            my_form = UserAnswer
+            return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+        if request.method == "POST":
+            my_form = UserAnswer(request.POST)
+            if my_form.is_valid():
+                ans = my_form.cleaned_data.get("answer")
+                organs = get_object_or_404(StageTwo, level=qid).answer
+                if (str(organs) == str(ans)):  # if the player succesfully solves the question
+                    player.score += 5
+
+                    i = player.solved_set.get(level_on=qid)
+                    i.solved = True  # sets the solved to true
+                    i.save()
+                    player.save()
+                    return render(request, 'quiz/solved.html')
+                else:   # returns the same question
+                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+            else:
+                return HttpResponse('<h2> Your Form data was Invalid </h2>')

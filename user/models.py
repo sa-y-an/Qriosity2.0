@@ -32,6 +32,6 @@ class PlayerDetails(models.Model):
 
 
 class Solved(models.Model):
-    player = models.ForeignKey(Player, on_delete=models.CASCADE)
-    level_on = models.IntegerField(default=0)
+    gamer = models.ForeignKey(Player, on_delete=models.CASCADE)
+    level_on = models.IntegerField(default=0, blank=True)
     solved = models.BooleanField(default=False)
