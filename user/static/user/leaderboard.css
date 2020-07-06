@@ -256,6 +256,10 @@ footer {
     height: 5vh;
 }
 
+
+
+
+
 @media screen and (max-width: 480px) {
     .box {
         overflow: hidden;
@@ -367,3 +371,4 @@ footer {
         color: white;
     }
 }
+

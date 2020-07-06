@@ -1,157 +1,189 @@
 {% load static %}
 <html>
-
-<head>
+  <head>
     <title>Leaderboard</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap' type="text/css">
+    <link
+      href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap"
+      type="text/css"
+    />
     <link rel="stylesheet" href="{% static 'user/leaderboard.css' %}" />
+    <style>
+      .topper {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .tname {
+        text-shadow: 2px 2px 5px 2px #d79b58;
+        text-shadow: 1px 1px #d79b58;
+      }
+      .tpic {
+        height: 30vh;
+        width: 30vh;
+        box-shadow: 2px 2px 5px 2px #d79b58;
+        margin-bottom: 20px;
+        border-radius: 50px;
+      }
+    </style>
+  </head>
 
-
-</head>
-
-<body>
-
+  <body>
     <div class="topnav">
-        <a href="{% url 'home:home' %}" class="topnav-brand">Qriosity 2.0</a>
-        <div id="myLinks">
-            <a href="{% url 'user:dashboard' %}">Dashboard</a>
-            <a href="{% url 'quiz:stageone' %}">Quiz</a>
-            <a href="{% url 'user:formdata' %}">Update Contact Info</a>
-            <a href="{% url 'logout' %}">Logout</a>
-        </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
+      <a href="{% url 'home:home' %}" class="topnav-brand">Qriosity 2.0</a>
+      <div id="myLinks">
+        <a href="{% url 'user:dashboard' %}">Dashboard</a>
+        <a href="{% url 'quiz:stageone' %}">Quiz</a>
+        <a href="{% url 'user:formdata' %}">Update Contact Info</a>
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
     </div>
-
 
     <header>
-        <h1>
-            <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
-        </h1>
+      <h1>
+        <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+      </h1>
 
-        <nav>
-            <ul>
-                {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'quiz:stageone' %}">Quiz</a>
-                </li>
-                <li>
-                    <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
-                </li>
-                <li>
-                    <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                </li>
-                <li>
-                    <a href="{% url 'logout' %}">Logout</a>
-                </li>
-                {% else %}
-                <li>
-                    <a class="rulebtn">Rules</a>
-                </li>
-                <li>
-                    <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                </li>
-                <li>
-                    <a href="{% url 'home:login' %}">Login</a>
-                </li>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'quiz:stageone' %}">Quiz</a>
+          </li>
+          <li>
+            <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+          </li>
+          <li>
+            <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li>
+            <a class="rulebtn">Rules</a>
+          </li>
+          <li>
+            <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+          </li>
+          <li>
+            <a href="{% url 'home:login' %}">Login</a>
+          </li>
 
-                {% endif %}
-            </ul>
-        </nav>
+          {% endif %}
+        </ul>
+      </nav>
     </header>
 
-
-    <br><br><br>
-
+    <br /><br /><br />
 
     <div class="content">
-        <div class="box ">
-            <div>
-                <h1 style="text-align: center; color:black;">LeaderBoard</h1>
-            </div>
-            <div class="search">
-                <h3 style="font-size:larger;">
-                    Search Your Name
-                </h3>
-                <input type="text" id="search" placeholder="Search Your Name ......">
-            </div>
-            <div class="searchResult"></div>
-            <div class="list">
-
-                <br> {% for i in leaderboard %}
-                <div class="item">
-                    <div class="pos">
-                        {{ forloop.counter }}
-                    </div>
-                    <div class="pic" style="background-image: url({{ i.image }});"></div>
-                    <div class="name">
-                        {{ i.name }}
-                    </div>
-                    <div class="score">
-                        {{ i.score }}
-                    </div>
-                </div>
-                {% endfor %}
-
-
-            </div>
-        </div>
-    </div>
-    <br><br><br><br><br>
-    <div class="newline">
-        <br><br><br>
-    </div>
-    <footer>
+      <div class="topper">
+        {% for top in leader%}
+        <h2 class="tname">
+          Leading The Charts Now is {{top.name}}
+        </h2>
+        <img src="{{top.image}}" alt="{{top.name}}" class="tpic" />
+        {% endfor %}
+      </div>
+      <div class="box">
         <div>
-            <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+          <h1 style="text-align: center; color: black;">LeaderBoard</h1>
         </div>
+        <div class="search">
+          <h3 style="font-size: larger;">
+            Search Your Name
+          </h3>
+          <input
+            type="text"
+            id="search"
+            placeholder="Search Your Name ......"
+          />
+        </div>
+        <div class="list">
+          <br />
+          {% for i in leaderboard %}
+          <div class="item">
+            <div class="pos">
+              {{ forloop.counter }}
+            </div>
+            <div
+              class="pic"
+              style="background-image: url({{ i.image }});"
+            ></div>
+            <div class="name">
+              {{ i.name }}
+            </div>
+            <div class="score">
+              {{ i.score }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <br /><br /><br /><br /><br />
+    <div class="newline"><br /><br /><br /></div>
+    <footer>
+      <div>
+        <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+      </div>
 
-        <div>&copy; IEEE SB NITD</div>
-        <div class="website">
-            <a href="http://www.ieeesbnitdgp.com/"><i class="fa fa-globe" style="color: blue;" aria-hidden="true"></i>Visit : IEEE SB NITDGP
-            </a>
-        </div>
+      <div>&copy; IEEE SB NITD</div>
+      <div class="website">
+        <a href="http://www.ieeesbnitdgp.com/"
+          ><i class="fa fa-globe" style="color: blue;" aria-hidden="true"></i
+          >Visit : IEEE SB NITDGP
+        </a>
+      </div>
     </footer>
-
-
 
     <!-- <div class="parallax"></div> -->
 
     <script type="text/javascript">
-        var no = "{{n}}";
-        console.log(no);
-        $(document).ready(function() {
-            $('#search').on('keyup', function() {
-                console.log("in func");
-                for (i = 0; i < no; i++) {
-                    let inp = document.querySelector("#search").value;
-                    let msg = document.querySelector('.searchResult')
-                    let org = document.querySelectorAll(".item")[i];
-                    if (org.querySelector(".name").innerText.toUpperCase().indexOf(inp.toUpperCase()) > -1) {
-                        org.style.display = ""
-
-                    } else {
-                        org.style.display = "none"
-                    }
-                }
-            });
-        });
-
-        function myFunction() {
-            var x = document.getElementById("myLinks");
-            if (x.style.display === "block") {
-                x.style.display = "none";
+      var no = "{{n}}";
+      console.log(no);
+      $(document).ready(function () {
+        $("#search").on("keyup", function () {
+          console.log("in func");
+          for (i = 0; i < no; i++) {
+            let inp = document.querySelector("#search").value;
+            let msg = document.querySelector(".searchResult");
+            let org = document.querySelectorAll(".item")[i];
+            if (
+              org
+                .querySelector(".name")
+                .innerText.toUpperCase()
+                .indexOf(inp.toUpperCase()) > -1
+            ) {
+              org.style.display = "";
             } else {
-                x.style.display = "block";
+              org.style.display = "none";
             }
+          }
+        });
+      });
+
+      function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
         }
+      }
     </script>
-
-
-</body>
-
+  </body>
 </html>

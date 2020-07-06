@@ -27,7 +27,7 @@ class StageTwo(models.Model):
     files = models.FileField(blank=True, upload_to='AudioQuestions/music')
     hint = models.TextField(blank=True, default='hint')
     answer = models.CharField(blank=True, max_length=400)
-    level = models.IntegerField(default=1)
+    level = models.IntegerField(unique=True)
 
-    def __str__(self):
-        return self.title
+    def __int__(self):
+        return self.level
