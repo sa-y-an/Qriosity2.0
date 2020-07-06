@@ -10,6 +10,11 @@ import datetime
 value = False
 
 
+def Algo(request):
+    question = Stage_1.objects.all()
+    return render(request, 'quiz/algorithm.html', {"questions": question})
+
+
 @login_required(login_url='/login', redirect_field_name=None)
 def StageOne(request):
     player = get_object_or_404(Player, user=request.user)

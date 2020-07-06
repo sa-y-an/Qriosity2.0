@@ -1,23 +1,17 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
-    />
-    <title>Hint</title>
-    <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithms</title>
+    <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
   </head>
   <body>
     <div class="container">
       <header>
         <h1>
-          <a class="navbar-brand" href="{% url 'home:home' %}"
-            >Qriosity 2.0 (Stage 2)
-          </a>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
         </h1>
 
         <nav>
@@ -32,9 +26,6 @@
               <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
             </li>
             <li>
-              <a href="{ url 'quiz:algo'}"> Algorithms</a>
-            </li>
-            <li>
               <a href="{% url 'user:dashboard' %}"> Dashboard </a>
             </li>
             <li>
@@ -43,20 +34,28 @@
           </ul>
         </nav>
       </header>
-
       <div class="content">
-        <p>
-          Your Hint for Question {{ question.level}} is
-        </p>
-        <p>
-          {{ question.hint}}
-        </p>
+        <h2>
+          The Algorithms to fetch the Passcode are
+        </h2>
 
-        <a href="{% url  'quiz:stageone' %}">
-          <button>
-            Go back to Question page
-          </button>
-        </a>
+        <div class="algo">
+          {% for question in questions %}
+          <h4>
+            Question Level : {{ question.level}}
+          </h4>
+
+          <h4>
+            Question Title : {{ question.title }}
+          </h4>
+
+          <p>
+            Algorithms
+            <br />
+            {{ question.algo|safe}}
+          </p>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </body>
