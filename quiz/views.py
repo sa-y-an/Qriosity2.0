@@ -142,10 +142,9 @@ def Passcode(request):
 # individual questions of stage 2
 @login_required(login_url='/login', redirect_field_name=None)
 def Individual(request, qid):
-    # solved class has 2 objects 1. level_on 2. solved
-
+    value = False  # this marks if the question is solved (and shows the popup)
     player = get_object_or_404(Player, user=request.user)
-    s = player.solved_set.all()
+    s = player.solved_set.all()     # solved class has 2 objects 1. level_on 2. solved
     question = get_object_or_404(StageTwo, level=qid)
     p = get_object_or_404(Player, user=request.user)
     p.level2 = int(qid)
@@ -162,20 +161,26 @@ def Individual(request, qid):
                 flag = True
                 if request.method == "GET":     # if the player comes for the question
                     my_form = UserAnswer
-                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value})
                 if request.method == "POST":    # if the player submits the question
                     my_form = UserAnswer(request.POST)
+
                     if my_form.is_valid():
                         ans = my_form.cleaned_data.get("answer")
                         organs = get_object_or_404(StageTwo, level=qid).answer
+
+                        # correct answer
                         if (str(organs) == str(ans)):   # if the answer is correct
                             player.score += 5
                             i.solved = True         # the question is set to solved corrosponding to that level
                             i.save()
                             player.save()
                             return render(request, 'quiz/solved.html')
+
+                        # incorrect answer
                         else:   # returns the same question
-                            return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+                            value = True
+                            return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value})
                     else:
                         return HttpResponse('<h2> Your Form data was Invalid </h2>')
                         # invalid form data submitted by tampering with developer console
@@ -201,6 +206,7 @@ def Individual(request, qid):
                     player.save()
                     return render(request, 'quiz/solved.html')
                 else:   # returns the same question
+                    value = False
                     return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
             else:
                 return HttpResponse('<h2> Your Form data was Invalid </h2>')
