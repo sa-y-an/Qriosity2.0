@@ -86,22 +86,23 @@
         </ul>
       </nav>
     </header>
-
-    <br /><br /><br />
-
     <div class="content">
       <div class="topper">
         {% for top in leader%}
         <h2 class="tname">
-          Leading The Charts Now is {{top.name}}
+          Leading The Charts Now is
         </h2>
         <img src="{{top.image}}" alt="{{top.name}}" class="tpic" />
+
+        <div class="thname">
+          {{top.name}}
+        </div>
         {% endfor %}
       </div>
       <div class="box">
-        <div>
-          <h1 style="text-align: center; color: black;">LeaderBoard</h1>
-        </div>
+        <!-- <div class="name">
+          <h1 style="text-align: center; color: black;">Leader Board</h1>
+        </div> -->
         <div class="search">
           <h3 style="font-size: larger;">
             Search Your Name
