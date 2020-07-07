@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stat END</title>
+    <title>PASSCODE</title>
     <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
   </head>
   <body>
@@ -26,6 +26,9 @@
               <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
             </li>
             <li>
+              <a href="{% url 'quiz:algo' %}"> Algorithms</a>
+            </li>
+            <li>
               <a href="{% url 'user:dashboard' %}"> Dashboard </a>
             </li>
             <li>
@@ -38,12 +41,12 @@
       <div class="content">
         <p>
           Thanks for Playing with US <br />
-          You have completed the static questions <br />
-          Stage 2 will begin Soon
+          You have completed Stage 1 <br />
+          To Enter Stage 2 enter the PASSCODE below
         </p>
 
         {% if check %}
-        <p>
+        <p class="wrong">
           please try again,
           <br />
           your answer was incorrect

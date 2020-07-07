@@ -3,18 +3,48 @@
   <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
 </head>
 <div class="container">
-  <h1>
-    Here is your hint for
-  </h1>
+  <header>
+    <h1>
+      <a class="navbar-brand" href="{% url 'home:home' %}"
+        >Qriosity 2.0 (Stage 2)
+      </a>
+    </h1>
 
-  <div class="question">
-    {{question.title}}
+    <nav>
+      <ul>
+        <li>
+          <a class="rulebtn">Rules</a>
+        </li>
+        <li>
+          <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+        </li>
+        <li>
+          <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+        </li>
+        <li>
+          <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <h1>
+      Here is your hint for
+    </h1>
+
+    <div class="question">
+      {{question.title}}
+    </div>
+    <p>
+      {{question.hint}}
+    </p>
+
+    <a href="{% url 'quiz:individual' question.level %}">
+      <button class="btn btn-primary mb1 bg-blue">return to question</button>
+    </a>
   </div>
-  <p>
-    {{question.hint}}
-  </p>
-
-  <a href="{% url 'quiz:individual' question.level %}">
-    <button class="btn btn-primary mb1 bg-blue">return to question</button>
-  </a>
 </div>

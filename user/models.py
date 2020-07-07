@@ -29,3 +29,9 @@ class PlayerDetails(models.Model):
 
     def __str__(self):
         return self.college
+
+
+class Solved(models.Model):
+    gamer = models.ForeignKey(Player, on_delete=models.CASCADE)
+    level_on = models.IntegerField(default=0, blank=True)
+    solved = models.BooleanField(default=False)

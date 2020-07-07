@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,21 +9,57 @@
     , initial-scale=1.0"
     />
     <title>Hint</title>
+    <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
   </head>
   <body>
     <div class="container">
-      <p>
-        Your Hint for Question {{ question.level}} is
-      </p>
-      <p>
-        {{ question.hint}}
-      </p>
+      <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}"
+            >Qriosity 2.0 (Stage 2)
+          </a>
+        </h1>
 
-      <a href="{% url  'quiz:stageone' %}">
-        <button>
-          Go back to Question page
-        </button>
-      </a>
+        <nav>
+          <ul>
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+            </li>
+            <li>
+              <a href="{ url 'quiz:algo'}"> Algorithms</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="content">
+        <h3>
+          Your Hint for Question {{ question.level}} is
+        </h3>
+        <br />
+        <p>
+          {{ question.hint}}
+        </p>
+
+        <form action="{% url  'quiz:stageone' %}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-primary mb1 bg-blue">
+            Go back to Question page
+          </button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

@@ -1,3 +1,54 @@
-<h3>
-  You have successfully solved this question
-</h3>
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+</head>
+<style>
+  .content {
+    text-align: center;
+  }
+</style>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        <a class="navbar-brand" href="{% url 'home:home' %}"
+          >Qriosity 2.0 (Stage 2)
+        </a>
+      </h1>
+
+      <nav>
+        <ul>
+          <li>
+            <a class="rulebtn">Rules</a>
+          </li>
+          <li>
+            <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+          </li>
+          <li>
+            <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+          </li>
+          <li>
+            <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content">
+      <p>
+        Hurrah ! You have sucessfully solved
+        <br />
+        the previous Question
+      </p>
+      <form action="{% url 'quiz:index'%}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-primary mb1 bg-blue" type="submit">
+          Back to Index Page
+        </button>
+      </form>
+    </div>
+  </div>
+</body>

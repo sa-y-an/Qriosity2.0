@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Algorithms</title>
     <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
   </head>
   <body>
@@ -25,9 +26,6 @@
               <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
             </li>
             <li>
-              <a href="{% url 'quiz:algo' %}"> Algorithms</a>
-            </li>
-            <li>
               <a href="{% url 'user:dashboard' %}"> Dashboard </a>
             </li>
             <li>
@@ -37,9 +35,27 @@
         </nav>
       </header>
       <div class="content">
-        <h4>
-          Error Page
-        </h4>
+        <h2>
+          The Algorithms to fetch the Passcode are
+        </h2>
+
+        <div class="algo">
+          {% for question in questions %}
+          <h4>
+            Question Level : {{ question.level}}
+          </h4>
+
+          <h4>
+            Question Title : {{ question.title }}
+          </h4>
+
+          <p>
+            Algorithms
+            <br />
+            {{ question.algo|safe}}
+          </p>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </body>
