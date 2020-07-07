@@ -45,18 +45,20 @@
       </header>
 
       <div class="content">
-        <p>
+        <h3>
           Your Hint for Question {{ question.level}} is
-        </p>
+        </h3>
+        <br />
         <p>
           {{ question.hint}}
         </p>
 
-        <a href="{% url  'quiz:stageone' %}">
-          <button>
+        <form action="{% url  'quiz:stageone' %}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-primary mb1 bg-blue">
             Go back to Question page
           </button>
-        </a>
+        </form>
       </div>
     </div>
   </body>
