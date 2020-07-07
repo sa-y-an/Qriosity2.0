@@ -5,8 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stage 1</title>
+
+    <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
   </head>
-  <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+
   <script type="text/javascript">
     function preback() {
       window.history.forward();
@@ -18,34 +20,7 @@
   </script>
   <body>
     <div class="container">
-      <header>
-        <h1>
-          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
-        </h1>
-
-        <nav>
-          <ul>
-            <li>
-              <a class="rulebtn">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
-            </li>
-            <li>
-              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-            </li>
-            <li>
-              <a href="{% url 'quiz:algo' %}"> Algorithms</a>
-            </li>
-            <li>
-              <a href="{% url 'logout' %}">Logout</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      {% include 'partials/_navbar.html' %}
 
       <div class="content">
         <h2>

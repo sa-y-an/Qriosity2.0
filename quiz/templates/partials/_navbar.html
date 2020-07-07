@@ -1,0 +1,28 @@
+<header>
+  <h1>
+    <a href="{% url 'home:home' %}">Qriosity 2.0</a>
+  </h1>
+  <br />
+  <nav>
+    <ul>
+      <li>
+        <a class="rulebtn">Rules</a>
+      </li>
+      <li>
+        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+      </li>
+      <li>
+        <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+      </li>
+      <li>
+        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+      </li>
+      <li>
+        <a href="{% url 'quiz:stageone' %}"> Resume </a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</header>
