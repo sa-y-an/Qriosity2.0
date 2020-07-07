@@ -1,28 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NO peeking ahead</title>
+    <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
   </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-image: linear-gradient(black, gray);
-      color: aliceblue;
-      height: 100vh;
-      width: 100vw;
-      font-family: cursive;
-    }
-  </style>
   <body>
     <div class="container">
       <header>
@@ -36,6 +20,9 @@
           <ul>
             <li>
               <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'quiz:stageone' %}"> Resume </a>
             </li>
             <li>
               <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
@@ -52,7 +39,7 @@
           </ul>
         </nav>
       </header>
-      <div class="container">
+      <div class="content">
         <h1>
           No peeking ahead
         </h1>
