@@ -44,8 +44,8 @@ html {
 header {
   width: 100vw;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   color: white;
   padding: 10px;
@@ -66,6 +66,10 @@ header h1 {
 nav {
   flex: 1;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: space-around;
 }
 nav ul,
 a:any-link {
@@ -80,26 +84,6 @@ header a:hover {
   text-emphasis: bold;
   text-shadow: 0 0 3px #11e3f1;
   transform: scale(1.1);
-}
-header nav {
-  flex: 1;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: wrap; */
-  justify-content: space-around;
-  align-items: center;
-  align-content: space-around;
-  font-family: "Roboto", sans-serif;
-}
-header nav ul {
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: wrap; */
-  justify-content: space-around;
-  align-items: center;
-  align-content: space-around;
-  width: 100%;
 }
 
 .cursor {
@@ -133,9 +117,6 @@ header nav ul {
   margin-top: 10vh;
   width: 80vw;
   min-height: 70vh;
-  /* background-color: rgba(0, 0, 0, 0.5); */
-  /* border-radius: 15em; */
-  /* box-shadow: 0px 0 6px 6px rgb(104, 85, 212); */
 }
 
 .socialLogin {

@@ -10,7 +10,8 @@
       content="erdtRhDLOXg-PvdCE4oD67-K04-RPQtqTtkJGWUYj9U"
     />
     <title>Home</title>
-    <link rel="stylesheet" href="{% static 'home/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'home/styles.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'home/style.css'%}" /> -->
     <link
       rel="shortcut icon"
       href="{% static 'home/qw4.png' %}"
@@ -20,12 +21,13 @@
 
   <body>
     <div class="cursor"></div>
-    <div class="veil"></div>
+    <!-- <div class="veil"></div> -->
     <div class="container">
       <header>
         <h1>
-          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+          <a href="{% url 'home:home' %}">Qriosity 2.0</a>
         </h1>
+        <br />
 
         <nav>
           <ul>
@@ -63,7 +65,7 @@
           </ul>
         </nav>
       </header>
-      <div class="rules">
+      <!-- <div class="rules">
         <h2>Rules & Regulations:</h2>
         <ol>
           <li>All Questions Are Compulsory.</li>
@@ -75,14 +77,13 @@
           <li>Electronic gadgets are prohibited.</li>
           <li>All the Best!</li>
         </ol>
-      </div>
+      </div> -->
 
       <div class="content">
         <div class="details">
           <div class="title">
-            <img src="{% static 'home/qriositywhite.png' %}" />
+            <!-- <img src="{% static 'home/qriositywhite.png' %}" /> -->
           </div>
-          <br />
           <div class="para">
             <p class="box-text1" id="demo">
               Curiosity, like a mystery has a surface innocence, surprise, the
@@ -91,48 +92,54 @@
           </div>
 
           <br />
-          
-            {% if user.is_authenticated %}
-            <a href="{% url 'quiz:stageone'  %}">
-              <button class="btn" type="submit" value="Play" class="dare">
+
+          {% if user.is_authenticated %}
+          <a href="{% url 'quiz:stageone'  %}">
+            <button
+              class="btn btn-primary mb1 bg-blue"
+              type="submit"
+              value="Play"
+              class="dare"
+            >
               Start
-              </button></a>
-            {% else %}
-            <a href="{% url 'home:login' %}">
-              <button class="btn" type="submit" value="Play" class="dare">
-              Start</a>
+            </button></a
+          >
+          {% else %}
+          <a href="{% url 'home:login' %}">
+            <button
+              class="btn btn-primary mb1 bg-blue"
+              type="submit"
+              value="Play"
+              class="dare"
+            >
+              Start
             </button>
             {% endif %}
-          
+          </a>
         </div>
+        <footer>
+          <div>
+            <a
+              href="http://www.ieeesbnitdgp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+            </a>
+          </div>
+
+          <div>&copy; IEEE SB NITD</div>
+          <div>
+            <a
+              href="http://www.ieeesbnitdgp.com/#contact-us"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contact Us
+            </a>
+          </div>
+        </footer>
       </div>
-
-      <footer>
-        <div>
-          <a href="http://www.ieeesbnitdgp.com/" target="_blank" rel="noopener noreferrer">
-          <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
-        </a>
-        </div>
-
-        <div>&copy; IEEE SB NITD</div>
-        <div>
-        <a href="http://www.ieeesbnitdgp.com/#contact-us" target="_blank" rel="noopener noreferrer">
-          Contact Us
-        </a>
-        </div>
-      </footer>
     </div>
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
-  <script src="{% static 'home/home_main.js'%}"></script>
 </html>
-
-<!-- <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=664256484123435&autoLogAppEvents=1" nonce="uv90qZJk"></script> -->
-<!-- <a href="{% url 'social:begin' 'facebook' %}" class="fb connect">Sign in with Facebook</a> -->
-<!-- <a href="{% url 'social:begin' 'facebook' %}">
-        <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width=""></div>
-    </a> -->
-<!-- <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width="">
-        <a href="{% url 'social:begin' 'facebook' %}">a</a>
-    </div> -->
