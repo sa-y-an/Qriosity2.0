@@ -87,10 +87,12 @@ def Stage1Answer(request):
                     check = False
                     return render(request, 'quiz/end.html', {"form": formp, "check": check})
                 else:
-                    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
+                    formp = UserAnswer
+                    return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value})
             else:
+                formp = UserAnswer
                 value = True
-                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value})
         else:
             return HttpResponse('<h2> Form data not valid</h2>')
 

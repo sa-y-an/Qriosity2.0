@@ -129,6 +129,7 @@ header nav ul {
     flex-direction: column;
     align-items: center;
     margin-bottom: -50px;
+
     /* justify-content: center; */
 }
 
@@ -143,6 +144,7 @@ header nav ul {
     z-index: 10;
     font-family: "Red Hat Display", sans-serif;
     background-color: rgba(255, 255, 255, 0.377);
+    padding: 0px;
 }
 
 .column {
@@ -257,9 +259,49 @@ footer {
 }
 
 
+.search {
+    padding: 0px;
+    margin: 0px;
+}
 
+.search h3 {
+    padding: 5px;
+    margin: 0px;
+    background-color: rgba(255,255, 255, 0.5);
+    border-radius: 15px;
+}
 
+#search {
+    padding: 0px;
+    margin: 0px;
+}
 
+#search {
+    padding: 5px;
+    margin: 10px;
+    background-color: rgba(255,255, 255, 0.5);
+}
+.name h1 {
+    margin : 0px;
+    padding: 0px;
+}
+
+.thname {
+    background-color: rgba(255, 255, 255  , 0.5);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0px 1px 1px 1px #C58B3F;
+}
+
+.topper {
+    background-color: rgba(255, 255, 255  , 0.5);
+    padding: 10px;
+    margin: 15px;
+    box-shadow: 0px 2px 2px 2px #C58B3F;
+    border-radius: 10px;
+}
 @media screen and (max-width: 480px) {
     .box {
         overflow: hidden;
