@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <div class="cursor"></div>
+    <!-- <div class="cursor"></div> -->
     <!-- <div class="veil"></div> -->
     <div class="container">
       <header>
@@ -55,7 +55,7 @@
               <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
             </li>
             <li>
-              <a href="{ url 'quiz:algo'}"> Algorithms</a>
+              <a href="{% url 'quiz:algo' %}"> Algorithms</a>
             </li>
             <li>
               <a href="{% url 'home:login' %}">Login</a>
@@ -65,19 +65,6 @@
           </ul>
         </nav>
       </header>
-      <!-- <div class="rules">
-        <h2>Rules & Regulations:</h2>
-        <ol>
-          <li>All Questions Are Compulsory.</li>
-          <li>
-            You Cannot Submit Answer twice. <br />
-            Subjective- first submission will only be accepted and updated.
-          </li>
-          <li>Admin decision is final.</li>
-          <li>Electronic gadgets are prohibited.</li>
-          <li>All the Best!</li>
-        </ol>
-      </div> -->
 
       <div class="content">
         <div class="details">
@@ -117,29 +104,29 @@
             {% endif %}
           </a>
         </div>
-        <footer>
-          <div>
-            <a
-              href="http://www.ieeesbnitdgp.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
-            </a>
-          </div>
-
-          <div>&copy; IEEE SB NITD</div>
-          <div>
-            <a
-              href="http://www.ieeesbnitdgp.com/#contact-us"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contact Us
-            </a>
-          </div>
-        </footer>
       </div>
+      <footer>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+          </a>
+        </div>
+
+        <div>&copy; IEEE SB NITD</div>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/#contact-us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Us
+          </a>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

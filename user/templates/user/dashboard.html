@@ -5,63 +5,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User</title>
-    <link rel="stylesheet" href="{% static 'user/userstyle.css' %}" />
+    <link rel="stylesheet" href="{% static 'user/styles.css' %}" />
+    <style>
+      .imageusr {
+        height: 20vh;
+        width: 20vh;
+      }
+    </style>
   </head>
 
   <body>
     <div id="particles-js"></div>
-    <div class="containwc">
+    <div class="container">
       <header>
         <h1>
-          Qriosity 2.0
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
         </h1>
-        <nav class="nav-bar">
+        <nav>
           <ul>
-            {% if user.name %}
-            <li class="list1"><a href="#" target="_blank">Play</a></li>
-            <li class="list1">
-              <a href="{% url 'user:formdata' %}"> Change Contact Details</a>
+            <li>
+              <a class="rulebtn">Rules</a>
             </li>
-            <li class="list1"><a href="#" target="_blank">Rules</a></li>
-            <li class="list1">
-              <a href="{% url 'user:leaderboard' %}" target="_blank"
-                >LeaderBoard</a
-              >
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
             </li>
-            <li class="list1"><a href="{% url 'logout' %}">Logout</a></li>
-            {% endif %}
+            <li>
+              <a href="{% url 'quiz:stageone' %}"> Resume </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
           </ul>
         </nav>
       </header>
 
-      {% if user.name %}
       <div class="content">
-        <img src="{{ user.image }}" alt="" />
-        <br /><br />
-        <div id="message">
-          Hello Qriosity User {{ user.name }}
+        <div class="user">
+          <div id="message">
+            Hello Qriosity User
+          </div>
+          <img src="{{ user.image }}" alt="{{ user.name }}" class="imageusr" />
+          <div class="name">
+            {{ user.name }}
+          </div>
+          <div class="score">
+             Your Score : {{ user.score}}
+          </div>
+          <div class="rank">
+            Your rank : {{j}}
+          </div>
+          
+          <form action="{% url 'quiz:stageone' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary mb1 bg-blue">
+              Start
+            </button>
+          </form>
         </div>
-      </div>
-      <div class="dare">
-        <button class="btn">
-          <a href="{% url 'quiz:stageone' %}">Dare</a>
-        </button>
-      </div>
-      {% else %}
-      <div class="content">
-        <div id="message">
-          You are not logged in.
+        
+      <footer>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+          </a>
         </div>
-      </div>
-      <div class="dare">
-        <button class="btn">
-          <a href="/">Click here to Login</a>
-        </button>
-      </div>
-      {% endif %}
-    </div>
 
-    <div class="cursor"></div>
+        <div>&copy; IEEE SB NITD</div>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/#contact-us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Us
+          </a>
+        </div>
+      </footer>
+
+      <div class="cursor"></div>
+    </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
@@ -69,10 +98,10 @@
       "particles-js",
       "{% static 'user/particles.json' %}",
       function () {
-        console.log("particles.js config loaded ..............");
+        console.log("Hi Qriosity Player");
       }
     );
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
-  <script src="{% static 'user/app.js' %}"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+  <script src="{% static 'user/app.js' %}"></script> -->
 </html>

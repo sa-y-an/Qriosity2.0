@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Story</title>
+    <link rel="stylesheet" href="{% static 'user/style.css'%}" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
+        <nav>
+          <ul>
+            <li>
+              <a class="rulebtn">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'quiz:stageone' %}"> Resume </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="content">
+        <div class="story">
+          <p>
+            Murder is not about lust and its not violence ,its about
+            possession..This is what they said as they killed my soul that ones
+            was warm.you threatened the victim once ,today you will be silent
+            forever ,and I will be gone in dark.
+          </p>
+          <p>
+            Back then I was a tender soul fighting for survival ,today I am a
+            psychopath killer as you easily name.The world shall pay for my
+            sufferings.Each person will pay for their crime. Every drop of
+            blood, shattered places ,and lives shall pay the cost.I your
+            infamous psychopath killer challenges you to save the destruction if
+            you can.If you are clever enough.
+          </p>
+          <p>
+            A person who ones had a happy family loving parents, but soon the
+            reality for him shattered. His father started abusing him and his
+            mother. He would not spare anyone. At school he was bullied no on
+            cared for him except his mother. But one day he had enough, his
+            father was an ugly he needed to get rid of, so one day when he came
+            he saw his father about to kill his mother and he snapped. He took
+            the hammer lying on the side and smashed his father's head
+            repeatedly. His mother was baffled but she loved him no matter what
+            and took the blame of killing him. But the tragedy does not end here
+            his mother was brutally killed by a cellmate. He had lost all hope.
+            No one provided justice to his mother. The accused was not punished.
+            He thought world needed someone to punish the evil ones and took it
+            upon himself to do that.
+          </p>
+          <p>
+            The first round will test if you are worthy to save the world or
+            not. The answer has inspired me and is something related to
+            something close to my heart.
+          </p>
+          <p>
+            The ones whom I shall deem worthy will be given a chance to save
+            their pathetic world. The you know the answer but will you be able
+            to find them…. Because the clock is ticking….tick tok tick tok
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'user/particles.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
+</html>
