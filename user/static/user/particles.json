@@ -4,13 +4,13 @@
       "value": 100
     },
     "color": {
-      "value": "#DD9A4D"
+      "value": "#FFFFFF"
     },
     "shape": {
       "type": "circle",
       "stroke": {
         "width": 1,
-        "color": "#DD9A4D"
+        "color": "#FFFFFF"
       },
       "image": {
         "src": "plane.png"
@@ -33,7 +33,7 @@
     "line_linked": {
       "enable": true,
       "distance": 100,
-      "color": "#DD9A4D",
+      "color": "#FFFFFF",
       "opacity": 0.4,
       "width": 1
     }
