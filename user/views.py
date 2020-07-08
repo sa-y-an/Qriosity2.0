@@ -116,3 +116,7 @@ def Formdata(request):
         "form": my_form
     }
     return render(request, "user/details.html", context)
+
+
+def story(request):
+    return render(request, 'user/story.html')

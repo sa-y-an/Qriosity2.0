@@ -39,7 +39,10 @@
               <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
             </li>
             <li>
-              <a href="{% url 'user:formdata' %}"> Update Contact Info</a>
+              <a href="{% url 'user:formdata' %}"> Contact</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
             </li>
             <li>
               <a href="{% url 'user:dashboard' %}"> Dashboard </a>
@@ -59,6 +62,9 @@
             </li>
             <li>
               <a href="{% url 'home:login' %}">Login</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
             </li>
 
             {% endif %}
