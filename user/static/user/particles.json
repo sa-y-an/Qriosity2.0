@@ -1,16 +1,16 @@
 {
   "particles": {
     "number": {
-      "value": 250
+      "value": 100
     },
     "color": {
-      "value": "#00FFFF"
+      "value": "#DD9A4D"
     },
     "shape": {
       "type": "circle",
       "stroke": {
         "width": 1,
-        "color": "#00FFFF"
+        "color": "#DD9A4D"
       },
       "image": {
         "src": "plane.png"
@@ -33,7 +33,7 @@
     "line_linked": {
       "enable": true,
       "distance": 100,
-      "color": "#00FFFF",
+      "color": "#DD9A4D",
       "opacity": 0.4,
       "width": 1
     }

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .import models
 import datetime
 from .forms import UserDetails
-#from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -20,7 +20,15 @@ def dashboard(request):
         if request.user.is_authenticated:
             player = models.Player.objects.get(user=request.user)
             print("In dashboard - Name - {}  User - {}".format(player.name, player.user))
-            return render(request, 'user/dashboard.html', {'user': player})
+            cl = models.Player.objects.order_by(
+                '-score', '-last_submit')
+            j = 0
+            for i in cl:
+                j += 1
+                if i.user == player.user:
+                    print(j)
+                    break
+            return render(request, 'user/dashboard.html', {'user': player, "j": j})
         else:
             return redirect('home:home')
     else:
