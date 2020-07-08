@@ -11,4 +11,5 @@ urlpatterns = [
     path('details/', views.UserData, name="details"),
     path('form/', views.Formdata, name="formdata"),
     path('details/logout/', views.logout, name="logout"),
+    path('story/', views.story, name="story"),
 ]

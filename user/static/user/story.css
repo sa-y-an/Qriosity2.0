@@ -7,10 +7,7 @@
 #particles-js {
   min-height: 100vh;
   min-width: 100vw;
-  background: url("the-imitation-game-2.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .container {
@@ -24,9 +21,9 @@
   /* background-color: black; */
   color: white;
   /* background: url("the-imitation-game-2.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; */
   pointer-events: none;
 }
 .content {
@@ -178,8 +175,8 @@ footer {
   align-items: center;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  border-radius: 30px;
+  padding: 30px;
+  border-radius: 50px;
   max-width: 70vw;
   box-shadow: 0px 2px 2px 2px #d99236;
   margin: 10px;
@@ -191,16 +188,16 @@ footer {
   border-radius: 50px;
 }
 /* @media screen and (max-width: 480px) {
-  .container {
-    background: url("the-imitation-game-2p.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    top: 0;
+    .container {
+      background: url("the-imitation-game-2p.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      position: absolute;
+      top: 0;
+    }
   }
-}
-*/
+  */
 
 .btn-primary {
   pointer-events: all;
