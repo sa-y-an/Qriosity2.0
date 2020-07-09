@@ -20,16 +20,22 @@
         <h1>
           <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
         </h1>
+        <br />
+
         <nav>
           <ul>
+            {% if user.is_authenticated %}
             <li>
-              <a class="rulebtn">Rules</a>
+              <a href="{% url 'home:rules'%}">Rules</a>
             </li>
             <li>
               <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
             </li>
             <li>
-              <a href="{% url 'quiz:stageone' %}"> Resume </a>
+              <a href="{% url 'user:formdata' %}"> Contact</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
             </li>
             <li>
               <a href="{% url 'user:dashboard' %}"> Dashboard </a>
@@ -37,9 +43,28 @@
             <li>
               <a href="{% url 'logout' %}">Logout</a>
             </li>
+            {% else %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'quiz:algo' %}"> Algorithms</a>
+            </li>
+            <li>
+              <a href="{% url 'home:login' %}">Login</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+
+            {% endif %}
           </ul>
         </nav>
       </header>
+
       <div class="content">
         <div class="story">
           <p>
