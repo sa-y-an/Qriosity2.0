@@ -7,6 +7,16 @@
     <title>Form Status</title>
     <link rel="stylesheet" href="{% static 'user/forms.css' %}" />
   </head>
+  <style>
+    .content {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+    }
+  </style>
   <body>
     <div class="container">
       <header>
@@ -36,23 +46,23 @@
       </header>
 
       <div class="content">
-        <h1>
+        <h3>
           Your Contact Status are as follows
-        </h1>
+        </h3>
 
         <div class="box">
-          <h2>
+          <h4>
             Name : {{details.full_name}}
-          </h2>
-          <h2>
+          </h4>
+          <h4>
             College : {{details.college}}
-          </h2>
-          <h2>
+          </h4>
+          <h4>
             Year : {{details.year}}
-          </h2>
-          <h2>
+          </h4>
+          <h4>
             Contact Number : {{details.contact}}
-          </h2>
+          </h4>
         </div>
 
         <div class="submit">

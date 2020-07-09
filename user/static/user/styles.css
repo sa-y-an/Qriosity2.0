@@ -21,12 +21,7 @@
   align-items: center;
   min-height: 100vh;
   width: 100vw !important;
-  /* background-color: black; */
   color: white;
-  /* background: url("the-imitation-game-2.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center; */
   pointer-events: none;
 }
 .content {
@@ -90,7 +85,6 @@ header a:hover {
 header nav ul {
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap; */
   justify-content: space-around;
   align-items: center;
   align-content: space-around;
@@ -190,17 +184,6 @@ footer {
   margin: 10px;
   border-radius: 50px;
 }
-/* @media screen and (max-width: 480px) {
-  .container {
-    background: url("the-imitation-game-2p.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    top: 0;
-  }
-}
-*/
 
 .btn-primary {
   pointer-events: all;
@@ -213,7 +196,7 @@ footer {
 
 @font-face {
   font-family: "Electro Shackle";
-  src: url("../fonts/'Electro Shackle.otf'");
+  src: url("Electro Shackle.otf");
 }
 .qriosity {
   font-family: "Electro Shackle";
