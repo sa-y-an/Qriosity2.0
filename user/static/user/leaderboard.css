@@ -302,6 +302,17 @@ footer {
     box-shadow: 0px 2px 2px 2px #C58B3F;
     border-radius: 10px;
 }
+
+
+@font-face {
+    font-family: "Electro Shackle";
+    src: url('Electro Shackle.otf');
+}
+
+.qriosity {
+    font-family: "Electro Shackle";
+}
+
 @media screen and (max-width: 480px) {
     .box {
         overflow: hidden;
@@ -413,4 +424,3 @@ footer {
         color: white;
     }
 }
-
