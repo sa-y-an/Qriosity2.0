@@ -18,7 +18,7 @@
 python local.py runserver
 ```
 
-> insted of
+> instead of
 
 ```sh
 python manage.py runserver
