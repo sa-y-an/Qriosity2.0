@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'home/loginstyle.css'%}" />
+    <title>Login</title>
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/qw4.png' %}"
+      type="image/png"
+    />
+    <style>
+      ul {
+        list-style: none;
+        padding: 10px;
+      }
+
+      li {
+        padding: 5px;
+      }
+
+      .box {
+        margin: 10px;
+        pointer-events: all;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <div class="container">
+      <header>
+        <h1>
+          <a class="qriosity" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
+
+        <nav>
+          <ul>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'home:login' %}">Login</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="content">
+        <div class="box">
+          <div class="panel">
+            <h2>Rules & Regulations:</h2>
+            <ul>
+              <li>All Questions Are Compulsory.</li>
+              <li>You Cannot Submit Answer twice. <br /></li>
+              <li>Admin decision is final.</li>
+              <li>Enter Only answer nothing else</li>
+              <li>All the Best!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+          </a>
+        </div>
+
+        <div>&copy; IEEE SB NITD</div>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/#contact-us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Us
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'home/home.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
+</html>
