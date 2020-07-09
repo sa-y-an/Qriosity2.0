@@ -210,3 +210,11 @@ footer {
     font-size: 10px;
   }
 }
+
+@font-face {
+  font-family: "Electro Shackle";
+  src: url("../fonts/'Electro Shackle.otf'");
+}
+.qriosity {
+  font-family: "Electro Shackle";
+}

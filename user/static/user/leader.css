@@ -200,3 +200,11 @@ form {
   width: 30vh;
   box-shadow: 2px 2px 5px 2px #a26d28;
 }
+
+@font-face {
+  font-family: "Electro Shackle";
+  src: url("../fonts/'Electro Shackle.otf'");
+}
+.qriosity {
+  font-family: "Electro Shackle";
+}

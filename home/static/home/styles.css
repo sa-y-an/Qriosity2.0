@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
 #particles-js {
   min-height: 100vh;
   min-width: 100vw;
@@ -168,4 +169,12 @@ footer {
   nav {
     font-size: 10px;
   }
+}
+
+@font-face {
+  font-family: "Electro Shackle";
+  src: url("../fonts/'Electro Shackle.otf'");
+}
+.qriosity {
+  font-family: "Electro Shackle";
 }

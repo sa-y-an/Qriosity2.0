@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 }
+@font-face {
+  font-family: "Electro Shackle";
+  src: url("../fonts/'Electro Shackle.otf'");
+}
 
 .container {
   display: flex;
@@ -169,4 +173,8 @@ form {
 
 header h1 {
   align-items: center;
+}
+
+.qriosity {
+  font-family: "Electro Shackle";
 }
