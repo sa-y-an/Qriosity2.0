@@ -15,8 +15,9 @@
   </head>
 
   <body>
-    <div class="container">
-      {% include 'partials/_navbar.html' %} {% block content %}{% endblock %}
-    </div>
+    {% include 'partials/_navbar.html' %} {% block content %}
+    <div id="particles-js"></div>
+    <div class="container"></div>
   </body>
+  {% endblock %}
 </html>

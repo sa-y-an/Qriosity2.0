@@ -29,7 +29,7 @@ html {
   /* justify-content: center; */
   align-items: center;
   text-align: center;
-  background: url("back11.jpg");
+  background: url("login.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -140,7 +140,7 @@ header nav ul {
   justify-content: center;
   align-content: center;
   text-align: center;
-  background: url("loginpage.png");
+  background-color: black;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

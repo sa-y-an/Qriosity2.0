@@ -12,8 +12,18 @@
       type="image/png"
     />
     <style>
-      .icon3 img {
-        width: 40vh;
+      ul {
+        list-style: none;
+        padding: 10px;
+      }
+
+      li {
+        padding: 5px;
+      }
+
+      .box {
+        margin: 10px;
+        pointer-events: all;
       }
     </style>
   </head>
@@ -39,25 +49,21 @@
           </ul>
         </nav>
       </header>
-      <div class="container">
-        <div class="content">
-          <div class="box">
-            <h3>
-              Login to be Featured
-            </h3>
-            <br />
-            <div class="icon3">
-              <a href="{% url 'social:begin' 'facebook' %}">
-                <img src="{% static 'home/fb3.jpg'%}" alt="fb" />
-              </a>
-
-              <a href="{% url 'social:begin' 'google-oauth2' %}">
-                <img src="{% static 'home/google.jpg'%}" alt="google" />
-              </a>
-            </div>
+      <div class="content">
+        <div class="box">
+          <div class="panel">
+            <h2>Rules & Regulations:</h2>
+            <ul>
+              <li>All Questions Are Compulsory.</li>
+              <li>You Cannot Submit Answer twice. <br /></li>
+              <li>Admin decision is final.</li>
+              <li>Enter Only answer nothing else</li>
+              <li>All the Best!</li>
+            </ul>
           </div>
         </div>
       </div>
+
       <footer>
         <div>
           <a
