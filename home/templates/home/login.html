@@ -4,19 +4,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'home/login.css'%}" />
+    <link rel="stylesheet" href="{% static 'home/loginstyle.css'%}" />
     <title>Login</title>
     <link
       rel="shortcut icon"
       href="{% static 'home/qw4.png' %}"
       type="image/png"
     />
+    <style>
+      .icon3 img {
+        width: 40vh;
+      }
+    </style>
   </head>
   <body>
+    <div id="particles-js"></div>
     <div class="container">
       <header>
         <h1>
-          <a class="navbar-brand" href="{% url 'home:home' %}">Qriosity 2.0</a>
+          <a class="qriosity" href="{% url 'home:home' %}">Qriosity 2.0</a>
         </h1>
 
         <nav>
@@ -27,22 +33,63 @@
             <li>
               <a href="{% url 'home:login' %}">Login</a>
             </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
           </ul>
         </nav>
       </header>
-      <div class="socialLogin">
-        <h3>
-          Login to be Featured
-        </h3>
-        <div class="icon3">
-          <a href="{% url 'social:begin' 'google-oauth2' %}">
-            <button class="google-log"></button>
-          </a>
-          <a href="{% url 'social:begin' 'facebook' %}">
-            <button class="fb-log"></button>
-          </a>
+      <div class="container">
+        <div class="content">
+          <div class="box">
+            <h3>
+              Login to be Featured
+            </h3>
+            <br />
+            <div class="icon3">
+              <a href="{% url 'social:begin' 'facebook' %}">
+                <img src="{% static 'home/fb3.jpg'%}" alt="fb" />
+              </a>
+
+              <a href="{% url 'social:begin' 'google-oauth2' %}">
+                <img src="{% static 'home/google.jpg'%}" alt="google" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+      <footer>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+          </a>
+        </div>
+
+        <div>&copy; IEEE SB NITD</div>
+        <div>
+          <a
+            href="http://www.ieeesbnitdgp.com/#contact-us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Us
+          </a>
+        </div>
+      </footer>
     </div>
   </body>
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'home/home.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
 </html>
