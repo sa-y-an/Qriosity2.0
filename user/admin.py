@@ -17,7 +17,7 @@ class SolvedInline(admin.TabularInline):
 
 
 class PlayerAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {'fields': ['user', 'name', 'score', 'question_level', 'level2']}),
+    fieldsets = [(None, {'fields': ['user', 'name', 'score', 'question_level', 'level2', 'count2']}),
                  ('Other Informations', {'fields': ['image', 'rank', 'email', 'last_submit'], 'classes': ['collapse']}), ]
     inlines = [PlayerDetailsInline, SolvedInline]
 
