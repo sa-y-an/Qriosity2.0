@@ -20,6 +20,12 @@
       width: 20vh;
       border-radius: 100px;
     }
+    .nosolved {
+      text-align: center;
+      color: #8e6023;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+    }
   </style>
 </head>
 <div class="container">
@@ -37,7 +43,12 @@
     <br />
     <hr width="50%" color="#C98732" />
     <br />
-
+    <h4 class="nosolved">
+      Till Now you have solved
+      <br />
+      {{player.count2}} questions in Stage 2
+    </h4>
+    <br />
     {% for i in q %}
     <div class="questions">
       <div class="number">

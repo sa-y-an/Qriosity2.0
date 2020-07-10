@@ -35,7 +35,11 @@ def StageOne(request):
         return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
     if player.level2 > -1:
         q = StageTwo.objects.all()
-        return render(request, 'quiz/index.html', {"player": player, "q": q})
+        player = get_object_or_404(Player, user=request.user)
+        if (player.count2 < StageTwo.objects.count()):
+            return render(request, 'quiz/index.html', {"q": q, "player": player})
+        else:
+            return render(request, 'quiz/finish.html', {"player": player})
 
 
 @login_required(login_url='/login', redirect_field_name=None)
@@ -104,7 +108,10 @@ def Stage1Answer(request):
 def Index(request):
     q = StageTwo.objects.all()
     player = get_object_or_404(Player, user=request.user)
-    return render(request, 'quiz/index.html', {"q": q, "player": player})
+    if (player.count2 < StageTwo.objects.count()):
+        return render(request, 'quiz/index.html', {"q": q, "player": player})
+    else:
+        return render(request, 'quiz/finish.html', {"player": player})
 
 
 @login_required(login_url='/login', redirect_field_name=None)
@@ -179,6 +186,7 @@ def Individual(request, qid):
                         # correct answer
                         if (str(organs) == str(ans)):   # if the answer is correct
                             player.score += 5
+                            player.count2 += 1          # count of solved questions
                             i.solved = True         # the question is set to solved corrosponding to that level
                             i.save()
                             player.save()
@@ -206,7 +214,7 @@ def Individual(request, qid):
                 organs = get_object_or_404(StageTwo, level=qid).answer
                 if (str(organs) == str(ans)):  # if the player succesfully solves the question
                     player.score += 5
-
+                    player.count2 += 1          # count of solved questions
                     i = player.solved_set.get(level_on=qid)
                     i.solved = True  # sets the solved to true
                     i.save()
