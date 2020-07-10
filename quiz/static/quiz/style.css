@@ -178,3 +178,15 @@ header h1 {
 .qriosity {
   font-family: "Electro Shackle";
 }
+
+.stage1 {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 30px;
+}
+
+.hint1 {
+  color: #d99236;
+}
