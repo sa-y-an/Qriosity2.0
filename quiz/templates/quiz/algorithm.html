@@ -7,30 +7,41 @@
     <title>Algorithms</title>
     <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
   </head>
+  <style>
+    .context {
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 10px;
+      padding: 20px;
+      padding-left: 30px;
+      margin-bottom: 20px;
+    }
+    .context ul {
+      color: #a26d28;
+    }
+  </style>
   <body>
     <div class="container">
       <!-- navbar -->
       {% include 'partials/_navbar.html' %}
       <div class="content">
-        <h2>
+        <h2 align="center">
           The Algorithms to fetch the Passcode are
         </h2>
 
         <div class="algo">
           {% for question in questions %}
-          <h4>
-            Question Level : {{ question.level}}
-          </h4>
+          <div class="context">
+            <ul>
+              <li>Question Level : {{ question.level}}</li>
 
-          <h4>
-            Question Title : {{ question.title }}
-          </h4>
-
-          <p>
-            Algorithms
-            <br />
+              <li>
+                Question Title : {{ question.title }}
+              </li>
+              <li>Algorithm :</li>
+            </ul>
             {{ question.algo|safe}}
-          </p>
+          </div>
+
           {% endfor %}
         </div>
       </div>
