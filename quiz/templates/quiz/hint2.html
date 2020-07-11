@@ -2,20 +2,36 @@
 <head>
   <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
 </head>
+<style>
+  .stage1 {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    padding: 30px;
+    max-width: 90vw;
+  }
+</style>
 <div class="container">
   {% include 'partials/_nav2.html' %}
 
   <div class="content">
-    <h1>
-      Here is your hint for
-    </h1>
-
-    <div class="question">
-      {{question.title}}
+    <div class="stage1 hint1">
+      <h3>
+        You Have Lost 1 point.
+      </h3>
     </div>
-    <p>
-      {{question.hint}}
-    </p>
+
+    <div class="stage1">
+      <h3>
+        Here is your hint for
+      </h3>
+
+      <div class="question">
+        {{question.title}}
+      </div>
+      <p>
+        {{question.hint}}
+      </p>
+    </div>
 
     <a href="{% url 'quiz:individual' question.level %}">
       <button class="btn btn-primary mb1 bg-blue">return to question</button>
