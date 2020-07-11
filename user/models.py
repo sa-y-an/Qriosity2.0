@@ -7,7 +7,7 @@ from datetime import datetime
 class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=400)
-    email = models.CharField(max_length=100, blank=True)
+    email = models.CharField(max_length=100, null=True, blank=True)
     image = models.CharField(max_length=200, blank=True)
     score = models.IntegerField(default=0)
     rank = models.IntegerField(default=0)
