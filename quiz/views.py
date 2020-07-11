@@ -108,10 +108,13 @@ def Stage1Answer(request):
 def Index(request):
     q = StageTwo.objects.all()
     player = get_object_or_404(Player, user=request.user)
-    if (player.count2 < StageTwo.objects.count()):
-        return render(request, 'quiz/index.html', {"q": q, "player": player})
+    if(player.level2 < 0):
+        return render(request, 'quiz/smart.html')
     else:
-        return render(request, 'quiz/finish.html', {"player": player})
+        if (player.count2 < StageTwo.objects.count()):
+            return render(request, 'quiz/index.html', {"q": q, "player": player})
+        else:
+            return render(request, 'quiz/finish.html', {"player": player})
 
 
 @login_required(login_url='/login', redirect_field_name=None)
