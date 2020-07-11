@@ -9,10 +9,9 @@
 <h3 align="center">Qriosity 2.0</h3>
 
 > An upcoming IEEE sb-event<br>
-> stay tuned<br>
+> Stay tuned ✌<br>
 > Django based Quiz web-app<br>
-
-> for running it locally use
+> For running it locally use
 
 ```sh
 python local.py runserver
