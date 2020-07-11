@@ -200,7 +200,7 @@ def Individual(request, qid):
                             value = True
                             return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value})
                     else:
-                        return HttpResponse('<h2> Your Form data was Invalid </h2>')
+                        return HttpResponse('<h2> Your Form Data was Invalid </h2>')
                         # invalid form data submitted by tampering with developer console
 
     if (flag == False):  # the player didnot visited the question before
