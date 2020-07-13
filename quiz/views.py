@@ -160,6 +160,7 @@ def Passcode(request):
 @login_required(login_url='/login', redirect_field_name=None)
 def Individual(request, qid):
     value = False  # this marks if the question is solved (and shows the popup)
+    all = StageTwo.objects.all()
     player = get_object_or_404(Player, user=request.user)
     s = player.solved_set.all()     # solved class has 2 objects 1. level_on 2. solved
     question = get_object_or_404(StageTwo, level=qid)
@@ -178,7 +179,7 @@ def Individual(request, qid):
                 flag = True
                 if request.method == "GET":     # if the player comes for the question
                     my_form = UserAnswer
-                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value})
+                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value, "all": all})
                 if request.method == "POST":    # if the player submits the question
                     my_form = UserAnswer(request.POST)
 
@@ -198,7 +199,7 @@ def Individual(request, qid):
                         # incorrect answer
                         else:   # returns the same question
                             value = True
-                            return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value})
+                            return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value, "all": all})
                     else:
                         return HttpResponse('<h2> Your Form Data was Invalid </h2>')
                         # invalid form data submitted by tampering with developer console
@@ -209,7 +210,7 @@ def Individual(request, qid):
 
         if request.method == "GET":
             my_form = UserAnswer
-            return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+            return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "all": all})
         if request.method == "POST":
             my_form = UserAnswer(request.POST)
             if my_form.is_valid():
@@ -225,6 +226,6 @@ def Individual(request, qid):
                     return render(request, 'quiz/solved.html')
                 else:   # returns the same question
                     value = False
-                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form})
+                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "all": all})
             else:
                 return HttpResponse('<h2> Your Form data was Invalid </h2>')

@@ -10,6 +10,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      max-width: 80vw;
     }
   </style>
   <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
@@ -78,4 +79,18 @@
       </button>
     </form>
   </div>
+  <footer>
+    <div class="visit">
+      Visit Question
+    </div>
+    <div class="snip">
+      {% for i in all %}
+      <div class="inds">
+        <a href="{% url 'quiz:individual' i.id %}">
+          {{i.level}} . ( {{i.title}})
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </footer>
 </div>
