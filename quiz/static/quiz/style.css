@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 @font-face {
   font-family: "Electro Shackle";
@@ -49,6 +49,8 @@ header h1 {
   flex-shrink: 0;
   display: flex;
   margin-left: 5px;
+  overflow: visible;
+  padding-left: 5px;
 }
 
 nav {
@@ -69,10 +71,9 @@ a:any-link {
 }
 
 header a:hover {
-  color: rgb(161, 173, 201);
+  color: #d08c34;
   text-emphasis: bold;
-  text-shadow: 0 0 3px #a26d28;
-  transform: scale(1.1);
+  text-decoration: underline;
 }
 
 header nav ul {
@@ -219,4 +220,17 @@ footer {
 
 .inds a:hover {
   color: #d99236;
+}
+
+h1 a {
+  padding: 5px;
+}
+
+h1 a:hover {
+  text-decoration: none;
+  color: #d99236;
+}
+
+p {
+  overflow-y: hidden;
 }

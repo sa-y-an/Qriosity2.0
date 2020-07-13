@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 @font-face {
   font-family: "Electro Shackle";
@@ -229,4 +229,17 @@ footer {
 .copyrt {
   display: flex;
   flex-direction: row;
+}
+
+h1 a {
+  padding: 5px;
+}
+
+h1 a:hover {
+  text-decoration: none;
+  color: #d99236;
+}
+
+p {
+  overflow-y: hidden;
 }
