@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 @font-face {
   font-family: "Electro Shackle";
@@ -188,5 +189,34 @@ header h1 {
 }
 
 .hint1 {
+  color: #d99236;
+}
+
+footer {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-self: flex-end;
+  padding: 10px;
+  box-shadow: 0 2px 2px 2px #d99236;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: 0;
+}
+
+.visit {
+  text-align: center;
+}
+.snip {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-top: 15px;
+}
+
+.inds a:hover {
   color: #d99236;
 }
