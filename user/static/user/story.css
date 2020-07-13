@@ -232,3 +232,37 @@ footer {
 .qriosity {
   font-family: "Electro Shackle";
 }
+
+header a:hover {
+  color: #d08c34;
+  text-emphasis: bold;
+  text-decoration: underline;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+h1 {
+  overflow: visible;
+  padding-left: 5px;
+}
+
+h1 a {
+  padding: 5px;
+}
+
+h1 a:hover {
+  text-decoration: none;
+  color: #d99236;
+}
+
+p {
+  overflow-y: hidden;
+}
+
+.content a {
+  overflow: visible;
+}
+
+form {
+  overflow: visible;
+}
