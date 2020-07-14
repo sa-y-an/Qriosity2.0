@@ -12,6 +12,15 @@ html {
     /* background: #4B4168; */
 }
 
+@font-face {
+    font-family: "Electro Shackle";
+    src: url("Electro Shackle.otf");
+}
+
+.qriosity {
+    font-family: "Electro Shackle";
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -30,19 +39,14 @@ html {
 header {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    color: white;
-    padding: 10px;
     flex-wrap: wrap;
     min-height: 10vh;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(5, 0, 0, 0.822);
     box-shadow: 0px 0 6px 6px #d99236;
-}
-
-.topnav {
-    display: none;
+    pointer-events: all;
 }
 
 header h1 {
@@ -51,11 +55,18 @@ header h1 {
     flex-shrink: 0;
     display: flex;
     margin-left: 5px;
+    margin-bottom: -0.5px;
+    margin-top: 10px;
 }
 
 nav {
     flex: 1;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100vw;
+    align-items: center;
 }
 
 nav ul,
@@ -69,40 +80,79 @@ a:any-link {
 header a:hover {
     color: rgb(161, 173, 201);
     text-emphasis: bold;
-    text-shadow: 0 0 3px #11e3f1;
+    text-shadow: 0 0 3px #a26d28;
     transform: scale(1.1);
-}
-
-header nav {
-    flex: 1;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    /* flex-wrap: wrap; */
-    justify-content: space-around;
-    align-items: center;
-    align-content: space-around;
-    font-family: "Roboto", sans-serif;
 }
 
 header nav ul {
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
+    margin-right: 8%;
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
     width: 100%;
 }
 
-.navbar-brand {
-    font-family: "Roboto", sans-serif;
-    font-weight: lighter;
+header a:hover {
+    color: #d08c34;
+    text-emphasis: bold;
+    text-decoration: underline;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+h1 {
+    overflow: visible;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+h1 a {
+    padding: 5px;
+}
+
+h1 a:hover {
+    text-decoration: none;
+    color: #d99236;
 }
 
 .link-grow {
     transform: scale(2);
     background: rgba(248, 244, 137, 0.5);
+}
+
+.topper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.tname {
+    /* text-shadow: 2px 2px 5px 2px #d79b58;
+text-shadow: 1px 1px #d79b58; */
+    font-size: 0.7em;
+}
+
+.tpic {
+    height: 20vh;
+    width: 20vh;
+    box-shadow: 0px 1px 3px 5px #d79b58;
+    border-radius: 50px;
+}
+
+.thname {
+    font-size: 0.7em;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.box {
+    margin-top: 10px;
 }
 
 .search {
@@ -118,6 +168,7 @@ header nav ul {
     margin: 20px;
     padding: 10px;
     text-align: center;
+    border-radius: 15px;
 }
 
 .content {
@@ -129,7 +180,6 @@ header nav ul {
     flex-direction: column;
     align-items: center;
     margin-bottom: -50px;
-
     /* justify-content: center; */
 }
 
@@ -258,36 +308,48 @@ footer {
     height: 5vh;
 }
 
-
 .search {
     padding: 0px;
     margin: 0px;
 }
 
+#searchbox {
+    text-align: center;
+    padding: 8px;
+    border: 0;
+    border-radius: 15px !important;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    font-size: larger;
+    font-weight: bolder;
+    font-family: "Red Hat Display", sans-serif;
+}
+
+#searchbox:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: black;
+    font-size: medium;
+    font-weight: 600;
+    font-family: "Red Hat Display", sans-serif;
+}
+
 .search h3 {
     padding: 5px;
     margin: 0px;
-    background-color: rgba(255,255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 15px;
 }
 
-#search {
-    padding: 0px;
-    margin: 0px;
-}
-
-#search {
-    padding: 5px;
-    margin: 10px;
-    background-color: rgba(255,255, 255, 0.5);
-}
 .name h1 {
-    margin : 0px;
+    margin: 0px;
     padding: 0px;
 }
 
 .thname {
-    background-color: rgba(255, 255, 255  , 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     margin: 10px;
     padding: 10px;
     border-radius: 20px;
@@ -296,13 +358,12 @@ footer {
 }
 
 .topper {
-    background-color: rgba(255, 255, 255  , 0.5);
-    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 3px;
     margin: 15px;
-    box-shadow: 0px 2px 2px 2px #C58B3F;
+    box-shadow: 0px 1px 3px 4px #C58B3F;
     border-radius: 10px;
 }
-
 
 @font-face {
     font-family: "Electro Shackle";
@@ -323,14 +384,14 @@ footer {
         background-color: rgba(8, 6, 6, 0);
     }
     .content {
-        /* border-radius: 0px !important;
-        padding: 5px !important;
-        font-size: 0.7em !important; */
         width: 100% !important;
         display: flex;
         flex: 1;
         flex-direction: column;
         align-items: center;
+    }
+    .list {
+        background-color: rgba(247, 243, 243, 0.801);
     }
     .list .item {
         position: relative;
@@ -339,7 +400,7 @@ footer {
         width: 100%;
         -webkit-box-align: center;
         align-items: center;
-        background: white;
+        /*background: white;*/
         height: 3rem;
         border-radius: 4rem;
         margin-bottom: 2rem;
@@ -363,51 +424,17 @@ footer {
     .mobile-container {
         max-width: 480px;
         margin: auto;
-        background-color: #555;
+        /* background-color: rgb(139, 137, 137); */
         height: 500px;
         color: white;
         border-radius: 10px;
     }
-    .topnav {
-        display: block;
-        overflow: hidden;
-        background-color: #333;
-        position: relative;
-    }
-    .topnav-brand {
-        text-align: center;
-        font-family: "Roboto", sans-serif;
-        font-weight: bold;
-        color: #d99236;
-        font-size: xx-large;
-    }
-    .topnav #myLinks {
-        display: none;
-    }
-    .topnav a {
-        color: white;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        display: block;
-    }
-    .topnav a.icon {
-        background: black;
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
+    nav {
+        font-size: 10px;
     }
     .active {
         background-color: #4CAF50;
         color: white;
-    }
-    header {
-        display: none;
     }
     .newline {
         display: block;
@@ -421,6 +448,6 @@ footer {
         display: none;
     }
     .search {
-        color: white;
+        color: black;
     }
 }
