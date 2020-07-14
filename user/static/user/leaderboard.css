@@ -87,7 +87,6 @@ header a:hover {
 header nav ul {
     display: flex;
     flex-direction: row;
-    margin-right: 8%;
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
@@ -375,6 +374,9 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
+    header nav ul {
+        margin-right: 8%;
+    }
     .box {
         overflow: hidden;
         /* width: 40%; */
