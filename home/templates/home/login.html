@@ -1,102 +1,92 @@
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'home/loginstyle.css'%}" />
     <title>Login</title>
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/qw4.png' %}"
-      type="image/png"
-    />
+    <link rel="shortcut icon" href="{% static 'home/qw4.png' %}" type="image/png" />
     <style>
-      .icon3 img {
-        width: 40vh;
-      }
+        .icon3 img {
+            width: 40vh;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="particles-js"></div>
     <div class="container">
-      <header>
-        <h1>
-          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-        </h1>
-        <br />
-
-        <nav>
-          <ul>
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'quiz:algo' %}"> Algorithms</a>
-            </li>
-            <li>
-              <a href="{% url 'home:login' %}">Login</a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <div class="container">
-        <div class="content">
-          <div class="box">
-            <h3>
-              Login to be Featured
-            </h3>
+        <header>
+            <h1>
+                <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+            </h1>
             <br />
-            <div class="icon3">
-              <a href="{% url 'social:begin' 'facebook' %}">
-                <img src="{% static 'home/fb3.jpg'%}" alt="fb" />
-              </a>
 
-              <a href="{% url 'social:begin' 'google-oauth2' %}">
-                <img src="{% static 'home/google.jpg'%}" alt="google" />
-              </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{% url 'home:rules'%}">Rules</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:story' %}">Story</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home:login' %}">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="content">
+                <br><br><br><br><br>
+                <div class="box">
+                    <h3 style="font-size: xx-large;">
+                        Login to be Featured
+                    </h3>
+                    <br />
+                    <br>
+                    <div class="icon3">
+                        <a href="{% url 'social:begin' 'facebook' %}">
+                            <img src="{% static 'home/fb3.jpg'%}" alt="fb" />
+                        </a>
+                        <br><br>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}">
+                            <img src="{% static 'home/google.jpg'%}" alt="google" />
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <footer>
-        <div>
-          <a
-            href="http://www.ieeesbnitdgp.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
-          </a>
-        </div>
+        <footer>
+            <div>
+                <a href="http://www.ieeesbnitdgp.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+                </a>
+            </div>
 
-        <div>&copy; IEEE SB NITD</div>
-        <div>
-          <a
-            href="http://www.ieeesbnitdgp.com/#contact-us"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+            <div>&copy; IEEE SB NITD</div>
+            <div>
+                <a href="http://www.ieeesbnitdgp.com/#contact-us" target="_blank" rel="noopener noreferrer">
             Contact Us
           </a>
-        </div>
-      </footer>
+            </div>
+        </footer>
     </div>
-  </body>
-  <script src="{% static 'user/particles.js' %}"></script>
-  <script>
+</body>
+<script src="{% static 'user/particles.js' %}"></script>
+<script>
     particlesJS.load(
-      "particles-js",
-      "{% static 'home/home.json' %}",
-      function () {
-        console.log("Hi Qriosity Player");
-      }
+        "particles-js",
+        "{% static 'home/home.json' %}",
+        function() {
+            console.log("Hi Qriosity Player");
+        }
     );
-  </script>
+</script>
+
 </html>
