@@ -189,7 +189,7 @@ footer {
   max-width: 70vw;
   /* box-shadow: 0px 2px 4px 2px #d99236; */
   margin: 10px;
-  font-family: "Sacramento", cursive;
+  font-family: "Montserrat", sans-serif;
   color: rgb(248, 244, 244);
   font-size: 2em;
   padding: 10px;
@@ -226,7 +226,6 @@ footer {
     border-radius: 40px;
     max-width: 85vh;
     background-color: rgba(0, 0, 0, 0.5);
-    font-family: "Sacramento", cursive;
   }
   .qriosity {
     font-size: 0.8em;
