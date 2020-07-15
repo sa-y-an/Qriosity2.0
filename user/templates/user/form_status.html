@@ -27,7 +27,7 @@
         <nav>
           <ul>
             <li>
-              <a class="rulebtn">Rules</a>
+              <a href="{% url 'home:rules' %}">Rules</a>
             </li>
             <li>
               <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
@@ -46,29 +46,29 @@
       </header>
 
       <div class="content">
-        <h3>
-          Your Contact Status are as follows
-        </h3>
+        <div class="title">
+          Your contact details are as follows :
+        </div>
 
         <div class="box">
-          <h4>
+          <p>
             Name : {{details.full_name}}
-          </h4>
-          <h4>
+          </p>
+          <p>
             College : {{details.college}}
-          </h4>
-          <h4>
+          </p>
+          <p>
             Year : {{details.year}}
-          </h4>
-          <h4>
+          </p>
+          <p>
             Contact Number : {{details.contact}}
-          </h4>
+          </p>
         </div>
 
         <div class="submit">
           <a href="{% url 'user:details'%}">
             <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
-              Update Contact
+              Update Info
             </button>
           </a>
         </div>

@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-
+  font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
 }
 @font-face {
@@ -184,9 +187,9 @@ footer {
   padding: 30px;
   border-radius: 50px;
   max-width: 70vw;
-  box-shadow: 0px 2px 4px 2px #d99236;
+  /* box-shadow: 0px 2px 4px 2px #d99236; */
   margin: 10px;
-  font-family: chiller;
+  font-family: "Montserrat", sans-serif;
   color: rgb(248, 244, 244);
   font-size: 2em;
   padding: 10px;
@@ -233,6 +236,10 @@ footer {
   font-family: "Electro Shackle";
   src: url("Electro Shackle.otf");
 }
+@font-face {
+  font-family: "Chiller";
+  src: url("Chiller 400.ttf") format("truetype");
+}
 .qriosity {
   font-family: "Electro Shackle";
 }
@@ -273,10 +280,7 @@ form {
 }
 
 .story p {
-  padding: 10px;
+  padding: 5px;
   color: #eba09b;
-}
-
-.story {
-  margin-top: 50px;
+  font-family: "Chiller";
 }

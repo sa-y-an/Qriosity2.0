@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
 body,
 html {
     height: 100%;
@@ -9,6 +11,7 @@ html {
     overflow-x: hidden;
     overflow-y: auto;
     margin: 0px;
+    font-family: "Montserrat", sans-serif;
     /* background: #4B4168; */
 }
 
