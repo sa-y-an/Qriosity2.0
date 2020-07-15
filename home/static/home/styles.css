@@ -233,3 +233,12 @@ p {
   align-items: center;
   margin-right: 5px;
 }
+
+.title {
+  font-family: "Electro Shackle";
+  text-align: center;
+  font-size: 2.5em;
+  margin: 1em;
+  color: black;
+  font-weight: bold;
+}
