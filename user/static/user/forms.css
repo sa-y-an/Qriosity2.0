@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: "Montserrat", sans-serif;
 }
 
 .container {
@@ -137,8 +139,17 @@ form {
   padding: 20px;
   color: #a26d28;
   border-radius: 30px;
+  font-size: 1.5em;
+  max-width: 80vw;
 }
-
+.box p {
+  text-align: center;
+}
+.title {
+  margin: 1em;
+  font-size: 1.7em;
+  text-align: center;
+}
 @font-face {
   font-family: "Electro Shackle";
   src: url("Electro Shackle.otf");
