@@ -70,7 +70,8 @@
 
       <div class="content">
         <div class="title glow">
-          Qriosity 2.0
+          <div class="txt">Qriosity</div>
+          <div class="n2_">2.0</div>
         </div>
         <div class="details">
           <div class="para">
@@ -165,5 +166,32 @@
         console.log("Hi Qriosity Player");
       }
     );
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"
+    integrity="sha512-elauk8NI35rjTlatfRQxeqmJoieQlfm0W8AeQVps+j+KkMDdaqNxVazFzwyU7uSOyeeVn/VLbGYLwOR/D5I6Kw=="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    // gsap.from(".details", { height: 0 });
+
+    let tl = gsap.timeline();
+    tl.from("#particles-js", { x: -500, opacity: 0 })
+      .from("header", {
+        y: -100,
+        opacity: 0,
+      })
+      .from("footer", { y: 100, opacity: 0 })
+      .from(".details", { height: 0, opacity: 0 })
+      .from(".title", { x: -50, opacity: 0 });
+
+    let tl2 = gsap.timeline({ duration: 1, yoyo: true, repeat: -1 });
+    tl2
+      .to("html", {
+        "--myQriosity": "#DB9A4A",
+      })
+      .to("html", {
+        "--myNumber": "white",
+      });
   </script>
 </html>
