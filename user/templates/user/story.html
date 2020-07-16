@@ -1,129 +1,112 @@
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
     <title>Story</title>
     <link rel="stylesheet" href="{% static 'user/story.css'%}" />
     <style>
-      canvas .particles-js-canvas-el {
-        height: 100vh;
-        width: 100vw;
-      }
+        canvas .particles-js-canvas-el {
+            height: 100vh;
+            width: 100vw;
+        }
     </style>
-  </head>
-  <body bgcolor="black">
+</head>
+
+<body bgcolor="black">
     <div id="particles-js"></div>
     <div class="container">
-      <header>
-        <h1>
-          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-        </h1>
-        <br />
+        <header>
+            <h1>
+                <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+            </h1>
+            <br />
 
-        <nav>
-          <ul>
-            {% if user.is_authenticated %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:formdata' %}"> Contact</a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-            </li>
-            <li>
-              <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'quiz:algo' %}"> Algorithms</a>
-            </li>
-            <li>
-              <a href="{% url 'home:login' %}">Login</a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'home:rules'%}">Rules</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:formdata' %}"> Contact</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:story' %}">Story</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'home:rules'%}">Rules</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'quiz:algo' %}"> Algorithms</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home:login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:story' %}">Story</a>
+                    </li>
 
-            {% endif %}
-          </ul>
-        </nav>
-      </header>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
 
-      <div class="content">
-        <div class="story">
-          <p>
-            Murder is not about lust and its not violence ,its about
-            possession..This is what they said as they killed my soul that ones
-            was warm.you threatened the victim once ,today you will be silent
-            forever ,and I will be gone in dark.
-          </p>
-          <p>
-            Back then I was a tender soul fighting for survival ,today I am a
-            psychopath killer as you easily name.The world shall pay for my
-            sufferings.Each person will pay for their crime. Every drop of
-            blood, shattered places ,and lives shall pay the cost.I your
-            infamous psychopath killer challenges you to save the destruction if
-            you can.If you are clever enough.
-          </p>
-          <p>
-            A person who ones had a happy family loving parents, but soon the
-            reality for him shattered. His father started abusing him and his
-            mother. He would not spare anyone. At school he was bullied no on
-            cared for him except his mother. But one day he had enough, his
-            father was an ugly he needed to get rid of, so one day when he came
-            he saw his father about to kill his mother and he snapped. He took
-            the hammer lying on the side and smashed his father's head
-            repeatedly. His mother was baffled but she loved him no matter what
-            and took the blame of killing him. But the tragedy does not end here
-            his mother was brutally killed by a cellmate. He had lost all hope.
-            No one provided justice to his mother. The accused was not punished.
-            He thought world needed someone to punish the evil ones and took it
-            upon himself to do that.
-          </p>
-          <p>
-            The first round will test if you are worthy to save the world or
-            not. The answer has inspired me and is something related to
-            something close to my heart.
-          </p>
-          <p>
-            The ones whom I shall deem worthy will be given a chance to save
-            their pathetic world. The you know the answer but will you be able
-            to find them…. Because the clock is ticking….tick tok tick tok
-          </p>
-        </div>
-        <form action="{% url 'quiz:stageone' %}" method="POST">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary mb1 bg-blue">
+        <div class="content">
+            <div class="story">
+                <p>
+                    Murder is not about lust and its not violence ,its about possession..This is what they said as they killed my soul that ones was warm.you threatened the victim once ,today you will be silent forever ,and I will be gone in dark.
+                </p>
+                <p>
+                    Back then I was a tender soul fighting for survival ,today I am a psychopath killer as you easily name.The world shall pay for my sufferings.Each person will pay for their crime. Every drop of blood, shattered places ,and lives shall pay the cost.I your
+                    infamous psychopath killer challenges you to save the destruction if you can.If you are clever enough.
+                </p>
+                <p>
+                    A person who ones had a happy family loving parents, but soon the reality for him shattered. His father started abusing him and his mother. He would not spare anyone. At school he was bullied no on cared for him except his mother. But one day he had enough,
+                    his father was an ugly he needed to get rid of, so one day when he came he saw his father about to kill his mother and he snapped. He took the hammer lying on the side and smashed his father's head repeatedly. His mother was baffled
+                    but she loved him no matter what and took the blame of killing him. But the tragedy does not end here his mother was brutally killed by a cellmate. He had lost all hope. No one provided justice to his mother. The accused was not punished.
+                    He thought world needed someone to punish the evil ones and took it upon himself to do that.
+                </p>
+                <p>
+                    The first round will test if you are worthy to save the world or not. The answer has inspired me and is something related to something close to my heart.
+                </p>
+                <p>
+                    The ones whom I shall deem worthy will be given a chance to save their pathetic world. The you know the answer but will you be able to find them…. Because the clock is ticking….tick tok tick tok
+                </p>
+            </div>
+            <form action="{% url 'quiz:stageone' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary mb1 bg-blue">
             Start
           </button>
-        </form>
-      </div>
+            </form>
+        </div>
     </div>
-  </body>
-  <script src="{% static 'user/story.js' %}"></script>
-  <script>
+</body>
+<script src="{% static 'user/story.js' %}"></script>
+<script>
     particlesJS.load(
-      "particles-js",
-      "{% static 'user/particle-exp.json' %}",
-      function () {
-        console.log("Hi Qriosity Player");
-      }
+        "particles-js",
+        "{% static 'user/particle-exp.json' %}",
+        function() {
+            console.log("Hi Qriosity Player");
+        }
     );
-  </script>
+</script>
+
 </html>
