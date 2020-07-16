@@ -1,28 +1,30 @@
 {% load static %}
+
 <head>
-  <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+    <title>Correct Answer !</title>
 </head>
 <style>
-  .content {
-    text-align: center;
-  }
+    .content {
+        text-align: center;
+    }
 </style>
-<body>
-  <div class="container">
-    {% include 'partials/_nav2.html' %}
 
-    <div class="content">
-      <p>
-        Hurrah ! You have sucessfully solved
-        <br />
-        the previous Question
-      </p>
-      <form action="{% url 'quiz:index'%}" method="POST">
-        {% csrf_token %}
-        <button class="btn btn-primary mb1 bg-blue" type="submit">
+<body>
+    <div class="container">
+        {% include 'partials/_nav2.html' %}
+
+        <div class="content">
+            <p>
+                Hurrah ! You have sucessfully solved
+                <br /> the previous Question
+            </p>
+            <form action="{% url 'quiz:index'%}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-primary mb1 bg-blue" type="submit">
           Back to Index Page
         </button>
-      </form>
+            </form>
+        </div>
     </div>
-  </div>
 </body>

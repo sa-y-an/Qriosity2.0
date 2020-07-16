@@ -1,40 +1,42 @@
 {% load static %}
+
 <head>
-  <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+    <title>Hint</title>
 </head>
 <style>
-  .stage1 {
-    margin-bottom: 20px;
-    font-size: 1.3em;
-    padding: 30px;
-    max-width: 90vw;
-  }
+    .stage1 {
+        margin-bottom: 20px;
+        font-size: 1.3em;
+        padding: 30px;
+        max-width: 90vw;
+    }
 </style>
 <div class="container">
-  {% include 'partials/_nav2.html' %}
+    {% include 'partials/_nav2.html' %}
 
-  <div class="content">
-    <div class="stage1 hint1">
-      <h3>
-        You Have Lost 1 point.
-      </h3>
+    <div class="content">
+        <div class="stage1 hint1">
+            <h3>
+                You Have Lost 1 point.
+            </h3>
+        </div>
+
+        <div class="stage1">
+            <h3>
+                Here is your hint for
+            </h3>
+
+            <div class="question">
+                {{question.title}}
+            </div>
+            <p>
+                {{question.hint}}
+            </p>
+        </div>
+
+        <a href="{% url 'quiz:individual' question.level %}">
+            <button class="btn btn-primary mb1 bg-blue">return to question</button>
+        </a>
     </div>
-
-    <div class="stage1">
-      <h3>
-        Here is your hint for
-      </h3>
-
-      <div class="question">
-        {{question.title}}
-      </div>
-      <p>
-        {{question.hint}}
-      </p>
-    </div>
-
-    <a href="{% url 'quiz:individual' question.level %}">
-      <button class="btn btn-primary mb1 bg-blue">return to question</button>
-    </a>
-  </div>
 </div>
