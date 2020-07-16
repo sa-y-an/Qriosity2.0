@@ -4,7 +4,7 @@ from .models import Stage_1, StageTwo
 from django.contrib.auth.decorators import login_required
 from user.models import Player, Solved
 from .forms import UserAnswer
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 # Create your views here.
 
 value = False
@@ -74,6 +74,7 @@ def Stage1Answer(request):
             if (str(ans) == str(question.answer)):
                 value = False
                 player.score += 3
+                player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                 player.question_level += 1
 
                 player.save()
@@ -190,6 +191,7 @@ def Individual(request, qid):
                         # correct answer
                         if (str(organs) == str(ans)):   # if the answer is correct
                             player.score += 5
+                            player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                             player.count2 += 1          # count of solved questions
                             i.solved = True         # the question is set to solved corrosponding to that level
                             i.save()
@@ -218,6 +220,7 @@ def Individual(request, qid):
                 organs = get_object_or_404(StageTwo, level=qid).answer
                 if (str(organs) == str(ans)):  # if the player succesfully solves the question
                     player.score += 5
+                    player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                     player.count2 += 1          # count of solved questions
                     i = player.solved_set.get(level_on=qid)
                     i.solved = True  # sets the solved to true
