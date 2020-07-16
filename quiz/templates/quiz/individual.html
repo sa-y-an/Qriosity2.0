@@ -32,8 +32,13 @@
         You can take the hint (you will loose points)
       </div>
       {% endif %}
-      <h1>{{ question.title }}</h1>
+      <h3>
+        <u>
+          {{ question.title }}
+        </u>
+      </h3>
 
+      <br />
       <!-- description -->
       {% if question.description %}
       <div>{{ question.description }}</div>

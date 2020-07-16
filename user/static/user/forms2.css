@@ -1,24 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-
 * {
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
 }
 
-html {
-  --myQriosity: white;
-  --myNumber: #d99236;
-}
 #particles-js {
-  min-height: 100vh;
+  min-height: 200vh;
   min-width: 100vw;
-  background: url("the-imitation-game-2.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .container {
@@ -27,25 +19,18 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  width: 100vw !important;
+  /* justify-content: center; */
+  height: 100vh;
+  width: 100vw;
   /* background-color: black; */
   color: white;
-  pointer-events: none;
-  /* background: black;
-  mix-blend-mode: lighten; */
 }
-
-.content {
+.box {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  min-height: 80vh;
-  width: 100vw;
-  display: flex;
-  font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -59,8 +44,7 @@ header {
   flex-wrap: wrap;
   min-height: 10vh;
   background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 0 6px 6px var(--myNumber);
-  pointer-events: all;
+  box-shadow: 0px 0 6px 6px #d99236;
 }
 
 header h1 {
@@ -69,8 +53,6 @@ header h1 {
   flex-shrink: 0;
   display: flex;
   margin-left: 5px;
-  padding: 10px;
-  padding-top: 3px;
 }
 
 nav {
@@ -81,9 +63,7 @@ nav {
   justify-content: space-around;
   width: 100vw;
   align-items: center;
-  margin-bottom: 5px;
 }
-
 nav ul,
 a:any-link {
   text-decoration: none;
@@ -108,6 +88,21 @@ header nav ul {
   align-content: space-around;
   width: 100%;
 }
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+form p {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.submit {
+  padding: 10px;
+}
 
 .btn-primary {
   color: var(--button-color);
@@ -131,72 +126,54 @@ header nav ul {
   opacity: 0.5;
 }
 
-footer {
-  height: 5vh;
-  width: 100vw;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.9);
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  /* flex-direction: row-reverse; */
+label {
+  padding: 20px;
+}
+
+input {
   background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 3px 3px 3px var(--myNumber);
-  pointer-events: all;
-}
-
-footer img {
-  display: flex;
-  height: 4.5vh;
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: center;
-  max-width: 70vw;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  color: #a26d28;
+  border-radius: 30px;
+}
+
+.box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 30px;
   font-size: 1.3em;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0px 2px 2px 2px var(--myNumber);
-  pointer-events: all;
+  max-width: 70vw;
+  box-shadow: 0 1px 5px 1px #a26d28;
+  margin: 1em 0;
 }
-
-.copyrt {
-  display: flex;
-  flex-direction: row;
+.box p {
+  text-align: center;
 }
-
-@media screen and (max-width: 480px) {
-  #particle-js {
-    background: url("the-imitation-game-2p.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
+.title {
+  font-size: 1.5em;
+  text-align: center;
+  color: #a26d28;
+}
+@font-face {
+  font-family: "Electro Shackle";
+  src: url("Electro Shackle.otf");
+}
+.qriosity {
+  font-family: "Electro Shackle";
 }
 
 @media screen and (max-width: 480px) {
   nav {
     font-size: 10px;
   }
-  header nav ul {
-    margin-right: 8%;
-  }
-}
-
-@font-face {
-  font-family: "Electro Shackle";
-  src: url("Electro Shackle.otf");
-}
-
-.qriosity {
-  font-family: "Electro Shackle";
 }
 
 header a:hover {
@@ -228,34 +205,4 @@ p {
 
 .content a {
   overflow: visible;
-}
-
-.footmid {
-  display: flex;
-  flex-direction: row;
-}
-.ryt {
-  display: flex;
-  align-items: center;
-  margin-right: 5px;
-}
-
-.title {
-  font-family: "Electro Shackle";
-  text-align: center;
-  font-size: 2.5em;
-  padding: 1em;
-  color: black;
-  font-weight: bold;
-  /* text-shadow: 0px 2px 2px white; */
-  display: flex;
-}
-.txt {
-  font-family: "Electro Shackle";
-  text-shadow: 5px 5px 5px var(--myQriosity);
-}
-
-.n2_ {
-  font-family: "Electro Shackle";
-  text-shadow: 5px 5px 5px var(--myNumber);
 }

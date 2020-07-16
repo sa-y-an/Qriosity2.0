@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Status</title>
-    <link rel="stylesheet" href="{% static 'user/forms.css' %}" />
+    <link rel="stylesheet" href="{% static 'user/forms2.css' %}" />
   </head>
   <style>
     .content {
@@ -18,6 +18,7 @@
     }
   </style>
   <body>
+    <div id="particles-js"></div>
     <div class="container">
       <header>
         <h1>
@@ -75,4 +76,14 @@
       </div>
     </div>
   </body>
+  <script src="{% static 'user/story.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'user/form.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
 </html>

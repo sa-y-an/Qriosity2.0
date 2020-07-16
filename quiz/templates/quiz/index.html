@@ -10,10 +10,11 @@
     }
     .questions {
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.5);
-      color: black;
+      background-color: rgba(0, 0, 0, 0.2);
+      color: rgb(163, 151, 125);
       border-radius: 50px;
       margin: 10px;
+      padding: 20px;
     }
     .propic {
       height: 20vh;
@@ -23,8 +24,8 @@
     .nosolved {
       text-align: center;
       color: #8e6023;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 20px;
     }
   </style>
 </head>
@@ -32,15 +33,28 @@
   {% include 'partials/_nav2.html' %}
 
   <div class="content">
-    <h2>
-      Welcome {{player.name }} to Stage 2
-    </h2>
-    <img src="{{player.image}}" alt="{{ player.name }}" class="propic" />
     <br />
-    <h3>
-      To view/answer a question click on its title
+    <h3 align="center">
+      Congratulations {{player.name }} <br />
+      on reaching Stage 2 !!!
     </h3>
     <br />
+    <img src="{{player.image}}" alt="{{ player.name }}" class="propic" />
+    <br />
+    <p align="center">
+      You have been excellent this far !! ✌
+      <br />
+      We wish you all the best. 👍👍
+    </p>
+    <br />
+
+    <h6 align="center">
+      To view or answer a question click on its title
+      <br />
+      (you can always come back to this page)
+    </h6>
+    <br />
+
     <hr width="50%" color="#C98732" />
     <br />
     <h4 class="nosolved">
@@ -59,9 +73,9 @@
           {{ i.title }}
         </a>
       </div>
-      <div class="description">
+      <!-- <div class="description">
         {{i.description}}
-      </div>
+      </div> -->
       {% if i.image %}
       <div class="image">
         <img src="{{i.image}}" alt="{{i.title}}" />

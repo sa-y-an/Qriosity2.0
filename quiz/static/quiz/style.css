@@ -18,8 +18,14 @@
   align-items: center;
   min-height: 100vh;
   width: 100vw !important;
-  background-color: black;
+  background: linear-gradient(
+    111.13507808107465deg,
+    rgba(37, 46, 58, 1) 32.11805555555555%,
+    rgba(71, 84, 99, 1) 96.67968749999999%
+  );
+  /* background: black; */
   color: white;
+  /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
 }
 .content {
   display: flex;
@@ -42,7 +48,7 @@ header {
   padding: 10px;
   flex-wrap: wrap;
   min-height: 10vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
   box-shadow: 0px 0 6px 6px #d99236;
 }
 
@@ -135,9 +141,9 @@ input {
 }
 
 form {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 20px;
-  color: #a26d28;
+  color: whitesmoke;
   border-radius: 30px;
   margin: 10px;
 }
@@ -145,7 +151,7 @@ form {
 .box {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 20px;
-  color: #a26d28;
+  color: aliceblue;
   border-radius: 30px;
 }
 
@@ -164,10 +170,12 @@ form {
 }
 
 .question_ind {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
+
   color: #a26d28;
-  padding: 10px;
+  padding: 20px;
   border-radius: 20px;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 480px) {
@@ -203,7 +211,12 @@ footer {
   align-self: flex-end;
   padding: 10px;
   box-shadow: 0 2px 2px 2px #d99236;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    111.13507808107465deg,
+    rgba(65, 65, 65, 0.5) 5.533854166666667%,
+    rgba(0, 0, 0, 0.5) 96.67968749999999%
+  );
+
   position: absolute;
   bottom: 0;
 }
@@ -236,4 +249,8 @@ h1 a:hover {
 
 p {
   overflow-y: hidden;
+}
+
+.title a:hover {
+  color: #d99236;
 }
