@@ -37,7 +37,7 @@
                         <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
                     </li>
                     <li>
-                        <a href="{% url 'user:formdata' %}">Contact Info</a>
+                        <a href="{% url 'user:formdata' %}">Profile</a>
                     </li>
                     <li>
                         <a href="{% url 'user:dashboard' %}"> Dashboard </a>
@@ -51,19 +51,19 @@
 
         <div class="content">
             <div class="title">
-                Your contact details are as follows :
+                Your current Profile details :
             </div>
 
             <div class="box">
                 <p>
                     Name : {{details.full_name}}
-                </p>
+                </p><br>
                 <p>
                     College : {{details.college}}
-                </p>
+                </p><br>
                 <p>
                     Year : {{details.year}}
-                </p>
+                </p><br>
                 <p>
                     Contact Number : {{details.contact}}
                 </p>
@@ -72,7 +72,14 @@
             <div class="submit">
                 <a href="{% url 'user:details'%}">
                     <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
-              Update Info
+              Update Profile
+            </button>
+                </a>
+            </div>
+            <div class="submit">
+                <a href="{% url 'user:dashboard'%}">
+                    <button value="Update Contact" class="btn btn-primary mb1 bg-blue" style="font-size: medium;">
+              Proceed to Dashboard
             </button>
                 </a>
             </div>
@@ -84,9 +91,7 @@
     particlesJS.load(
         "particles-js",
         "{% static 'user/form.json' %}",
-        function() {
-            console.log("Hi Qriosity Player");
-        }
+        function() {}
     );
 </script>
 
