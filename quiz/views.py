@@ -4,7 +4,7 @@ from .models import Stage_1, StageTwo
 from django.contrib.auth.decorators import login_required
 from user.models import Player, Solved
 from .forms import UserAnswer
-import datetime
+from datetime import datetime,timedelta
 # Create your views here.
 
 value = False

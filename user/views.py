@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, Http404
 from django.contrib.auth.decorators import login_required
 from .import models
-import datetime
+from datetime import datetime,timedelta
 from .forms import UserDetails
 # from django.contrib.auth.models import User
 
@@ -42,7 +42,7 @@ def save_profile(backend, user, response, *args, **kwargs):
             player = models.Player.objects.get(user=profile)
         except:
             player = models.Player(user=profile)
-            player.last_submit = datetime.datetime.now()
+            player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
             player.name = response.get('name')
             player.image = response.get('picture')
             player.email = response.get('email')
@@ -58,7 +58,7 @@ def save_profile(backend, user, response, *args, **kwargs):
             player.email = response.get('email')
             player.image = "http://graph.facebook.com/%s/picture?type=large" \
                 % response["id"]
-            player.last_submit = datetime.datetime.now()
+            player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
             player.save()
 
 

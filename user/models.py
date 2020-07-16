@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
+from datetime import datetime,timedelta
 # Create your models here.
 
 
@@ -11,7 +11,7 @@ class Player(models.Model):
     image = models.CharField(max_length=200, blank=True)
     score = models.IntegerField(default=0)
     rank = models.IntegerField(default=0)
-    last_submit = models.DateTimeField(default=datetime.now)
+    last_submit = models.DateTimeField(default=datetime.utcnow()+timedelta(hours=5.5))
     question_level = models.IntegerField(default=1)
     level2 = models.IntegerField(default=-1)
     count2 = models.IntegerField(default=0)
