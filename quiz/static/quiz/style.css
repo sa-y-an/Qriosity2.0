@@ -25,6 +25,7 @@
   );
   /* background: black; */
   color: white;
+  /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
 }
 .content {
   display: flex;
@@ -140,7 +141,7 @@ input {
 }
 
 form {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 20px;
   color: whitesmoke;
   border-radius: 30px;
@@ -248,4 +249,8 @@ h1 a:hover {
 
 p {
   overflow-y: hidden;
+}
+
+.title a:hover {
+  color: #d99236;
 }

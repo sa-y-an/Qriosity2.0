@@ -10,10 +10,11 @@
     }
     .questions {
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.5);
-      color: black;
+      background-color: rgba(0, 0, 0, 0.2);
+      color: rgb(163, 151, 125);
       border-radius: 50px;
       margin: 10px;
+      padding: 10px;
     }
     .propic {
       height: 20vh;
@@ -23,7 +24,7 @@
     .nosolved {
       text-align: center;
       color: #8e6023;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.1);
       padding: 10px;
     }
   </style>
@@ -59,9 +60,9 @@
           {{ i.title }}
         </a>
       </div>
-      <div class="description">
+      <!-- <div class="description">
         {{i.description}}
-      </div>
+      </div> -->
       {% if i.image %}
       <div class="image">
         <img src="{{i.image}}" alt="{{i.title}}" />
