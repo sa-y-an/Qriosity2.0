@@ -9,7 +9,7 @@ from datetime import datetime,timedelta
 
 value = False
 
-
+@login_required(login_url='/login', redirect_field_name=None)
 def Algo(request):
     question = Stage_1.objects.all()
     return render(request, 'quiz/algorithm.html', {"questions": question})
