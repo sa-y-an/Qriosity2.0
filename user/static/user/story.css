@@ -191,8 +191,10 @@ footer {
   margin: 10px;
   font-family: "Montserrat", sans-serif;
   color: rgb(248, 244, 244);
-  font-size: 2em;
-  padding: 10px;
+  font-size: 1em;
+  padding: 1em;
+  box-shadow: 0px 2px 5px 2px #d99236;
+  }
 }
 
 .imageusr {
@@ -220,12 +222,13 @@ footer {
     font-size: 10px;
   }
   .story {
-    font-size: 1.1em;
+    font-size: 1em;
     padding: 20px;
     text-align: justify;
     border-radius: 40px;
     max-width: 85vh;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0 2px 2px #d99236;
   }
   .qriosity {
     font-size: 0.8em;
@@ -281,6 +284,6 @@ form {
 
 .story p {
   padding: 5px;
-  color: #eba09b;
-  font-family: "Chiller";
+  color: white;
+  /* font-family: "Chiller"; */
 }

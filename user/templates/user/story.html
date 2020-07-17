@@ -1,110 +1,119 @@
 <!DOCTYPE html> {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}" />
     <title>Story</title>
     <link rel="stylesheet" href="{% static 'user/story.css'%}" />
     <style>
-        canvas .particles-js-canvas-el {
-            height: 100vh;
-            width: 100vw;
-        }
+      canvas .particles-js-canvas-el {
+        height: 100vh;
+        width: 100vw;
+      }
     </style>
-</head>
+  </head>
 
-<body bgcolor="black">
+  <body bgcolor="black">
     <div id="particles-js"></div>
     <div class="container">
-        <header>
-            <h1>
-                <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-            </h1>
-            <br />
+      <header>
+        <h1>
+          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+        </h1>
+        <br />
 
-            <nav>
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:formdata' %}"> Profile</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
+        <nav>
+          <ul>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Profile</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
 
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'home:login' %}">Login</a>
-                    </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'home:login' %}">Login</a>
+            </li>
 
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
 
-        <div class="content">
-            <div class="story">
-                <p>
-                    Murder is not about lust and its not violence ,its about possession..This is what they said as they killed my soul that ones was warm.you threatened the victim once ,today you will be silent forever ,and I will be gone in dark.
-                </p>
-                <p>
-                    Back then I was a tender soul fighting for survival ,today I am a psychopath killer as you easily name.The world shall pay for my sufferings.Each person will pay for their crime. Every drop of blood, shattered places ,and lives shall pay the cost.I your
-                    infamous psychopath killer challenges you to save the destruction if you can.If you are clever enough.
-                </p>
-                <p>
-                    A person who ones had a happy family loving parents, but soon the reality for him shattered. His father started abusing him and his mother. He would not spare anyone. At school he was bullied no on cared for him except his mother. But one day he had enough,
-                    his father was an ugly he needed to get rid of, so one day when he came he saw his father about to kill his mother and he snapped. He took the hammer lying on the side and smashed his father's head repeatedly. His mother was baffled
-                    but she loved him no matter what and took the blame of killing him. But the tragedy does not end here his mother was brutally killed by a cellmate. He had lost all hope. No one provided justice to his mother. The accused was not punished.
-                    He thought world needed someone to punish the evil ones and took it upon himself to do that.
-                </p>
-                <p>
-                    The first round will test if you are worthy to save the world or not. The answer has inspired me and is something related to something close to my heart.
-                </p>
-                <p>
-                    The ones whom I shall deem worthy will be given a chance to save their pathetic world. The you know the answer but will you be able to find them…. Because the clock is ticking….tick tok tick tok
-                </p>
-            </div>
-            <form action="{% url 'quiz:stageone' %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary mb1 bg-blue">
+      <div class="content">
+        <div class="story">
+          <p>
+            In an alternate universe, the Second World War is happening. In our
+            world, millions of lives were saved after Alan Turing cracked the
+            cipher and the plans of Germans were foiled, which played a major
+            part in the defeat of the Axis powers.
+          </p>
+          <p>
+            A war is going on between the Allies and the Axis. For the rest of
+            the world, they had to choose sides and enter the war. Thousands of
+            people were dying every day. Axis powers were dominating the Allies,
+            and most of their secrets travelled via radio signals which could be
+            tracked by even a standard receiver, but what made the messages
+            unreadable for non-Axis powers was the encryption. 159 quintillion
+            combinations were possible in the cipher, and the combinations
+            changed at the stroke of midnight every day. Allies could not afford
+            to lose more of their citizens or soldiers. Like in our universe,
+            there was a young man, a mathematician, at Cambridge University, who
+            was interested to crack the cipher, not only because he wanted to
+            help the Allies win the war, but because he loved solving puzzles.
+            After getting his appointment letter, he joins the team and starts
+            working on the machine that could decipher the codes sent by the
+            Germans to know their plans. But Alan is not able to crack the
+            encryption system. Now the onus falls upon us to help Alan Turing
+            decipher the cipher and defeat the Axis powers. Are you up to the
+            task at hand?
+          </p>
+          <p>
+            Will you be able to help Alan Turing and lead the Allies to victory
+            in this alternate universe?
+          </p>
+        </div>
+        <form action="{% url 'quiz:stageone' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary mb1 bg-blue">
             Start
           </button>
-            </form>
-        </div>
+        </form>
+      </div>
     </div>
-</body>
-<script src="{% static 'user/story.js' %}"></script>
-<script>
+  </body>
+  <script src="{% static 'user/story.js' %}"></script>
+  <script>
     particlesJS.load(
-        "particles-js",
-        "{% static 'user/particle-exp.json' %}",
-        function() {
-            console.log("Hi Qriosity Player");
-        }
+      "particles-js",
+      "{% static 'user/particle-exp.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
     );
-</script>
-
+  </script>
 </html>
