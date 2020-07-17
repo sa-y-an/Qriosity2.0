@@ -69,7 +69,7 @@
       <audio src="{{ question.files.url }}" controls></audio>
       {% endif %}
     </div>
-    {% if question.hint %}
+    <!-- {% if question.hint %}
     <form action="{% url 'quiz:hint2' question.level %}" method="POST">
       {% csrf_token %}
       <h3>
@@ -80,7 +80,7 @@
         Hint
       </button>
     </form>
-    {% endif %}
+    {% endif %} -->
 
     <form action="" method="POST">
       {% csrf_token %} {{form.as_p}}
