@@ -1,0 +1,492 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+body,
+html {
+    height: 100%;
+    background: url("battlefield.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0px;
+    font-family: "Montserrat", sans-serif;
+    /* background: #4B4168; */
+}
+
+@font-face {
+    font-family: "Electro Shackle";
+    src: url("Electro Shackle.otf");
+}
+
+.qriosity {
+    font-family: "Electro Shackle";
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+    align-items: center;
+    text-align: center;
+    color: aliceblue;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Roboto", sans-serif;
+    /* flex-wrap: wrap; */
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 10vh;
+    background-color: rgba(5, 0, 0, 0.822);
+    box-shadow: 0px 0 6px 6px #d99236;
+    pointer-events: all;
+}
+
+header h1 {
+    color: white;
+    flex: 1.5;
+    flex-shrink: 0;
+    display: flex;
+    margin-left: 5px;
+    margin-bottom: -0.5px;
+    margin-top: 10px;
+}
+
+nav {
+    flex: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100vw;
+    align-items: center;
+}
+
+nav ul,
+a:any-link {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    text-align: justify;
+}
+
+header a:hover {
+    color: rgb(161, 173, 201);
+    text-emphasis: bold;
+    text-shadow: 0 0 3px #a26d28;
+    transform: scale(1.1);
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    width: 100%;
+}
+
+header a:hover {
+    color: #d08c34;
+    text-emphasis: bold;
+    text-decoration: underline;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+h1 {
+    overflow: visible;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+h1 a {
+    padding: 5px;
+}
+
+h1 a:hover {
+    text-decoration: none;
+    color: #d99236;
+}
+
+.link-grow {
+    transform: scale(2);
+    background: rgba(248, 244, 137, 0.5);
+}
+
+.topper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.tname {
+    /* text-shadow: 2px 2px 5px 2px #d79b58;
+text-shadow: 1px 1px #d79b58; */
+    font-size: 0.7em;
+}
+
+.tpic {
+    height: 20vh;
+    width: 20vh;
+    box-shadow: 0px 1px 3px 5px #d79b58;
+    border-radius: 50px;
+}
+
+.thname {
+    font-size: 0.7em;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.box {
+    margin-top: 10px;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+#search {
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.content {
+    /* margin-top: 200px !important;
+    margin-left: 320px;
+    min-height: 80vh; */
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -50px;
+    /* justify-content: center; */
+}
+
+
+/* @import url("https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap"); */
+
+.box {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 50%;
+    z-index: 10;
+    font-family: "Red Hat Display", sans-serif;
+    background-color: rgba(255, 255, 255, 0.377);
+    padding: 0px;
+}
+
+.column {
+    width: 100%;
+}
+
+.list {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    /* margin: 50px auto; */
+    align-content: center;
+    /* overflow: auto; */
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.list .item {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    background: white;
+    height: 3rem;
+    border-radius: 4rem;
+    margin-bottom: 2rem;
+    background: grey;
+    /* background: grey;
+    background: #4b5320; */
+    -webkit-transform-origin: left;
+    transform-origin: left;
+    cursor: pointer;
+    -webkit-transition: -webkit-transform 200ms ease-in-out;
+    transition: -webkit-transform 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
+    transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+    box-shadow: 0 0 4rem 0 rgba(0, 0, 0, 0.1), 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
+}
+
+.list .item .pos {
+    font-weight: 900;
+    position: absolute;
+    left: -2rem;
+    text-align: center;
+    font-size: 1.25rem;
+    width: 1.5rem;
+    color: black;
+    opacity: 0.6;
+    -webkit-transition: opacity 200ms ease-in-out;
+    transition: opacity 200ms ease-in-out;
+}
+
+.list .item .pic {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 1rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.list .item .name {
+    -webkit-box-flex: 2;
+    flex-grow: 2;
+    flex-basis: 10rem;
+    font-size: 1.1rem;
+}
+
+.list .item .score {
+    margin-right: 1.5rem;
+    opacity: 0.75;
+}
+
+.list .item .score:after {
+    margin-right: 1rem;
+    content: "points";
+    opacity: 0.65;
+}
+
+.list .item:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.list .item:hover .pos {
+    opacity: 0.8;
+}
+
+.newline {
+    display: block;
+}
+
+footer {
+    position: relative;
+    padding: 15px 10px 15px 10px;
+    width: 100%;
+    /* Height of the footer*/
+    color: grey;
+    height: 4%;
+    width: 100vw;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 0px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: all;
+}
+
+.ieee {
+    display: flex;
+    height: 5vh;
+}
+
+.search {
+    padding: 0px;
+    margin: 0px;
+}
+
+#searchbox {
+    text-align: center;
+    padding: 8px;
+    border: 0;
+    border-radius: 15px !important;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    opacity: 70%;
+    font-size: larger;
+    font-weight: bolder;
+    font-family: "Red Hat Display", sans-serif;
+    box-shadow: 0px 1px 3px 4px black;
+}
+
+#searchbox:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: black;
+    font-size: medium;
+    font-weight: 600;
+    font-family: "Red Hat Display", sans-serif;
+    opacity: 75%;
+}
+
+.search h3 {
+    padding: 5px;
+    margin: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+}
+
+.name h1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.thname {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0px 1px 1px 1px #C58B3F;
+}
+
+.topper {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 3px;
+    margin: 15px;
+    box-shadow: 0px 1px 3px 4px #C58B3F;
+    border-radius: 10px;
+}
+
+@font-face {
+    font-family: "Electro Shackle";
+    src: url('Electro Shackle.otf');
+}
+
+.qriosity {
+    font-family: "Electro Shackle";
+}
+
+.footmid {
+    display: flex;
+    flex-direction: row;
+}
+
+footer img {
+    display: flex;
+    height: 4.5vh;
+}
+
+@media screen and (max-width: 480px) {
+    header nav ul {
+        margin-right: 8%;
+    }
+    .box {
+        overflow: hidden;
+        /* width: 40%; */
+        width: 100%;
+        z-index: 10;
+        font-family: "Red Hat Display", sans-serif;
+        background-color: rgba(8, 6, 6, 0);
+    }
+    .content {
+        width: 100% !important;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+    }
+    .list {
+        background-color: rgba(247, 243, 243, 0.801);
+    }
+    .list .item {
+        position: relative;
+        margin-left: -0.5rem;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        width: 114%;
+        /*background: white;*/
+        height: 3rem;
+        border-radius: 4rem;
+        margin-bottom: 2rem;
+        /* background: #eaa786; */
+        background: grey;
+        /* background: #4b5320; */
+        */ -webkit-transform-origin: left;
+        transform-origin: left;
+        cursor: pointer;
+        -webkit-transition: -webkit-transform 200ms ease-in-out;
+        transition: -webkit-transform 200ms ease-in-out;
+        transition: transform 200ms ease-in-out;
+        transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+        box-shadow: 0 0 4rem 0 rgba(0, 0, 0, 0.1), 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
+    }
+    .list .item .pos {
+        font-weight: 900;
+        position: absolute;
+        left: -1.9rem;
+        text-align: center;
+        font-size: 1.25rem;
+        color: black;
+        opacity: 0.6;
+        -webkit-transition: opacity 200ms ease-in-out;
+        transition: opacity 200ms ease-in-out;
+    }
+    .list .item .pic {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        margin-right: 1rem;
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+    }
+    body,
+    html {
+        width: 100%;
+        background-attachment: fixed;
+    }
+    .mobile-container {
+        max-width: 480px;
+        margin: auto;
+        /* background-color: rgb(139, 137, 137); */
+        height: 500px;
+        color: white;
+        border-radius: 10px;
+    }
+    nav {
+        font-size: 10px;
+    }
+    .active {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .newline {
+        display: block;
+    }
+    footer {
+        position: relative;
+        margin-bottom: 0px;
+        padding: 15px 10px 15px 10px;
+    }
+    .website {
+        display: none;
+    }
+    .search {
+        color: black;
+    }
+}

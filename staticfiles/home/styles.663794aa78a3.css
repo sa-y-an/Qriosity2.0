@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  --myQriosity: white;
+  --myNumber: #d99236;
+}
+#particles-js {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url("the-imitation-game-2.fb31f1f206df.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw !important;
+  /* background-color: black; */
+  color: white;
+  pointer-events: none;
+  /* background: black;
+  mix-blend-mode: lighten; */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  min-height: 80vh;
+  width: 100vw;
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  flex-wrap: wrap;
+  min-height: 10vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0 6px 6px var(--myNumber);
+  pointer-events: all;
+}
+
+header h1 {
+  color: white;
+  flex: 1.5;
+  flex-shrink: 0;
+  display: flex;
+  margin-left: 5px;
+  padding: 10px;
+  padding-top: 3px;
+}
+
+nav {
+  flex: 1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+nav ul,
+a:any-link {
+  text-decoration: none;
+  list-style: none;
+  color: white;
+  text-align: justify;
+}
+
+header a:hover {
+  color: rgb(161, 173, 201);
+  text-emphasis: bold;
+  text-shadow: 0 0 3px #a26d28;
+  transform: scale(1.1);
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  width: 100%;
+}
+
+.btn-primary {
+  color: var(--button-color);
+  background-color: var(--button-background-color);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.btn-primary:hover {
+  box-shadow: 2px 2px 2px 2px #a26d28;
+}
+
+.btn-primary:active {
+  box-shadow: inset 0 0 0 20rem var(--darken-2),
+    inset 0 3px 4px 0 var(--darken-3), 0 0 1px var(--darken-2);
+}
+
+.btn-primary:disabled,
+.btn-primary.is-disabled {
+  opacity: 0.5;
+}
+
+footer {
+  height: 5vh;
+  width: 100vw;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* flex-direction: row-reverse; */
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 3px 3px 3px var(--myNumber);
+  pointer-events: all;
+}
+
+footer img {
+  display: flex;
+  height: 4.5vh;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 70vw;
+  font-size: 1.3em;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 2px 2px var(--myNumber);
+  pointer-events: all;
+
+  overflow: unset;
+}
+
+.copyrt {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 480px) {
+  #particle-js {
+    background: url("the-imitation-game-2p.db2193f00d4e.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  nav {
+    font-size: 10px;
+  }
+  header nav ul {
+    margin-right: 8%;
+  }
+}
+
+@font-face {
+  font-family: "Electro Shackle";
+  src: url("Electro Shackle.48a092fc57fc.otf");
+}
+
+.qriosity {
+  font-family: "Electro Shackle";
+}
+
+header a:hover {
+  color: #d08c34;
+  text-emphasis: bold;
+  text-decoration: underline;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+h1 {
+  overflow: visible;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+h1 a {
+  padding: 5px;
+}
+
+h1 a:hover {
+  text-decoration: none;
+  color: #d99236;
+}
+
+p {
+  overflow-y: hidden;
+}
+
+.content a {
+  overflow: visible;
+}
+
+.footmid {
+  display: flex;
+  flex-direction: row;
+}
+.ryt {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.title {
+  font-family: "Electro Shackle";
+  text-align: center;
+  font-size: 2.5em;
+  padding: 1em;
+  color: black;
+  font-weight: bold;
+  /* text-shadow: 0px 2px 2px white; */
+  display: flex;
+  overflow: unset;
+}
+.txt {
+  font-family: "Electro Shackle";
+  text-shadow: 5px 5px 5px var(--myQriosity);
+}
+
+.n2_ {
+  font-family: "Electro Shackle";
+  text-shadow: 5px 5px 5px var(--myNumber);
+}
