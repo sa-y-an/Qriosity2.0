@@ -92,4 +92,14 @@
       </div>
     </div>
   </body>
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'user/particles.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
 </html>

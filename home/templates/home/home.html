@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <div id="particles-js"></div>
     <div class="container">
         <header>
@@ -133,7 +132,7 @@
     let tl = gsap.timeline();
     tl.from("#particles-js", {
             x: -500,
-            opacity: 0
+            opacity: 0,
         })
         .from("header", {
             y: -100,
@@ -141,21 +140,21 @@
         })
         .from("footer", {
             y: 100,
-            opacity: 0
+            opacity: 0,
         })
         .from(".details", {
             height: 0,
-            opacity: 0
+            opacity: 0,
         })
         .from(".title", {
             x: -50,
-            opacity: 0
+            opacity: 0,
         });
 
     let tl2 = gsap.timeline({
         duration: 1,
         yoyo: true,
-        repeat: -1
+        repeat: -1,
     });
     tl2
         .to("html", {

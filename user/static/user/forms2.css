@@ -6,15 +6,24 @@
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
 }
+
+#particles-js {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: rgba(0, 0, 0);
+}
 .container {
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  /* background-color: black; */
   color: white;
+  pointer-events: none;
 }
 
 .box {
@@ -215,4 +224,11 @@ p {
 
 .content a {
   overflow: visible;
+}
+
+.submit {
+  pointer-events: all;
+}
+header {
+  pointer-events: all;
 }
