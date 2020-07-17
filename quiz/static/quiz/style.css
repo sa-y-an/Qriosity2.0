@@ -254,3 +254,8 @@ p {
 .title a:hover {
   color: #d99236;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+}

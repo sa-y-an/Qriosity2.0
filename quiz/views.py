@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 
 value = False
 
+
 @login_required(login_url='/login', redirect_field_name=None)
 def Algo(request):
     question = Stage_1.objects.all()
@@ -175,7 +176,7 @@ def Individual(request, qid):
             if (i.solved == True):  # checks if player have solved the question
                 flag = True
                 # then returns the solved page
-                return render(request, 'quiz/solved.html')
+                return render(request, 'quiz/solved.html', {"all": all})
             else:
                 flag = True
                 if request.method == "GET":     # if the player comes for the question
@@ -196,7 +197,7 @@ def Individual(request, qid):
                             i.solved = True         # the question is set to solved corrosponding to that level
                             i.save()
                             player.save()
-                            return render(request, 'quiz/solved.html')
+                            return render(request, 'quiz/solved.html', {"all": all})
 
                         # incorrect answer
                         else:   # returns the same question
@@ -226,7 +227,7 @@ def Individual(request, qid):
                     i.solved = True  # sets the solved to true
                     i.save()
                     player.save()
-                    return render(request, 'quiz/solved.html')
+                    return render(request, 'quiz/solved.html', {"all": all})
                 else:   # returns the same question
                     value = False
                     return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "all": all})
