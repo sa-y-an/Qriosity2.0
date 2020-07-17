@@ -144,16 +144,6 @@ footer img {
 }
 
 @media screen and (max-width: 480px) {
-    html,
-    body {
-        background: url("404p.png");
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
     nav {
         font-size: 10px;
     }
