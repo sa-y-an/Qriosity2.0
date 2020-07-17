@@ -1,98 +1,93 @@
 {% load static %}
 
 <head>
-  <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
-  <link rel="shortcut icon" href="{%  static 'favicon.ico' %}" />
-  <title>Stage 2 Index</title>
-  <style>
-    img {
-      max-height: 30vh;
-    }
-
-    .content {
-      justify-content: start;
-    }
-
-    .questions {
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.2);
-      color: rgb(163, 151, 125);
-      border-radius: 50px;
-      margin: 10px;
-      padding: 20px;
-    }
-
-    .propic {
-      height: 20vh;
-      width: 20vh;
-      border-radius: 100px;
-    }
-
-    .nosolved {
-      text-align: center;
-      color: #8e6023;
-      background-color: rgba(0, 0, 0, 0.1);
-      padding: 20px;
-    }
-  </style>
+    <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
+    <link rel="shortcut icon" href="{%  static 'quiz/favicon.ico' %}" />
+    <title>Stage 2 Index</title>
+    <style>
+        img {
+            max-height: 30vh;
+        }
+        
+        .content {
+            justify-content: start;
+        }
+        
+        .questions {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: rgb(163, 151, 125);
+            border-radius: 50px;
+            margin: 10px;
+            padding: 20px;
+        }
+        
+        .propic {
+            height: 20vh;
+            width: 20vh;
+            border-radius: 100px;
+        }
+        
+        .nosolved {
+            text-align: center;
+            color: #8e6023;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+    </style>
 </head>
 <div class="container">
-  {% include 'partials/_nav2.html' %}
+    {% include 'partials/_nav2.html' %}
 
-  <div class="content">
-    <br />
-    <h3 align="center">
-      Congratulations {{player.name }} <br />
-      on reaching Stage 2 !!!
-    </h3>
-    <br />
-    <img src="{{player.image}}" alt="{{ player.name }}" class="propic" />
-    <br />
-    <p align="center">
-      You have been excellent this far !! ✌
-      <br />
-      We wish you all the best. 👍👍
-    </p>
-    <br />
+    <div class="content">
+        <br />
+        <h3 align="center">
+            Congratulations {{player.name }} <br /> on reaching Stage 2 !!!
+        </h3>
+        <br />
+        <img src="{{player.image}}" alt="{{ player.name }}" class="propic" />
+        <br />
+        <p align="center">
+            You have been excellent this far !! ✌
+            <br /> We wish you all the best. 👍👍
+        </p>
+        <br />
 
-    <h6 align="center">
-      To view or answer a question click on its title
-      <br />
-      (you can always come back to this page)
-    </h6>
-    <br />
+        <h6 align="center">
+            To view or answer a question click on its title
+            <br /> (you can always come back to this page)
+        </h6>
+        <br />
 
-    <hr width="50%" color="#C98732" />
-    <br />
-    <h4 class="nosolved">
-      Till Now you have solved
-      <br />
-      {{player.count2}} question{{ player.count2|pluralize}} in Stage 2
-    </h4>
-    <br />
-    {% for i in q %}
-    <div class="questions">
-      <div class="number">
-        Question No. {{i.level}}
-      </div>
-      <div class="title">
-        <a href="{% url 'quiz:individual' i.level %}">
+        <hr width="50%" color="#C98732" />
+        <br />
+        <h4 class="nosolved">
+            Till Now you have solved
+            <br /> {{player.count2}} question{{ player.count2|pluralize}} in Stage 2
+        </h4>
+        <br /> {% for i in q %}
+        <div class="questions">
+            <div class="number">
+                Question No. {{i.level}}
+            </div>
+            <div class="title">
+                <a href="{% url 'quiz:individual' i.level %}">
           {{ i.title }}
         </a>
-      </div>
-      <!-- <div class="description">
+            </div>
+            <!-- <div class="description">
         {{i.description}}
       </div> -->
-      {% if i.image %}
-      <div class="image">
-        <img src="{{i.image}}" alt="{{i.title}}" />
-      </div>
-      {% endif %}
+            {% if i.image %}
+            <div class="image">
+                <img src="{{i.image}}" alt="{{i.title}}" />
+            </div>
+            {% endif %}
+        </div>
+        {% if i.files%}
+        <div class="files">
+            <audio src="{{i.files.url}}" controls></audio>
+        </div>
+        {% endif %} {% endfor %}
     </div>
-    {% if i.files%}
-    <div class="files">
-      <audio src="{{i.files.url}}" controls></audio>
-    </div>
-    {% endif %} {% endfor %}
-  </div>
 </div>
