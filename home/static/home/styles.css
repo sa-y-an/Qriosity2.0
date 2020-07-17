@@ -15,7 +15,7 @@ html {
 #particles-js {
     min-height: 100vh;
     min-width: 100vw;
-    background: url("home/the-imitation-game-2.png");
+    background: url("the-imitation-game-2.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -174,7 +174,7 @@ footer img {
 
 @media screen and (max-width: 480px) {
     #particle-js {
-        background: url("home/the-imitation-game-2p.png");
+        background: url("the-imitation-game-2p.png");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
