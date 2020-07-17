@@ -17,11 +17,12 @@
   align-items: center;
   min-height: 100vh;
   width: 100vw !important;
-  background-color: black;
-  background: url("Finish.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center bottom;
+  background: linear-gradient(
+    111.13507808107465deg,
+    rgba(152, 39, 9, 1) 5.533854166666667%,
+    rgba(0, 2, 0, 1) 96.67968749999999%
+  );
+
   color: white;
 }
 .content {
@@ -39,7 +40,7 @@ header {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   color: white;
   padding: 10px;
@@ -55,6 +56,8 @@ header h1 {
   flex-shrink: 0;
   display: flex;
   margin-left: 5px;
+  justify-content: center;
+  text-align: center;
 }
 
 nav {
@@ -71,7 +74,7 @@ a:any-link {
   text-decoration: none;
   list-style: none;
   color: white;
-  text-align: justify;
+  text-align: center;
 }
 
 header a:hover {
@@ -176,12 +179,6 @@ form {
   nav {
     font-size: 10px !important;
   }
-  .container {
-    background: url("mfinish.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-  }
 }
 
 header h1 {
@@ -190,6 +187,7 @@ header h1 {
 
 .qriosity {
   font-family: "Electro Shackle";
+  text-align: center;
 }
 
 footer {
@@ -244,4 +242,50 @@ h1 a:hover {
 
 p {
   overflow-y: hidden;
+}
+
+.circle img {
+  height: 30vh;
+  width: 30vh;
+}
+
+.congrate {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  overflow: unset;
+}
+
+header a:hover {
+  color: #d08c34;
+  text-emphasis: bold;
+  text-decoration: underline;
+  text-shadow: none;
+}
+
+footer {
+  height: 5vh;
+  width: 100vw;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  /* flex-direction: row-reverse; */
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 3px 3px 3px var(--myNumber);
+  pointer-events: all;
+}
+
+footer img {
+  display: flex;
+  height: 4.5vh;
 }

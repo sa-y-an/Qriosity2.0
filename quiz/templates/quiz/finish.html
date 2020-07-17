@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'quiz/finish.css' %}" />
-    <title>The End</title>
+    <title>Congratulations 😁!!!</title>
 
     <style>
         .box {
@@ -20,7 +20,15 @@
 <body>
     <div class="container">
         {% include 'partials/_nav2.html' %}
-        <div class="content">
+        <div class="content">'
+            <div class="circle">
+                <img src="{% static 'WHEEL2.png'%}" alt="wheel">
+            </div>
+            <div class="congrate">
+                Congratulations 😃
+                <br>
+                you have finished this mission 😁.
+            </div>
             <div class="box">
                 <h3>
                     Visit
@@ -39,19 +47,53 @@
         </div>
 
         <footer>
-            <div>
-                <a href="http://www.ieeesbnitdgp.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
-                </a>
+            <div class="footleft">
+              <a
+                href="https://www.ieee.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif"
+                  alt="ieee"
+                />
+              </a>
             </div>
-
-            <div>&copy; IEEE SB NITD</div>
+            <div class="fbook">
+              <a
+                href="https://www.facebook.com/nitdgpieeesociety/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://img.icons8.com/fluent/48/000000/facebook-new.png"
+                />
+              </a>
+            </div>
+            <div class="insta">
+              <a
+                href="https://www.instagram.com/ieeesb_nitdgp/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://img.icons8.com/fluent/48/000000/instagram-new.png"
+                />
+              </a>
+            </div>
             <div>
-                <a href="http://www.ieeesbnitdgp.com/#contact-us" target="_blank" rel="noopener noreferrer">
-              Contact Us
-            </a>
-
-        </footer>
+              <div class="footmid">
+                <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
+                <a
+                  href="http://www.ieeesbnitdgp.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+                </a>
+              </div>
+            </div>
+          </footer>
         </div>
     </div>
 </body>
