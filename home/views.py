@@ -12,6 +12,10 @@ def home(request):
     return render(request, 'home/home.html')
 
 
+def hello(request):
+    return render(request, 'home/hello.html')
+
+
 @user_passes_test(not_logged_in, login_url='/user/dashboard', redirect_field_name=None)
 def login(request):
     return render(request, 'home/login.html')

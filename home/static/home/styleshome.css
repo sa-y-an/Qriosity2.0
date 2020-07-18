@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
 * {
   margin: 0px;
   padding: 0px;
@@ -7,10 +8,14 @@
   font-family: "Montserrat", sans-serif;
 }
 
+html {
+  --myQriosity: white;
+  --myNumber: #d99236;
+}
 #particles-js {
-  background: url("homebg.png");
   min-height: 100vh;
   min-width: 100vw;
+  background: url("homebg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -24,8 +29,11 @@
   align-items: center;
   min-height: 100vh;
   width: 100vw !important;
+  /* background-color: black; */
   color: white;
   pointer-events: none;
+  /* background: black;
+  mix-blend-mode: lighten; */
 }
 
 .content {
@@ -37,6 +45,7 @@
   min-height: 80vh;
   width: 100vw;
   display: flex;
+  font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -46,11 +55,11 @@ header {
   justify-content: space-around;
   align-items: center;
   color: white;
-  padding: 5px;
+  padding: 10px;
   flex-wrap: wrap;
   min-height: 10vh;
   background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 0 6px 6px #d99236;
+  box-shadow: 0px 0 6px 6px var(--myNumber);
   pointer-events: all;
 }
 
@@ -61,7 +70,7 @@ header h1 {
   display: flex;
   margin-left: 5px;
   padding: 10px;
-  margin-top: 3px;
+  padding-top: 3px;
 }
 
 nav {
@@ -132,15 +141,15 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 3px 3px 3px #a26d28;
+  box-shadow: 0px 3px 3px 3px var(--myNumber);
   pointer-events: all;
 }
 
-.ieee {
+footer img {
   display: flex;
-  height: 5vh;
+  height: 4.5vh;
 }
 
 .details {
@@ -154,8 +163,10 @@ footer {
   background-color: rgba(0, 0, 0, 0.6);
   padding: 15px;
   border-radius: 15px;
-  box-shadow: 0px 2px 2px 2px #a26d28;
+  box-shadow: 0px 2px 2px 2px var(--myNumber);
   pointer-events: all;
+
+  overflow: unset;
 }
 
 .copyrt {
@@ -171,16 +182,6 @@ footer {
   }
 }
 
-.footmid {
-  display: flex;
-  flex-direction: row;
-}
-
-footer img {
-  display: flex;
-  height: 4.5vh;
-}
-
 @media screen and (max-width: 480px) {
   nav {
     font-size: 10px;
@@ -189,71 +190,8 @@ footer img {
     margin-right: 8%;
   }
 }
-
 .qriosity {
   font-family: "Electro Shackle";
-}
-
-.icon3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  pointer-events: all;
-}
-
-.fb-log {
-  background-color: transparent;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: transparent;
-  border-color: transparent;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.google-log {
-  background-color: transparent;
-  background-image: url("google.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border-color: transparent;
-  margin-right: 10px;
-}
-
-.fb-log:hover {
-  background-color: transparent;
-  background-image: url("fb3.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: transparent;
-  border-color: transparent;
-  box-shadow: 0 0 5px 5px #354c8c;
-  opacity: 0.7;
-}
-
-.google-log:hover {
-  background-color: transparent;
-  background-image: url("google.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-color: transparent;
-  box-shadow: 0 0 5px 5px #e74b37;
-  opacity: 0.7;
-}
-
-.box {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 25px;
-  text-align: center;
-  /* display: flex;
-  flex-direction: column; */
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 2px 2px 2px #a26d28;
 }
 
 header a:hover {
@@ -285,4 +223,35 @@ p {
 
 .content a {
   overflow: visible;
+}
+
+.footmid {
+  display: flex;
+  flex-direction: row;
+}
+.ryt {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.title {
+  font-family: "Electro Shackle";
+  text-align: center;
+  font-size: 2.5em;
+  padding: 1em;
+  color: black;
+  font-weight: bold;
+  /* text-shadow: 0px 2px 2px white; */
+  display: flex;
+  overflow: unset;
+}
+.txt {
+  font-family: "Electro Shackle";
+  text-shadow: 5px 5px 5px var(--myQriosity);
+}
+
+.n2_ {
+  font-family: "Electro Shackle";
+  text-shadow: 5px 5px 5px var(--myNumber);
 }

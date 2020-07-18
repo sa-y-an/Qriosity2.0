@@ -9,16 +9,8 @@
       name="google-site-verification"
       content="erdtRhDLOXg-PvdCE4oD67-K04-RPQtqTtkJGWUYj9U"
     />
-    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}" />
-
+    <link rel="stylesheet" href="{% static 'home/styleshome.css'%}" />
     <title>Qriosity 2.0</title>
-    <link rel="stylesheet" href="{% static 'home/styles.css' %}" />
-    <!-- <link rel="stylesheet" href="{% static 'home/style.css'%}" /> -->
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/qw4.png' %}"
-      type="image/png"
-    />
   </head>
 
   <body>
@@ -159,6 +151,16 @@
       </footer>
     </div>
   </body>
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'home/home.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"
     integrity="sha512-elauk8NI35rjTlatfRQxeqmJoieQlfm0W8AeQVps+j+KkMDdaqNxVazFzwyU7uSOyeeVn/VLbGYLwOR/D5I6Kw=="

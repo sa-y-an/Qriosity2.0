@@ -29,8 +29,8 @@ urlpatterns = [
     path('oauth/', include('social_django.urls', namespace='social')),
     #path('login/', home.views.home, name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    #path('user/',user.views.user,name='user'),
-    
+    # path('user/',user.views.user,name='user'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

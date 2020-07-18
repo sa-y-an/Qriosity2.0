@@ -3,14 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'home/loginstyle.css'%}" />
-    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'home/loginstyle.css' %}" />
+
     <title>Rules</title>
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/qw4.png' %}"
-      type="image/png"
-    />
     <style>
       .box {
         margin: 10px;
@@ -172,7 +167,6 @@
         </div>
         <div>
           <div class="footmid">
-            <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
             <a
               href="http://www.ieeesbnitdgp.com/"
               target="_blank"
@@ -185,4 +179,14 @@
       </footer>
     </div>
   </body>
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'home/home.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
 </html>
