@@ -105,13 +105,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'home/static/home/'),
-    os.path.join(BASE_DIR, 'quiz/static/quiz/'),
-    os.path.join(BASE_DIR, 'user/static/user'),
-]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
