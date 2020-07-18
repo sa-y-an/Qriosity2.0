@@ -6,3 +6,4 @@ __pycache__/
 *.pot
 *.log
 .__pycache__/local_settings.cpython-38.pyc
+staticfiles
