@@ -235,3 +235,11 @@ p {
   font-family: "Electro Shackle";
   text-shadow: 5px 5px 5px var(--myNumber);
 }
+
+.details {
+  margin-bottom: 2em;
+}
+
+.para {
+  overflow: unset;
+}
