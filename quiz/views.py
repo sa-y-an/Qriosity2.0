@@ -8,6 +8,8 @@ from datetime import datetime, timedelta
 # Create your views here.
 
 value = False
+hintValue = False
+hintButton = True
 
 
 @login_required(login_url='/login', redirect_field_name=None)
@@ -33,7 +35,7 @@ def StageOne(request):
 
         question = get_object_or_404(Stage_1, level=int(question_level))
         my_form = UserAnswer
-        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value})
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hintButton": hintButton})
     if player.level2 > -1:
         q = StageTwo.objects.all()
         player = get_object_or_404(Player, user=request.user)
@@ -45,12 +47,15 @@ def StageOne(request):
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Stage1Hint(request):
+    my_form = UserAnswer
+    hintButton = False
+    hintValue = True
     player = get_object_or_404(Player, user=request.user)
     player.score -= 1
     player.save()
     question_level = player.question_level
     question = get_object_or_404(Stage_1, level=int(question_level))
-    return render(request, 'quiz/hints.html', {"question": question})
+    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hintButton": hintButton, "hintValue": hintValue})
 
 
 @login_required(login_url='/login', redirect_field_name=None)
@@ -94,11 +99,11 @@ def Stage1Answer(request):
                     return render(request, 'quiz/end.html', {"form": formp, "check": check})
                 else:
                     formp = UserAnswer
-                    return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value})
+                    return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value, "hintButton": hintButton})
             else:
                 formp = UserAnswer
                 value = True
-                return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value})
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value, "hintButton": hintButton})
         else:
             return HttpResponse('<h2> Form data not valid</h2>')
 
