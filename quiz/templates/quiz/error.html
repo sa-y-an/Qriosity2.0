@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{%  static 'quiz/favicon.ico' %}">
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
     <title>Error</title>
     <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        {% include 'partials/_navbar.html' %}
-        <div class="content">
-            <h4>
-                Error Page
-            </h4>
-        </div>
+      {% include 'partials/_navbar.html' %}
+      <div class="content">
+        <h4>
+          Error Page
+        </h4>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
