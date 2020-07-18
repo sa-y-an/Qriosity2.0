@@ -1,92 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+  {% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'home/404.css' %}">
-    <link rel="shortcut icon" href="{%  static 'home/favicon.ico' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'home/404.css' %}" />
     <title>404:Page Not Found</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header>
-            <h1>
-                <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-            </h1>
-            <br />
+      <header>
+        <h1>
+          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+        </h1>
+        <br />
 
-            <nav>
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:formdata' %}"> Profile</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'home:login' %}">Login</a>
-                    </li>
+        <nav>
+          <ul>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Profile</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'home:login' %}">Login</a>
+            </li>
 
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
 
-        <img src="{% static 'home/404.png' %}" alt="">
-        <img src="{% static 'home/pnf.png' %}" alt="">
+      <img src="{% static 'home/404.png' %}" alt="" />
+      <img src="{% static 'home/pnf.png' %}" alt="" />
 
-        <footer>
-            <div class="footleft">
-                <a href="https://www.ieee.org/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif" alt="ieee" />
-                </a>
-            </div>
-            <div class="fbook">
-                <a href="https://www.facebook.com/nitdgpieeesociety/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" />
-                </a>
-            </div>
-            <div class="insta">
-                <a href="https://www.instagram.com/ieeesb_nitdgp/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" />
-                </a>
-            </div>
-            <div>
-                <div class="footmid">
-                    <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
-                    <a href="http://www.ieeesbnitdgp.com/" target="_blank" rel="noopener noreferrer">
-                        <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
-                    </a>
-                </div>
-            </div>
-        </footer>
+      <footer>
+        <div class="footleft">
+          <a
+            href="https://www.ieee.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif"
+              alt="ieee"
+            />
+          </a>
+        </div>
+        <div class="fbook">
+          <a
+            href="https://www.facebook.com/nitdgpieeesociety/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.icons8.com/fluent/48/000000/facebook-new.png"
+            />
+          </a>
+        </div>
+        <div class="insta">
+          <a
+            href="https://www.instagram.com/ieeesb_nitdgp/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.icons8.com/fluent/48/000000/instagram-new.png"
+            />
+          </a>
+        </div>
+        <div>
+          <div class="footmid">
+            <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
+            <a
+              href="http://www.ieeesbnitdgp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
-</body>
-
+  </body>
 </html>
