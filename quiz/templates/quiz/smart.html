@@ -1,28 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{%  static 'quiz/favicon.ico' %}">
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
     <title>No peeking ahead</title>
     <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        {% include 'partials/_navbar.html' %}
-        <div class="content">
-            <h1>
-                No peeking ahead
-            </h1>
-            <br />
-            <h1>
-                We are omnipotent
-            </h1>
-        </div>
+      {% include 'partials/_navbar.html' %}
+      <div class="content">
+        <h1>
+          No peeking ahead
+        </h1>
+        <br />
+        <h1>
+          We are omnipotent
+        </h1>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

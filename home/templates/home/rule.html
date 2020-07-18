@@ -1,123 +1,196 @@
 <!DOCTYPE html> {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'home/loginstyle.css'%}" />
-    <link rel="shortcut icon" href="{%  static 'home/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'home/loginstyle.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
     <title>Rules</title>
-    <link rel="shortcut icon" href="{% static 'home/qw4.png' %}" type="image/png" />
     <style>
-        .box {
-            margin: 10px;
-            pointer-events: all;
-        }
-    </style>
-</head>
+      .box {
+        margin: 10px;
+        pointer-events: all;
+      }
+      .panel {
+        max-width: 70vw;
+      }
 
-<body>
+      #particles-js {
+        background: black;
+      }
+
+      @media screen and (max-width: 480px) {
+        .panel {
+          font-size: 10px;
+        }
+      }
+      ul {
+        list-style: georgian;
+      }
+
+      li {
+        text-decoration: white;
+      }
+      .listr {
+        list-style: disc;
+      }
+    </style>
+  </head>
+
+  <body>
     <div id="particles-js"></div>
     <div class="container">
-        <header>
-            <h1>
-                <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-            </h1>
-            <br />
+      <header>
+        <h1>
+          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+        </h1>
+        <br />
 
-            <nav>
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:formdata' %}"> Profile</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'home:login' %}">Login</a>
-                    </li>
+        <nav>
+          <ul>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Profile</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'home:login' %}">Login</a>
+            </li>
 
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
 
-        <div class="content">
-            <div class="box">
-                <div class="panel">
-                    <h2>Rules & Regulations:</h2>
-                    <ul style="list-style: none; padding: 10px;">
-                        <li style="padding: 5px;">All Questions Are Compulsory.</li>
-                        <li style="padding: 5px;">
-                            You Cannot Submit Answer twice. <br />
-                        </li>
-                        <li style="padding: 5px;">Admin decision is final.</li>
-                        <li style="padding: 5px;">Enter Only answer nothing else</li>
-                        <li style="padding: 5px;">All the Best!</li>
-                    </ul>
-                </div>
-            </div>
+      <div class="content">
+        <div class="box">
+          <div class="panel">
+            <h2>Rules & Regulations:</h2>
+            <ul class="listr">
+              <li>
+                Round 1 consists of a total of 10 questions carrying 10 points
+                each .
+              </li>
+              <li>
+                Solving 1st round shall help to generate a passcode to enter
+                Round 2 following set of Algorithms.
+              </li>
+              <li>
+                Round 2 carries 5 questions carrying 15 points each .
+              </li>
+              <li>
+                Questions of Round 1 and Round 2 are supplied by hints
+                ,unlocking which shall further lead to a deduction of 5 points
+                per hint unlocked .
+              </li>
+              <li>
+                Answers to the questions have to be given in a format that shall
+                not contain any spaces and special characters to separate words
+                and shall all be in lower case . For example to answer for m-rna
+                you must write mrna.
+              </li>
+              <li>
+                If the question asks for three values ,the answer must be
+                specified in proper sequence of the variables without space.
+              </li>
+              <li>
+                The one who completes both the round and is able to crack the
+                code shall be the final winner .
+              </li>
+              <li>
+                In case of a tie ,time taken for final submission shall be the
+                deciding factor .
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <footer>
-            <div class="footleft">
-                <a href="https://www.ieee.org/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif" alt="ieee" />
-                </a>
-            </div>
-            <div class="fbook">
-                <a href="https://www.facebook.com/nitdgpieeesociety/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" />
-                </a>
-            </div>
-            <div class="insta">
-                <a href="https://www.instagram.com/ieeesb_nitdgp/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" />
-                </a>
-            </div>
-            <div>
-                <div class="footmid">
-                    <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
-                    <a href="http://www.ieeesbnitdgp.com/" target="_blank" rel="noopener noreferrer">
-                        <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
-                    </a>
-                </div>
-            </div>
-        </footer>
+      <footer>
+        <div class="footleft">
+          <a
+            href="https://www.ieee.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif"
+              alt="ieee"
+            />
+          </a>
+        </div>
+        <div class="fbook">
+          <a
+            href="https://www.facebook.com/nitdgpieeesociety/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.icons8.com/fluent/48/000000/facebook-new.png"
+            />
+          </a>
+        </div>
+        <div class="insta">
+          <a
+            href="https://www.instagram.com/ieeesb_nitdgp/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.icons8.com/fluent/48/000000/instagram-new.png"
+            />
+          </a>
+        </div>
+        <div>
+          <div class="footmid">
+            <a
+              href="http://www.ieeesbnitdgp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
-</body>
-<script src="{% static 'user/particles.js' %}"></script>
-<script>
+  </body>
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
     particlesJS.load(
-        "particles-js",
-        "{% static 'home/home.json' %}",
-        function() {
-            console.log("Hi Qriosity Player");
-        }
+      "particles-js",
+      "{% static 'home/home.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
     );
-</script>
-
+  </script>
 </html>

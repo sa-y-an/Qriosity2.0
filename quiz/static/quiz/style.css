@@ -7,10 +7,6 @@
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
-@font-face {
-  font-family: "Electro Shackle";
-  src: url("Electro Shackle.otf");
-}
 
 .container {
   display: flex;
@@ -253,4 +249,9 @@ p {
 
 .title a:hover {
   color: #d99236;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
 }

@@ -1,54 +1,56 @@
 <!DOCTYPE html> {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{%  static 'quiz/favicon.ico' %}">
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
     <title>Algorithms</title>
     <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
-</head>
-<style>
+  </head>
+  <style>
     .context {
-        background-color: rgba(255, 255, 255, 0.1);
-        margin: 10px;
-        padding: 20px;
-        padding-left: 30px;
-        margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 10px;
+      padding: 20px;
+      padding-left: 30px;
+      margin-bottom: 20px;
     }
-    
+
     .context ul {
-        color: #a26d28;
+      color: #a26d28;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <div class="container">
-        <!-- navbar -->
-        {% include 'partials/_navbar.html' %}
-        <div class="content">
-            <h2 align="center">
-                The Algorithms to fetch the Passcode are
-            </h2>
+      <!-- navbar -->
+      {% include 'partials/_navbar.html' %}
+      <div class="content">
+        <h2 align="center">
+          The Algorithms to fetch the Passcode are
+        </h2>
 
-            <div class="algo">
-                {% for question in questions %}
-                <div class="context">
-                    <ul>
-                        <li>Question Level : {{ question.level}}</li>
+        <div class="algo">
+          {% for question in questions %}
+          <div class="context">
+            <ul>
+              <li>Question Level : {{ question.level}}</li>
 
-                        <li>
-                            Question Title : {{ question.title }}
-                        </li>
-                        <li>Algorithm :</li>
-                    </ul>
-                    {{ question.algo|safe}}
-                </div>
+              <li>
+                Question Title : {{ question.title }}
+              </li>
+              <li>Algorithm :</li>
+            </ul>
+            {{ question.algo|safe}}
+          </div>
 
-                {% endfor %}
-            </div>
+          {% endfor %}
         </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
