@@ -1,0 +1,76 @@
+{% load static %}
+
+<style>
+  footer {
+    height: 5vh;
+    width: 100vw;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 3px 3px 3px var(--myNumber);
+    pointer-events: all;
+    overflow: unset;
+  }
+
+  footer img {
+    display: flex;
+    height: 4.5vh;
+  }
+</style>
+
+<br />
+<br />
+<br /><br />
+<br />
+<br /><br />
+<br />
+<br /><br />
+<br />
+<br />
+
+<footer>
+  <div class="footleft">
+    <a href="https://www.ieee.org/" target="_blank" rel="noopener noreferrer">
+      <img
+        src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif"
+        alt="ieee"
+      />
+    </a>
+  </div>
+  <div class="fbook">
+    <a
+      href="https://www.facebook.com/nitdgpieeesociety/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" />
+    </a>
+  </div>
+  <div class="insta">
+    <a
+      href="https://www.instagram.com/ieeesb_nitdgp/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" />
+    </a>
+  </div>
+  <div>
+    <div class="footmid">
+      <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
+      <a
+        href="http://www.ieeesbnitdgp.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
+      </a>
+    </div>
+  </div>
+</footer>
