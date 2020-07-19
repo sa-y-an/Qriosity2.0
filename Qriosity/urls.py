@@ -7,7 +7,7 @@ import user
 import home
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('harrypotter/', admin.site.urls),
     path('user/', include('user.urls')),
     path('quiz/', include('quiz.urls')),
     path('', include('home.urls')),
