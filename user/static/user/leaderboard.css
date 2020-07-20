@@ -147,7 +147,8 @@ text-shadow: 1px 1px #d79b58; */
 }
 
 .thname {
-    font-size: 0.7em;
+    font-size: larger;
+    font-weight: 700;
     margin: 0;
     margin-top: 10px;
 }
@@ -358,8 +359,7 @@ footer {
     margin: 10px;
     padding: 10px;
     border-radius: 20px;
-    font-weight: bold;
-    box-shadow: 0px 1px 1px 1px #C58B3F;
+    font-weight: 700;
 }
 
 .topper {
