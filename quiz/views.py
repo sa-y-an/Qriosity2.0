@@ -26,7 +26,6 @@ def StageOne(request):
     if player.level2 < 0:
         player = get_object_or_404(Player, user=request.user)
         question_level = player.question_level
-        player.save()
 
         if player.question_level > Stage_1.objects.count():
             formp = UserAnswer
@@ -35,6 +34,7 @@ def StageOne(request):
 
         question = get_object_or_404(Stage_1, level=int(question_level))
         my_form = UserAnswer
+
         return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hintButton": hintButton})
     if player.level2 > -1:
         q = StageTwo.objects.all()
@@ -77,7 +77,7 @@ def Stage1Answer(request):
 
             ans = my_form.cleaned_data.get("answer")
 
-            if (str(ans) == str(question.answer)):
+            if (str(ans).lower() == str(question.answer).lower()):
                 value = False
                 player.score += 3
                 player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
@@ -133,7 +133,7 @@ def Passcode(request):
             # print(my_form.cleaned_data)
             ans = my_form.cleaned_data.get("answer")
 
-            if (str(ans) == str(code)):
+            if (str(ans).lower() == str(code).lower()):
                 player = get_object_or_404(Player, user=request.user)
                 player.level2 = 0
                 player.save()
@@ -181,7 +181,7 @@ def Individual(request, qid):
                         organs = get_object_or_404(StageTwo, level=qid).answer
 
                         # correct answer
-                        if (str(organs) == str(ans)):   # if the answer is correct
+                        if (str(organs).lower() == str(ans).lower()):   # if the answer is correct
                             player.score += 5
                             player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                             player.count2 += 1          # count of solved questions
@@ -210,7 +210,8 @@ def Individual(request, qid):
             if my_form.is_valid():
                 ans = my_form.cleaned_data.get("answer")
                 organs = get_object_or_404(StageTwo, level=qid).answer
-                if (str(organs) == str(ans)):  # if the player succesfully solves the question
+                # if the player succesfully solves the question
+                if (str(organs).lower() == str(ans).lower()):
                     player.score += 5
                     player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                     player.count2 += 1          # count of solved questions
