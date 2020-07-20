@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 value = False
 hintValue = False
 hintButton = True
+question1 = Stage_1.objects.all()
 
 
 @login_required(login_url='/login', redirect_field_name=None)
@@ -21,7 +22,6 @@ def Algo(request):
 @login_required(login_url='/login', redirect_field_name=None)
 def StageOne(request):
     player = get_object_or_404(Player, user=request.user)
-    # print(player.level2)
 
     if player.level2 < 0:
         player = get_object_or_404(Player, user=request.user)
@@ -34,8 +34,13 @@ def StageOne(request):
 
         question = get_object_or_404(Stage_1, level=int(question_level))
         my_form = UserAnswer
-
-        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hintButton": hintButton})
+        hall = player.stageonehint_set.all()
+        for i in hall:
+            if i.level == question_level:
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": i.taken})
+        player.stageonehint_set.create(level=int(question_level), taken=False)
+        hint = player.stageonehint_set.get(level=int(question_level))
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": hint.taken})
     if player.level2 > -1:
         q = StageTwo.objects.all()
         player = get_object_or_404(Player, user=request.user)
@@ -47,15 +52,19 @@ def StageOne(request):
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Stage1Hint(request):
-    my_form = UserAnswer
-    hintButton = False
-    hintValue = True
     player = get_object_or_404(Player, user=request.user)
-    player.score -= 1
-    player.save()
-    question_level = player.question_level
-    question = get_object_or_404(Stage_1, level=int(question_level))
-    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hintButton": hintButton, "hintValue": hintValue})
+    hint = player.stageonehint_set.get(level=int(player.question_level))
+    my_form = UserAnswer
+    if hint.taken == True:
+        question_level = player.question_level
+        question = get_object_or_404(Stage_1, level=int(question_level))
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": hint.taken})
+    else:
+        player.score -= 5
+        player.save()
+        question_level = player.question_level
+        question = get_object_or_404(Stage_1, level=int(question_level))
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": hint.taken})
 
 
 @login_required(login_url='/login', redirect_field_name=None)
