@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Player, PlayerDetails, Solved
+from .models import Player, PlayerDetails, Solved, StageOneHint
 
 
 admin.site.site_header = "Qriosity 2.0"
@@ -13,13 +13,18 @@ class PlayerDetailsInline(admin.TabularInline):
 
 class SolvedInline(admin.TabularInline):
     model = Solved
-    extra = 1
+    extra = 0
+
+
+class StageOneInline(admin.TabularInline):
+    model = StageOneHint
+    extra = 0
 
 
 class PlayerAdmin(admin.ModelAdmin):
     fieldsets = [(None, {'fields': ['user', 'name', 'score', 'question_level', 'level2', 'count2']}),
                  ('Other Informations', {'fields': ['image', 'rank', 'email', 'last_submit'], 'classes': ['collapse']}), ]
-    inlines = [PlayerDetailsInline, SolvedInline]
+    inlines = [PlayerDetailsInline, SolvedInline, StageOneInline]
 
 
 admin.site.register(Player, PlayerAdmin)

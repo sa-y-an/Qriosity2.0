@@ -37,3 +37,9 @@ class Solved(models.Model):
     gamer = models.ForeignKey(Player, on_delete=models.CASCADE)
     level_on = models.IntegerField(default=0, blank=True)
     solved = models.BooleanField(default=False)
+
+
+class StageOneHint(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    level = models.IntegerField(default=0, blank=True)
+    taken = models.BooleanField(default=False)
