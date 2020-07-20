@@ -19,7 +19,6 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  /* background: black; */
 }
 
 .container {
@@ -30,11 +29,7 @@ html {
   align-items: center;
   min-height: 100vh;
   width: 100vw !important;
-  /* background-color: black; */
   color: white;
-  pointer-events: none;
-  /* background: black;
-  mix-blend-mode: lighten; */
 }
 
 .content {

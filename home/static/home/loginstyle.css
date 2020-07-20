@@ -8,7 +8,7 @@
 }
 
 #particles-js {
-  background: url("homebg.png");
+  background: black;
   min-height: 100vh;
   min-width: 100vw;
   background-size: cover;
@@ -25,7 +25,6 @@
   min-height: 100vh;
   width: 100vw !important;
   color: white;
-  pointer-events: none;
 }
 
 .content {
@@ -51,7 +50,6 @@ header {
   min-height: 10vh;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0 6px 6px #d99236;
-  pointer-events: all;
 }
 
 header h1 {
@@ -135,7 +133,6 @@ footer {
   flex-direction: row-reverse;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0px 3px 3px 3px #a26d28;
-  pointer-events: all;
 }
 
 .ieee {
@@ -155,7 +152,6 @@ footer {
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0px 2px 2px 2px #a26d28;
-  pointer-events: all;
 }
 
 .copyrt {
@@ -199,7 +195,6 @@ footer img {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  pointer-events: all;
 }
 
 .fb-log {
@@ -249,8 +244,6 @@ footer img {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 25px;
   text-align: center;
-  /* display: flex;
-  flex-direction: column; */
   align-items: center;
   justify-content: center;
   box-shadow: 0px 2px 2px 2px #a26d28;
