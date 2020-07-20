@@ -38,9 +38,8 @@
             Your previous Answer was wrong
             <br />
             Please try again <br />
-            You can take the hint (you will loose points)
-            <br />
-            if not taken
+            {% if hint %} You can take the hint <br />
+            (you will loose points) {% endif %}
           </div>
           {% endif %}
           <h3>{{ question.title }}</h3>
