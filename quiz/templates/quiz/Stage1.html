@@ -38,8 +38,15 @@
             Your previous Answer was wrong
             <br />
             Please try again <br />
-            {% if hint %} You can take the hint <br />
-            (you will loose points) {% endif %}
+
+            {% if hint %}
+
+            <div class="warning">
+              You can take the hint <br />
+              (you will loose points)
+            </div>
+
+            {% endif %}
           </div>
           {% endif %}
           <h3>{{ question.title }}</h3>
