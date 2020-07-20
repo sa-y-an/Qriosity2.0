@@ -391,7 +391,8 @@ footer img {
 
 @media screen and (max-width: 480px) {
     header nav ul {
-        margin-right: 8%;
+        margin-right: 3.5%;
+        margin-left: -6.5%;
     }
     .box {
         overflow: hidden;
