@@ -189,10 +189,14 @@ header h1 {
 
 .stage1 {
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  padding: 1.3em;
   text-align: center;
   margin-top: 10px;
   border-radius: 30px;
+}
+
+.stage1 p {
+  padding: 0.5em;
 }
 
 .hint1 {
