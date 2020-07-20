@@ -61,6 +61,8 @@ def Stage1Hint(request):
         return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": hint.taken})
     else:
         player.score -= 5
+        hint.taken = True
+        hint.save()
         player.save()
         question_level = player.question_level
         question = get_object_or_404(Stage_1, level=int(question_level))
