@@ -84,13 +84,14 @@ def Stage1Answer(request):
             return render(request, 'quiz/end.html', {"form": formp, "check": check})
 
         my_form = UserAnswer(request.POST)
+
         if my_form.is_valid():
 
             ans = my_form.cleaned_data.get("answer")
 
             if (str(ans).lower() == str(question.answer).lower()):
                 value = False
-                player.score += 3
+                player.score += 15
                 player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                 player.question_level += 1
 
@@ -109,12 +110,19 @@ def Stage1Answer(request):
                     check = False
                     return render(request, 'quiz/end.html', {"form": formp, "check": check})
                 else:
-                    formp = UserAnswer
-                    return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value, "hintButton": hintButton})
+                    my_form1 = UserAnswer
+                    player.stageonehint_set.create(
+                        level=int(question_level), taken=False)
+                    hint = player.stageonehint_set.get(
+                        level=int(question_level))
+                    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form1, "value": value, "hint": hint.taken})
+
             else:
-                formp = UserAnswer
+                my_form1 = UserAnswer
                 value = True
-                return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value, "hintButton": hintButton})
+                hint = player.stageonehint_set.get(
+                    level=int(question_level))
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form1, "value": value, "hint": hint.taken})
         else:
             return HttpResponse('<h2> Form data not valid</h2>')
 
@@ -193,7 +201,7 @@ def Individual(request, qid):
 
                         # correct answer
                         if (str(organs).lower() == str(ans).lower()):   # if the answer is correct
-                            player.score += 5
+                            player.score += 20
                             player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                             player.count2 += 1          # count of solved questions
                             i.solved = True         # the question is set to solved corrosponding to that level
