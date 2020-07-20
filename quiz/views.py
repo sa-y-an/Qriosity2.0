@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from .models import Stage_1, StageTwo
 from django.contrib.auth.decorators import login_required
-from user.models import Player, Solved
+from user.models import Player, Solved, StageOneHint
 from .forms import UserAnswer
 from datetime import datetime, timedelta
 # Create your views here.
@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 value = False
 hintValue = False
 hintButton = True
+question1 = Stage_1.objects.all()
 
 
 @login_required(login_url='/login', redirect_field_name=None)
@@ -21,12 +22,10 @@ def Algo(request):
 @login_required(login_url='/login', redirect_field_name=None)
 def StageOne(request):
     player = get_object_or_404(Player, user=request.user)
-    # print(player.level2)
 
     if player.level2 < 0:
         player = get_object_or_404(Player, user=request.user)
         question_level = player.question_level
-        player.save()
 
         if player.question_level > Stage_1.objects.count():
             formp = UserAnswer
@@ -35,7 +34,13 @@ def StageOne(request):
 
         question = get_object_or_404(Stage_1, level=int(question_level))
         my_form = UserAnswer
-        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hintButton": hintButton})
+        hall = player.stageonehint_set.all()
+        for i in hall:
+            if i.level == question_level:
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": i.taken})
+        player.stageonehint_set.create(level=int(question_level), taken=False)
+        hint = player.stageonehint_set.get(level=int(question_level))
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": hint.taken})
     if player.level2 > -1:
         q = StageTwo.objects.all()
         player = get_object_or_404(Player, user=request.user)
@@ -47,15 +52,21 @@ def StageOne(request):
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Stage1Hint(request):
-    my_form = UserAnswer
-    hintButton = False
-    hintValue = True
     player = get_object_or_404(Player, user=request.user)
-    player.score -= 1
-    player.save()
-    question_level = player.question_level
-    question = get_object_or_404(Stage_1, level=int(question_level))
-    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hintButton": hintButton, "hintValue": hintValue})
+    hint = player.stageonehint_set.get(level=int(player.question_level))
+    my_form = UserAnswer
+    if hint.taken == True:
+        question_level = player.question_level
+        question = get_object_or_404(Stage_1, level=int(question_level))
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": hint.taken})
+    else:
+        player.score -= 5
+        hint.taken = True
+        hint.save()
+        player.save()
+        question_level = player.question_level
+        question = get_object_or_404(Stage_1, level=int(question_level))
+        return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form, "value": value, "hint": hint.taken})
 
 
 @login_required(login_url='/login', redirect_field_name=None)
@@ -73,13 +84,14 @@ def Stage1Answer(request):
             return render(request, 'quiz/end.html', {"form": formp, "check": check})
 
         my_form = UserAnswer(request.POST)
+
         if my_form.is_valid():
 
             ans = my_form.cleaned_data.get("answer")
 
-            if (str(ans) == str(question.answer)):
+            if (str(ans).lower() == str(question.answer).lower()):
                 value = False
-                player.score += 3
+                player.score += 15
                 player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                 player.question_level += 1
 
@@ -98,12 +110,19 @@ def Stage1Answer(request):
                     check = False
                     return render(request, 'quiz/end.html', {"form": formp, "check": check})
                 else:
-                    formp = UserAnswer
-                    return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value, "hintButton": hintButton})
+                    my_form1 = UserAnswer
+                    player.stageonehint_set.create(
+                        level=int(question_level), taken=False)
+                    hint = player.stageonehint_set.get(
+                        level=int(question_level))
+                    return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form1, "value": value, "hint": hint.taken})
+
             else:
-                formp = UserAnswer
+                my_form1 = UserAnswer
                 value = True
-                return render(request, 'quiz/Stage1.html', {"question": question, "form": formp, "value": value, "hintButton": hintButton})
+                hint = player.stageonehint_set.get(
+                    level=int(question_level))
+                return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form1, "value": value, "hint": hint.taken})
         else:
             return HttpResponse('<h2> Form data not valid</h2>')
 
@@ -125,29 +144,15 @@ def Index(request):
 
 
 @login_required(login_url='/login', redirect_field_name=None)
-def hint2(request, hint2):
-    if request.method == "POST":
-        player = get_object_or_404(Player, user=request.user)
-        # qid = int(player.level2)
-        player.score -= 1
-        player.save()
-        question = get_object_or_404(StageTwo, level=hint2)
-        # print(question.title)
-        return render(request, 'quiz/hint2.html', {"question": question})
-    if request.method == "GET":
-        return render(request, 'quiz/smart.html')
-
-
-@login_required(login_url='/login', redirect_field_name=None)
 def Passcode(request):
-    code = "ENIGMACODE"
+    code = "ENIGMAHACK"
     if request.method == "POST":
         my_form = UserAnswer(request.POST)
         if my_form.is_valid():
             # print(my_form.cleaned_data)
             ans = my_form.cleaned_data.get("answer")
 
-            if (str(ans) == str(code)):
+            if (str(ans).lower() == str(code).lower()):
                 player = get_object_or_404(Player, user=request.user)
                 player.level2 = 0
                 player.save()
@@ -195,8 +200,8 @@ def Individual(request, qid):
                         organs = get_object_or_404(StageTwo, level=qid).answer
 
                         # correct answer
-                        if (str(organs) == str(ans)):   # if the answer is correct
-                            player.score += 5
+                        if (str(organs).lower() == str(ans).lower()):   # if the answer is correct
+                            player.score += 20
                             player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                             player.count2 += 1          # count of solved questions
                             i.solved = True         # the question is set to solved corrosponding to that level
@@ -224,7 +229,8 @@ def Individual(request, qid):
             if my_form.is_valid():
                 ans = my_form.cleaned_data.get("answer")
                 organs = get_object_or_404(StageTwo, level=qid).answer
-                if (str(organs) == str(ans)):  # if the player succesfully solves the question
+                # if the player succesfully solves the question
+                if (str(organs).lower() == str(ans).lower()):
                     player.score += 5
                     player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
                     player.count2 += 1          # count of solved questions

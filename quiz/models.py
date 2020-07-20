@@ -9,26 +9,20 @@ class Stage_1(models.Model):
     title = models.CharField(blank=True, max_length=200)
     level = models.IntegerField()
     description = models.TextField(blank=True, default='hello')
-    image = models.ImageField(blank=True, upload_to='StaticQuestions/images')
     image_url = models.URLField(blank=True)
     hint = models.TextField(blank=True, default='hint')
     answer = models.CharField(blank=True, max_length=400)
     algo = models.TextField(blank=True)
 
     def __str__(self):
-        return str(self.level)
+        return str(str(self.level)+str(" . ")+str(self.title))
 
 
 class StageTwo(models.Model):
     title = models.CharField(blank=True, max_length=200)
     description = models.TextField(blank=True, default='hello')
-    background = models.FileField(blank=True, upload_to='AudioQuestions/music')
-    image = models.ImageField(blank=True, upload_to='StaticQuestions/images')
-    image_url = models.URLField(blank=True)
-    files = models.FileField(blank=True, upload_to='AudioQuestions/music')
-    hint = models.TextField(blank=True, default='hint')
     answer = models.CharField(blank=True, max_length=400)
     level = models.IntegerField()
 
     def __str__(self):
-        return str(self.level)
+        return str(str(self.level)+str(" . ")+str(self.title))

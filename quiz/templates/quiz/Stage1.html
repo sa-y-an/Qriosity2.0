@@ -38,7 +38,8 @@
             Your previous Answer was wrong
             <br />
             Please try again <br />
-            You can take the hint (you will loose points)
+            {% if hint %} You can take the hint <br />
+            (you will loose points) {% endif %}
           </div>
           {% endif %}
           <h3>{{ question.title }}</h3>
@@ -55,44 +56,32 @@
           </div>
           {% endif %}
         </div>
-        {% if hintButton %}
+
+        {% if hint %}
+        <div class="stage1 hint1">
+          <h3>
+            You Have Lost 5 points.
+          </h3>
+        </div>
+        <div class="stage1">
+          <p align="center">
+            Your Hint Is :
+          </p>
+          <p align="center">
+            {{ question.hint}}
+          </p>
+        </div>
+
+        {% else %}
         <form action="{% url 'quiz:hint'%}" method="post">
           {% csrf_token %}
           <p>
             Click Below for Hint But You Will Loose points
-            <br />
-            <b>Doesn't Matter if you have taken it previously or not</b>
-            <br />
-            On every click you are bound to loose points
           </p>
           <button type="submit" class="btn btn-primary mb1 bg-blue">
             Click For Hint
           </button>
         </form>
-        {% endif %} {% if hintValue %}
-
-        <div class="stage1 hint1">
-          <h3>
-            You Have Lost 1 point.
-          </h3>
-        </div>
-        <p>
-          <b>Don't Reload this page you will loose points</b>
-          <b>
-            PLease note down the hint <br />
-            as visiting this page again <br />
-            would cost you points.
-          </b>
-        </p>
-        <div class="stage1">
-          <br />
-          <p>
-            Your Hint is
-          </p>
-          <p>
-            {{ question.hint}}
-          </p>
-        </div>
 
         {% endif %}
 
