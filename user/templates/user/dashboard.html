@@ -5,12 +5,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User</title>
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="{% static 'home/home.ico' %}" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'user/styles.css' %}" />
     <style>
         .imageusr {
@@ -53,19 +49,21 @@
 
         <div class="content">
             <div class="user">
-                <div id="message">
+                <!-- <div id="message">
                     Hello Qriosity User
-                </div>
-                <img src="{{ user.image }}" alt="{{ user.name }}" class="imageusr" />
-                <div class="name">
+                </div> -->
+                <img src="{{ user.image }}" alt="{{ user.name }}" class="imageusr" /><br>
+                <div class="name" style="font-size:x-large; font-weight:600">
                     {{ user.name }}
                 </div>
-                <div class="score">
+                <br>
+                <div class="score" style="font-size:medium;">
                     Your Score : {{ user.score}}
                 </div>
-                <div class="rank">
+                <div class="rank" style="font-size:medium;">
                     Your rank : {{j}}
                 </div>
+                <br>
 
                 <form action="{% url 'quiz:stageone' %}" method="POST">
                     {% csrf_token %}
