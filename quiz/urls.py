@@ -11,6 +11,5 @@ urlpatterns = [
     path('stage2/', views.Index, name="index"),
     path('<int:qid>', views.Individual, name="individual"),
     path('passcode/', views.Passcode, name="passcode"),
-    path('hint2/<int:hint2>', views.hint2, name="hint2"),
     path('algo', views.Algo, name="algo"),
 ]
