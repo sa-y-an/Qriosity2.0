@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from .models import Stage_1, StageTwo
 from django.contrib.auth.decorators import login_required
-from user.models import Player, Solved
+from user.models import Player, Solved, StageOneHint
 from .forms import UserAnswer
 from datetime import datetime, timedelta
 # Create your views here.
@@ -125,22 +125,8 @@ def Index(request):
 
 
 @login_required(login_url='/login', redirect_field_name=None)
-def hint2(request, hint2):
-    if request.method == "POST":
-        player = get_object_or_404(Player, user=request.user)
-        # qid = int(player.level2)
-        player.score -= 1
-        player.save()
-        question = get_object_or_404(StageTwo, level=hint2)
-        # print(question.title)
-        return render(request, 'quiz/hint2.html', {"question": question})
-    if request.method == "GET":
-        return render(request, 'quiz/smart.html')
-
-
-@login_required(login_url='/login', redirect_field_name=None)
 def Passcode(request):
-    code = "ENIGMACODE"
+    code = "ENIGMAHACK"
     if request.method == "POST":
         my_form = UserAnswer(request.POST)
         if my_form.is_valid():
