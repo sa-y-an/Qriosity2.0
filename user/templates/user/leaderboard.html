@@ -53,26 +53,17 @@
         </ul>
       </nav>
     </header>
-    <br />
     <div class="content">
       <div class="topper">
         {% for top in leader%}
-        <!-- <h2 class="tname" style="font-size: medium;">
-          Leading the Chart now is
-        </h2> -->
-        <br />
         <img src="{{top.image}}" alt="{{top.name}}" class="tpic" />
-        <br />
-        <div class="thname" style="font-size: medium;">
+        <h3 class="thname">
           {{top.name}}
-        </div>
+        </h3>
         {% endfor %}
       </div>
       <div class="box">
         <br />
-        <!-- <div class="name">
-          <h1 style="text-align: center; color: black;">Leader Board</h1>
-        </div> -->
         <div class="search">
           <input
             type="text"
