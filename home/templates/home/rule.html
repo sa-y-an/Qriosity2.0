@@ -20,8 +20,14 @@
         max-width: 70vw;
       }
 
+      li {
+        padding: 1em;
+        text-align: justify;
+      }
+
       #particles-js {
         background: black;
+        min-height: 150vh;
       }
 
       @media screen and (max-width: 480px) {
@@ -40,6 +46,10 @@
 
       .listr {
         list-style: disc;
+      }
+
+      footer {
+        background: rgba(255, 255, 255, 0.5);
       }
     </style>
   </head>
@@ -140,7 +150,7 @@
       {% include 'partials/_footer.html' %}
     </div>
   </body>
-  <script src="{% static 'user/particles.js' %}"></script>
+  <script src="{% static 'user/story.js' %}"></script>
   <script>
     particlesJS.load(
       "particles-js",
