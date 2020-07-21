@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from user.models import Player, Solved, StageOneHint
 from .forms import UserAnswer
 from datetime import datetime, timedelta
+from django.utils import timezone
 # Create your views here.
 
 value = False
@@ -15,7 +16,14 @@ question1 = Stage_1.objects.all()
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Algo(request):
-    question = Stage_1.objects.all()
+    player = get_object_or_404(Player, user=request.user)
+    n = player.question_level
+    print(n)
+    if (n < Stage_1.objects.count()):
+        question = Stage_1.objects.order_by('-level')[n:]
+    else:
+        question = Stage_1.objects.order_by('-level')
+
     return render(request, 'quiz/algorithm.html', {"questions": question})
 
 
@@ -89,10 +97,10 @@ def Stage1Answer(request):
 
             ans = my_form.cleaned_data.get("answer")
 
-            if (str(ans).lower() == str(question.answer).lower()):
+            if (str(ans).lower() == str(question.answer).lower()):  # stage one answer checking
                 value = False
                 player.score += 15
-                player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
+                player.last_submit = timezone.now()
                 player.question_level += 1
 
                 player.save()
@@ -115,6 +123,16 @@ def Stage1Answer(request):
                         level=int(question_level), taken=False)
                     hint = player.stageonehint_set.get(
                         level=int(question_level))
+                    if ((question_level) - 1 > 0):
+                        try:
+                            delobj = player.stageonehint_set.get(
+                                level=int(int(question_level)-1))
+                        except player.stageonehint_set.DoesNotExist:
+                            print("object doesnot exit")
+                        else:
+                            e = delobj.delete()
+                            print(e)
+
                     return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form1, "value": value, "hint": hint.taken})
 
             else:
@@ -132,7 +150,7 @@ def Stage1Answer(request):
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Index(request):
-    q = StageTwo.objects.all()
+    q = StageTwo.objects.order_by('level')
     player = get_object_or_404(Player, user=request.user)
     if(player.level2 < 0):
         return render(request, 'quiz/smart.html')
@@ -156,6 +174,16 @@ def Passcode(request):
                 player = get_object_or_404(Player, user=request.user)
                 player.level2 = 0
                 player.save()
+                question_level = player.question_level
+                if ((question_level) - 1 > 0):
+                    try:
+                        delobj = player.stageonehint_set.get(
+                            level=int(int(question_level)-1))
+                    except player.stageonehint_set.DoesNotExist:
+                        print("object doesnot exit")
+                    else:
+                        e = delobj.delete()
+                        print(e)
                 # print(player.level2)
                 q = StageTwo.objects.all()
                 player = get_object_or_404(Player, user=request.user)
@@ -202,7 +230,7 @@ def Individual(request, qid):
                         # correct answer
                         if (str(organs).lower() == str(ans).lower()):   # if the answer is correct
                             player.score += 20
-                            player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
+                            player.last_submit = timezone.now()
                             player.count2 += 1          # count of solved questions
                             i.solved = True         # the question is set to solved corrosponding to that level
                             i.save()
@@ -232,7 +260,7 @@ def Individual(request, qid):
                 # if the player succesfully solves the question
                 if (str(organs).lower() == str(ans).lower()):
                     player.score += 5
-                    player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
+                    player.last_submit = timezone.now()
                     player.count2 += 1          # count of solved questions
                     i = player.solved_set.get(level_on=qid)
                     i.solved = True  # sets the solved to true
