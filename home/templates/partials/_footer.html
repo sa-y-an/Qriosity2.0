@@ -8,6 +8,7 @@
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
     bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -21,6 +22,26 @@
   footer img {
     display: flex;
     height: 4.5vh;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.6em;
+    color: blanchedalmond;
+  }
+
+  .ctitle {
+    margin-bottom: 0.3em;
+  }
+  .clinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .clinks img {
+    height: 1.5vh;
   }
 </style>
 
@@ -37,33 +58,37 @@
 <footer>
   <div class="footleft">
     <a href="https://www.ieee.org/" target="_blank" rel="noopener noreferrer">
-      <img
-        src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif"
-        alt="ieee"
-      />
+      <img src="{% static 'home/ieeembw.png'%}" alt="IEEE" class="ieee" />
     </a>
   </div>
-  <div class="fbook">
-    <a
-      href="https://www.facebook.com/nitdgpieeesociety/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img src="https://img.icons8.com/nolan/64/facebook-new.png" />
-    </a>
-  </div>
-  <div class="insta">
-    <a
-      href="https://www.instagram.com/ieeesb_nitdgp/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img src="https://img.icons8.com/nolan/64/instagram-new.png" />
-    </a>
+  <div class="contact">
+    <div class="ctitle">
+      <b>Contact Us</b>
+    </div>
+
+    <div class="clinks">
+      <div class="cinsta">
+        <a
+          href="https://www.instagram.com/ieeesb_nitdgp/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="{% static 'home/insta.png'%}" alt="instagram" />
+        </a>
+      </div>
+      <div class="cfb">
+        <a
+          href="https://www.facebook.com/nitdgpieeesociety/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="{% static 'home/cfb.png'%}" alt="instagram" />
+        </a>
+      </div>
+    </div>
   </div>
   <div>
-    <div class="footmid">
-      <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
+    <div class="footend">
       <a
         href="http://www.ieeesbnitdgp.com/"
         target="_blank"

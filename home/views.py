@@ -8,6 +8,10 @@ def not_logged_in(user):
     return not user.is_authenticated
 
 
+def base(request):
+    return render(request, 'home/base.html')
+
+
 def home(request):
     return render(request, 'home/home.html')
 

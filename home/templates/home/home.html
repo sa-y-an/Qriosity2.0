@@ -1,142 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+  {% load static %}
 
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="erdtRhDLOXg-PvdCE4oD67-K04-RPQtqTtkJGWUYj9U" />
+    <meta
+      name="google-site-verification"
+      content="erdtRhDLOXg-PvdCE4oD67-K04-RPQtqTtkJGWUYj9U"
+    />
     <link rel="stylesheet" href="{% static 'home/styleshome.css'%}" />
-    <link rel="shortcut icon" href="{% static 'home/home.ico' %}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
     <title>Qriosity 2.0</title>
     <title>User</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="particles-js"></div>
     <div class="container">
-        <header>
-            <h1>
-                <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-            </h1>
-            <br />
+      <header>
+        <h1>
+          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+        </h1>
+        <br />
 
-            <nav>
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:formdata' %}"> Profile</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'home:login' %}">Login</a>
-                    </li>
+        <nav>
+          <ul>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Profile</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'home:login' %}">Login</a>
+            </li>
 
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
 
-        <div class="content">
-            <div class="title glow">
-                <div class="txt">Qriosity 2.0</div>
-                <!-- <div class="n2_">2.0</div> -->
-            </div>
-            <div class="details">
-                <div class="para">
-                    <p class="box-text1" id="demo">
-                        Curiosity, like a mystery has a surface innocence, surprise, the revelation of a concealed meaning and the catharsis of solution.
-                    </p>
-                </div>
-
-                <br /> {% if user.is_authenticated %}
-                <a href="{% url 'quiz:stageone'  %}">
-                    <button class="btn btn-primary mb1 bg-blue" type="submit" value="Play" class="dare">
-              Start
-            </button></a>
-                {% else %}
-                <a href="{% url 'home:login' %}">
-                    <button class="btn btn-primary mb1 bg-blue" type="submit" value="Play" class="dare">
-              Start
-            </button> {% endif %}
-                </a>
-            </div>
+      <div class="content">
+        <div class="title glow">
+          <div class="txt">Qriosity 2.0</div>
+          <!-- <div class="n2_">2.0</div> -->
         </div>
-        {% include 'partials/_footer.html' %}
-    </div>
-</body>
-<script src="{% static 'user/particles.js' %}"></script>
-<script>
-    particlesJS.load(
-        "particles-js",
-        "{% static 'home/home.json' %}",
-        function() {
-            console.log("Hi Qriosity Player");
-        }
-    );
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js" integrity="sha512-elauk8NI35rjTlatfRQxeqmJoieQlfm0W8AeQVps+j+KkMDdaqNxVazFzwyU7uSOyeeVn/VLbGYLwOR/D5I6Kw==" crossorigin="anonymous"></script>
-<!-- <script>
-    // gsap.from(".details", { height: 0 });
+        <div class="details">
+          <div class="para">
+            <p class="box-text1" id="demo">
+              Curiosity, like a mystery has a surface innocence, surprise, the
+              revelation of a concealed meaning and the catharsis of solution.
+            </p>
+          </div>
 
+          <br />
+          {% if user.is_authenticated %}
+          <a href="{% url 'quiz:stageone'  %}">
+            <button
+              class="btn btn-primary mb1 bg-blue"
+              type="submit"
+              value="Play"
+              class="dare"
+            >
+              Start
+            </button></a
+          >
+          {% else %}
+          <a href="{% url 'home:login' %}">
+            <button
+              class="btn btn-primary mb1 bg-blue"
+              type="submit"
+              value="Play"
+              class="dare"
+            >
+              Start
+            </button>
+            {% endif %}
+          </a>
+        </div>
+      </div>
+      {% include 'partials/_footer.html' %}
+    </div>
+  </body>
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'home/home.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"
+    integrity="sha512-elauk8NI35rjTlatfRQxeqmJoieQlfm0W8AeQVps+j+KkMDdaqNxVazFzwyU7uSOyeeVn/VLbGYLwOR/D5I6Kw=="
+    crossorigin="anonymous"
+  ></script>
+  <script>
     let tl = gsap.timeline();
     tl.from("#particles-js", {
-            x: -500,
-            opacity: 0,
-        })
-        .from("header", {
-            y: -100,
-            opacity: 0,
-        })
-        .from("footer", {
-            y: 100,
-            opacity: 0,
-        })
-        .from(".details", {
-            height: 0,
-            opacity: 0,
-        })
-        .from(".title", {
-            x: -50,
-            opacity: 0,
-        });
-
-    let tl2 = gsap.timeline({
-        duration: 1,
-        yoyo: true,
-        repeat: -1,
-    });
-    tl2
-        .to("html", {
-            "--myQriosity": "#DB9A4A",
-        })
-        .to("html", {
-            "--myNumber": "white",
-        });
-</script> -->
-
+      x: -500,
+      opacity: 0,
+    })
+      .from("header", {
+        y: -100,
+        opacity: 0,
+      })
+      .from("footer", {
+        y: 100,
+        opacity: 0,
+      })
+      .from(".details", {
+        height: 0,
+        opacity: 0,
+      })
+      .from(".title", {
+        x: -50,
+        opacity: 0,
+      });
+  </script>
 </html>

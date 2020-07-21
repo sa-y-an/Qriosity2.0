@@ -1,116 +1,97 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="shortcut icon" href="{% static 'home/home.ico' %}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="{% static 'user/styles.css' %}" />
     <style>
-        .imageusr {
-            height: 20vh;
-            width: 20vh;
-        }
+      .imageusr {
+        height: 20vh;
+        width: 20vh;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="particles-js"></div>
     <div class="container">
-        <header>
-            <h1>
-                <a href="{% url 'home:home' %} " class="qriosity">Qriosity 2.0</a>
-            </h1>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:formdata' %}"> Profile</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+      <header>
+        <h1>
+          <a href="{% url 'home:home' %} " class="qriosity">Qriosity 2.0</a>
+        </h1>
+        <nav>
+          <ul>
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}"> Profile</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-        <div class="content">
-            <div class="user">
-                <!-- <div id="message">
+      <div class="content">
+        <div class="user">
+          <!-- <div id="message">
                     Hello Qriosity User
                 </div> -->
-                <img src="{{ user.image }}" alt="{{ user.name }}" class="imageusr" /><br>
-                <div class="name" style="font-size:x-large; font-weight:600">
-                    {{ user.name }}
-                </div>
-                <br>
-                <div class="score" style="font-size:medium;">
-                    Your Score : {{ user.score}}
-                </div>
-                <div class="rank" style="font-size:medium;">
-                    Your rank : {{j}}
-                </div>
-                <br>
+          <img
+            src="{{ user.image }}"
+            alt="{{ user.name }}"
+            class="imageusr"
+          /><br />
+          <div class="name" style="font-size: x-large; font-weight: 600;">
+            {{ user.name }}
+          </div>
+          <br />
+          <div class="score" style="font-size: medium;">
+            Your Score : {{ user.score}}
+          </div>
+          <div class="rank" style="font-size: medium;">
+            Your rank : {{j}}
+          </div>
+          <br />
 
-                <form action="{% url 'quiz:stageone' %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary mb1 bg-blue">
+          <form action="{% url 'quiz:stageone' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary mb1 bg-blue">
               Start
             </button>
-                </form>
-            </div>
-
-            <footer>
-                <div class="footleft">
-                    <a href="https://www.ieee.org/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/globals/88857-22.gif" alt="ieee" />
-                    </a>
-                </div>
-                <div class="fbook">
-                    <a href="https://www.facebook.com/nitdgpieeesociety/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" />
-                    </a>
-                </div>
-                <div class="insta">
-                    <a href="https://www.instagram.com/ieeesb_nitdgp/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" />
-                    </a>
-                </div>
-                <div>
-                    <div class="footmid">
-                        <!-- <div class="ryt">&copy; IEEE SB NITD</div> -->
-                        <a href="http://www.ieeesbnitdgp.com/" target="_blank" rel="noopener noreferrer">
-                            <img src="{% static 'home/ieee.png'%}" alt="IEEE" class="ieee" />
-                        </a>
-                    </div>
-                </div>
-            </footer>
-
-            <div class="cursor"></div>
+          </form>
         </div>
-</body>
-<script src="{% static 'user/particles.js' %}"></script>
-<script>
-    particlesJS.load(
-        "particles-js",
-        "{% static 'user/particles.json' %}",
-        function() {
-            console.log("Hi Qriosity Player");
-        }
-    );
-</script>
+      </div>
+      {% include 'partials/_footer.html'%}
+    </div>
+  </body>
 
+  <script src="{% static 'user/particles.js' %}"></script>
+  <script>
+    particlesJS.load(
+      "particles-js",
+      "{% static 'home/home.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
+    );
+  </script>
 </html>
