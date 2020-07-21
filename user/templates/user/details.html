@@ -1,7 +1,6 @@
 <!DOCTYPE html> {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -10,51 +9,28 @@
       type="image/x-icon"
     />
     <title>Details</title>
-</head>
-<link rel="stylesheet" href="{% static 'user/forms.css' %}" />
+  </head>
+  <link rel="stylesheet" href="{% static 'user/forms.css' %}" />
 
-<body>
+  <body>
     <div class="container">
-        <div class="container">
-            <header>
-                <h1>
-                    <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-                </h1>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="{% url 'home:rules' %}">Rules</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:formdata' %}">Profile</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}">Logout</a>
-                        </li>
-                </nav>
-            </header>
+      {% include 'partials/_navbar.html'%}
 
-            <div class="content">
+      <div class="content">
+        <form action="{% url 'user:formdata' %}" method="POST">
+          <h2 align="center">
+            Fill your details
+          </h2>
 
-                <form action="{% url 'user:formdata' %}" method="POST">
-                    <h2 align="center">
-                        Fill your details
-                    </h2>
+          {% csrf_token %} {{ form.as_p }}
 
-                    {% csrf_token %} {{ form.as_p }}
+          <button type="submit" class="btn btn-primary mb1 bg-blue">
+            Submit
+          </button>
+        </form>
+      </div>
 
-
-                    <button type="submit" class="btn btn-primary mb1 bg-blue"> Submit </button>
-                </form>
-            </div>
-        </div>
+      {% include 'partials/_footer.html'%}
     </div>
-</body>
-
+  </body>
 </html>

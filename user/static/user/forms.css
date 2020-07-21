@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -11,13 +11,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   height: 100vh;
   width: 100vw;
   background-color: black;
   color: white;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .box {
   display: flex;
   flex-direction: column;
@@ -35,7 +39,7 @@ header {
   color: white;
   padding: 10px;
   flex-wrap: wrap;
-  min-height: 10vh;
+  min-height: 15vh;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0 6px 6px #d99236;
 }

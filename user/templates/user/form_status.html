@@ -1,108 +1,118 @@
 <!DOCTYPE html> {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{% static 'home/home.ico' %}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
 
     <title>Form Status</title>
     <link rel="stylesheet" href="{% static 'user/forms2.css' %}" />
-</head>
-<style>
+  </head>
+  <style>
     .content {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: fit-content;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: fit-content;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <div id="particles-js">
-        <div class="container">
-            <header>
-                <h1>
-                    <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-                </h1>
-                <br />
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="{% url 'home:rules'%}">Rules</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:formdata' %}">Profile</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:story' %}">Story</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}">Logout</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+      <div class="container">
+        <header>
+          <h1>
+            <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+          </h1>
+          <br />
+          <nav>
+            <ul>
+              <li>
+                <a href="{% url 'home:rules'%}">Rules</a>
+              </li>
+              <li>
+                <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+              </li>
+              <li>
+                <a href="{% url 'user:formdata' %}">Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'user:story' %}">Story</a>
+              </li>
+              <li>
+                <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+              </li>
+              <li>
+                <a href="{% url 'logout' %}">Logout</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
 
-            <div class="content">
-                <br><br>
-                <div class="title">
-                    Your current Profile details :
-                </div>
+        <div class="content">
+          <br /><br />
+          <div class="title">
+            Your current Profile details :
+          </div>
 
-                <div class="box">
-                    <p>
-                        Name : {{details.full_name}}
-                    </p>
-                    <br />
-                    <p>
-                        College : {{details.college}}
-                    </p>
-                    <br />
-                    <p>
-                        Year : {{details.year}}
-                    </p>
-                    <br />
-                    <p>
-                        Contact Number : {{details.contact}}
-                    </p>
-                </div>
+          <div class="box">
+            <p>
+              Name : {{details.full_name}}
+            </p>
+            <br />
+            <p>
+              College : {{details.college}}
+            </p>
+            <br />
+            <p>
+              Year : {{details.year}}
+            </p>
+            <br />
+            <p>
+              Contact Number : {{details.contact}}
+            </p>
+          </div>
 
-                <div class="submit">
-                    <a href="{% url 'user:details'%}">
-                        <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
-              Update Profile
-            </button>
-                    </a>
-                </div>
-                <div class="submit">
-                    <a href="{% url 'user:dashboard'%}">
-                        <button value="Update Contact" class="btn btn-primary mb1 bg-blue" style="font-size: medium;">
-              Proceed to Dashboard
-            </button>
-                    </a>
-                </div>
-            </div>
+          <div class="submit">
+            <a href="{% url 'user:details'%}">
+              <button
+                value="Update Contact"
+                class="btn btn-primary mb1 bg-blue"
+              >
+                Update Profile
+              </button>
+            </a>
+          </div>
+          <div class="submit">
+            <a href="{% url 'user:dashboard'%}">
+              <button
+                value="Update Contact"
+                class="btn btn-primary mb1 bg-blue"
+                style="font-size: medium;"
+              >
+                Proceed to Dashboard
+              </button>
+            </a>
+          </div>
         </div>
+      </div>
+      {% include 'partials/_footer.html'%}
     </div>
-</body>
-<script src="{% static 'user/story.js' %}"></script>
-<script>
+  </body>
+  <script src="{% static 'user/story.js' %}"></script>
+  <script>
     particlesJS.load(
-        "particles-js",
-        "{% static 'user/particles.json' %}",
-        function() {
-            console.log("Hi Qriosity Player");
-        }
+      "particles-js",
+      "{% static 'user/particles.json' %}",
+      function () {
+        console.log("Hi Qriosity Player");
+      }
     );
-</script>
-
+  </script>
 </html>
