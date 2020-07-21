@@ -16,7 +16,14 @@ question1 = Stage_1.objects.all()
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Algo(request):
-    question = Stage_1.objects.all()
+    player = get_object_or_404(Player, user=request.user)
+    n = player.question_level
+    print(n)
+    if (n < Stage_1.objects.count()):
+        question = Stage_1.objects.order_by('-level')[n:]
+    else:
+        question = Stage_1.objects.order_by('-level')
+
     return render(request, 'quiz/algorithm.html', {"questions": question})
 
 
