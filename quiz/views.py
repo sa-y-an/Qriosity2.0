@@ -116,10 +116,14 @@ def Stage1Answer(request):
                     hint = player.stageonehint_set.get(
                         level=int(question_level))
                     if ((question_level) - 1 > 0):
-                        delobj = player.stageonehint_set.get(
-                            level=int(int(question_level)-1))
-                        e = delobj.delete()
-                        print(e)
+                        try:
+                            delobj = player.stageonehint_set.get(
+                                level=int(int(question_level)-1))
+                        except player.stageonehint_set.DoesNotExist:
+                            print("object doesnot exit")
+                        else:
+                            e = delobj.delete()
+                            print(e)
 
                     return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form1, "value": value, "hint": hint.taken})
 
@@ -162,6 +166,16 @@ def Passcode(request):
                 player = get_object_or_404(Player, user=request.user)
                 player.level2 = 0
                 player.save()
+                question_level = player.question_level
+                if ((question_level) - 1 > 0):
+                    try:
+                        delobj = player.stageonehint_set.get(
+                            level=int(int(question_level)-1))
+                    except player.stageonehint_set.DoesNotExist:
+                        print("object doesnot exit")
+                    else:
+                        e = delobj.delete()
+                        print(e)
                 # print(player.level2)
                 q = StageTwo.objects.all()
                 player = get_object_or_404(Player, user=request.user)
