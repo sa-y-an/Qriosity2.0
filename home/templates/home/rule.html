@@ -47,10 +47,6 @@
       .listr {
         list-style: disc;
       }
-
-      footer {
-        background: rgba(255, 255, 255, 0.5);
-      }
     </style>
   </head>
 
@@ -144,6 +140,32 @@
               </li>
             </ul>
           </div>
+        </div>
+
+        <br>
+        {% if user.is_authenticated %}
+          <a href="{% url 'quiz:stageone'  %}">
+            <button
+              class="btn btn-primary mb1 bg-blue"
+              type="submit"
+              value="Play"
+              class="dare"
+            >
+              Start
+            </button></a
+          >
+          {% else %}
+          <a href="{% url 'home:login' %}">
+            <button
+              class="btn btn-primary mb1 bg-blue"
+              type="submit"
+              value="Play"
+              class="dare"
+            >
+              Start
+            </button>
+            {% endif %}
+          </a>
         </div>
       </div>
 
