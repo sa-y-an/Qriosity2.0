@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from user.models import Player, Solved, StageOneHint
 from .forms import UserAnswer
 from datetime import datetime, timedelta
+from django.utils import timezone
 # Create your views here.
 
 value = False
@@ -92,7 +93,7 @@ def Stage1Answer(request):
             if (str(ans).lower() == str(question.answer).lower()):  # stage one answer checking
                 value = False
                 player.score += 15
-                player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
+                player.last_submit = timezone.now()
                 player.question_level += 1
 
                 player.save()
@@ -222,7 +223,7 @@ def Individual(request, qid):
                         # correct answer
                         if (str(organs).lower() == str(ans).lower()):   # if the answer is correct
                             player.score += 20
-                            player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
+                            player.last_submit = timezone.now()
                             player.count2 += 1          # count of solved questions
                             i.solved = True         # the question is set to solved corrosponding to that level
                             i.save()
@@ -252,7 +253,7 @@ def Individual(request, qid):
                 # if the player succesfully solves the question
                 if (str(organs).lower() == str(ans).lower()):
                     player.score += 5
-                    player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
+                    player.last_submit = timezone.now()
                     player.count2 += 1          # count of solved questions
                     i = player.solved_set.get(level_on=qid)
                     i.solved = True  # sets the solved to true
