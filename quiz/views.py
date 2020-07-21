@@ -89,7 +89,7 @@ def Stage1Answer(request):
 
             ans = my_form.cleaned_data.get("answer")
 
-            if (str(ans).lower() == str(question.answer).lower()):
+            if (str(ans).lower() == str(question.answer).lower()):  # stage one answer checking
                 value = False
                 player.score += 15
                 player.last_submit = datetime.utcnow()+timedelta(hours=5.5)
@@ -115,6 +115,12 @@ def Stage1Answer(request):
                         level=int(question_level), taken=False)
                     hint = player.stageonehint_set.get(
                         level=int(question_level))
+                    if ((question_level) - 1 > 0):
+                        delobj = player.stageonehint_set.get(
+                            level=int(int(question_level)-1))
+                        e = delobj.delete()
+                        print(e)
+
                     return render(request, 'quiz/Stage1.html', {"question": question, "form": my_form1, "value": value, "hint": hint.taken})
 
             else:
