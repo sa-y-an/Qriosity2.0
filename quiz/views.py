@@ -150,7 +150,7 @@ def Stage1Answer(request):
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Index(request):
-    q = StageTwo.objects.all()
+    q = StageTwo.objects.order_by('level')
     player = get_object_or_404(Player, user=request.user)
     if(player.level2 < 0):
         return render(request, 'quiz/smart.html')
