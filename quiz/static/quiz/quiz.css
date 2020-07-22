@@ -56,7 +56,6 @@ input {
 
 .content div {
   margin-top: 2em;
-  margin-bottom: 2em;
 }
 
 .wrong {
@@ -64,5 +63,14 @@ input {
   color: black;
   font-weight: bold;
   padding: 1em;
+  border-radius: 1em;
+}
+
+pre {
+  text-align: left;
+  background-color: black;
+  padding-left: 1em;
+  padding-right: 1em;
+  color: skyblue;
   border-radius: 1em;
 }
