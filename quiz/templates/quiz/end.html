@@ -1,53 +1,34 @@
-<!DOCTYPE html> {% load static %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
-    <title>PASSCODE</title>
-    <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
-  </head>
-  <style>
-    .passm {
-      text-align: center;
-    }
-  </style>
+{% extends 'base.html'%} {% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
+</head>
 
-  <body>
-    <div class="container">
-      {% include 'partials/_navbar.html' %}
+<div class="content">
+  <p class="stage1">
+    Thanks for Playing with US <br />
+    You have completed Stage 1 <br />
+    To Enter Stage 2 enter the PASSCODE below
+  </p>
 
-      <div class="content">
-        <p class="passm">
-          Thanks for Playing with US <br />
-          You have completed Stage 1 <br />
-          To Enter Stage 2 enter the PASSCODE below
-        </p>
+  {% if check %}
+  <p class="wrong">
+    please try again,
+    <br />
+    your answer was incorrect
+  </p>
+  {% endif %}
+  <div class="stage1">
+    <form action="{% url 'quiz:passcode' %}" method="POST">
+      {% csrf_token %}
+      <h1>
+        Enter The passcode below
+      </h1>
+      {{form.as_p}}
+      <button class="btn btn-primary mb1 bg-blue" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
 
-        {% if check %}
-        <p class="wrong">
-          please try again,
-          <br />
-          your answer was incorrect
-        </p>
-        {% endif %}
-
-        <form action="{% url 'quiz:passcode' %}" method="POST">
-          {% csrf_token %}
-          <h1>
-            Enter The passcode below
-          </h1>
-          {{form.as_p}}
-          <button class="btn btn-primary mb1 bg-blue" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
-      {% include 'partials/_footer.html' %}
-    </div>
-  </body>
-</html>
+{% endblock %}
