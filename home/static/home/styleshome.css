@@ -13,7 +13,6 @@ html {
 }
 
 #particles-js {
-  /* min-height: 100vh; */
   min-width: 100vw;
   background: url("homebg.png");
   background-size: cover;
