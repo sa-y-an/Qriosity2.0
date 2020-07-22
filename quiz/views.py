@@ -179,7 +179,7 @@ def Passcode(request):
                     try:
                         delobj = player.stageonehint_set.get(
                             level=int(int(question_level)-1))
-                    except player.stageonehint_set.DoesNotExist:
+                    except:
                         print("object doesnot exit")
                     else:
                         e = delobj.delete()
