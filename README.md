@@ -1,9 +1,6 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/sayan-mondal-tech/Qriosity2.0?color=cyan&style=plastic)
-![GitHub language count](https://img.shields.io/github/languages/count/sayan-mondal-tech/Qriosity2.0)
-![GitHub top language](https://img.shields.io/github/languages/top/sayan-mondal-tech/Qriosity2.0)
-![GitHub repo size](https://img.shields.io/github/repo-size/sayan-mondal-tech/Qriosity2.0)
-![GitHub forks](https://img.shields.io/github/forks/sagar-wal/Qriosity2.0?style=social)
 ![GitHub](https://img.shields.io/github/license/sayan-mondal-tech/Qriosity2.0)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/sagar-wal/Qriosity2.0?color=green)
 ![GitHub](https://img.shields.io/badge/Qriosity2.0-build-lightgrey)
 
 <h3 align="center">Qriosity 2.0</h3>

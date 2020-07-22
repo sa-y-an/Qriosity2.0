@@ -149,10 +149,14 @@ header nav ul {
 }
 
 @media screen and (max-width: 480px) {
-  #particle-js {
+  #particles-js {
+    background: url("homebgphone.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+  }
+  .details {
+    padding-top: 1em;
   }
 }
 
