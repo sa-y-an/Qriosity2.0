@@ -1,58 +1,44 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
+{% extends 'base.html'%} {% load static %} {% block content %}
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="{% static 'quiz/finish.css' %}" />
-    <title>Congratulations 😁!!!</title>
-
-    <style>
-        .box {
-            color: black;
-            text-align: center;
-        }
-    </style>
+  <link rel="stylesheet" href="{% static 'quiz/finish.css' %}" />
+  <style>
+    .circle img {
+      height: 30vh;
+      width: 30vh;
+    }
+    .congrate {
+      text-align: center;
+    }
+  </style>
 </head>
 
-<body>
-    <div class="container">
-        {% include 'partials/_nav2.html' %}
-        <div class="content">'
-            <div class="circle">
-                <img src="{% static 'WHEEL2.png'%}" alt="wheel">
-            </div>
-            <div class="congrate">
-                Congratulations 😃
-                <br>
-                you have finished this mission 😁.
-            </div>
-            <div class="box">
-                <h3>
-                    Visit
-                </h3>
-                <a href="{% url 'user:dashboard'%}">
-                    <button class="btn btn-primary mb1 bg-blue">
-              Dashboard
-            </button>
-                </a>
-                <a href="{% url 'user:leaderboard'%}">
-                    <button class="btn btn-primary mb1 bg-blue">
-              Leaderboard
-            </button>
-                </a>
-            </div>
-        </div>
-
-        {% include 'partials/_footer.html' %}
-        </div>
+<div class="content">
+  '
+  <div class="circle">
+    <img src="{% static 'quiz/WHEEL2.png'%}" alt="wheel" />
+  </div>
+  <div class="stage1">
+    <div class="congrate">
+      Congratulations 😃
+      <br />
+      you have finished this mission 😁.
     </div>
-</body>
+    <br />
 
-</html>
+    <h3>
+      Visit
+    </h3>
+    <a href="{% url 'user:dashboard'%}">
+      <button class="btn btn-primary mb1 bg-blue">
+        Dashboard
+      </button>
+    </a>
+    <a href="{% url 'user:leaderboard'%}">
+      <button class="btn btn-primary mb1 bg-blue">
+        Leaderboard
+      </button>
+    </a>
+  </div>
+</div>
+
+{% endblock %}
