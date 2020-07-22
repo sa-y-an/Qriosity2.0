@@ -163,6 +163,10 @@ header nav ul {
   header nav ul {
     margin-right: 8%;
   }
+  .title {
+    padding: 0.5em !important;
+    margin: 0;
+  }
 }
 
 @font-face {

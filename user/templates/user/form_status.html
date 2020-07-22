@@ -24,82 +24,78 @@
   </style>
 
   <body>
-    <div id="particles-js">
-      <div class="container">
-        <header>
-          <h1>
-            <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-          </h1>
+    <div id="particles-js"></div>
+    <div class="container">
+      <header>
+        <h1>
+          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+        </h1>
+        <br />
+        <nav>
+          <ul>
+            <li>
+              <a href="{% url 'home:rules'%}">Rules</a>
+            </li>
+            <li>
+              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+            </li>
+            <li>
+              <a href="{% url 'user:formdata' %}">Profile</a>
+            </li>
+            <li>
+              <a href="{% url 'user:story' %}">Story</a>
+            </li>
+            <li>
+              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="content">
+        <br /><br />
+        <div class="title">
+          Your current Profile details :
+        </div>
+
+        <div class="box">
+          <p>
+            Name : {{details.full_name}}
+          </p>
           <br />
-          <nav>
-            <ul>
-              <li>
-                <a href="{% url 'home:rules'%}">Rules</a>
-              </li>
-              <li>
-                <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-              </li>
-              <li>
-                <a href="{% url 'user:formdata' %}">Profile</a>
-              </li>
-              <li>
-                <a href="{% url 'user:story' %}">Story</a>
-              </li>
-              <li>
-                <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-              </li>
-              <li>
-                <a href="{% url 'logout' %}">Logout</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+          <p>
+            College : {{details.college}}
+          </p>
+          <br />
+          <p>
+            Year : {{details.year}}
+          </p>
+          <br />
+          <p>
+            Contact Number : {{details.contact}}
+          </p>
+        </div>
 
-        <div class="content">
-          <br /><br />
-          <div class="title">
-            Your current Profile details :
-          </div>
-
-          <div class="box">
-            <p>
-              Name : {{details.full_name}}
-            </p>
-            <br />
-            <p>
-              College : {{details.college}}
-            </p>
-            <br />
-            <p>
-              Year : {{details.year}}
-            </p>
-            <br />
-            <p>
-              Contact Number : {{details.contact}}
-            </p>
-          </div>
-
-          <div class="submit">
-            <a href="{% url 'user:details'%}">
-              <button
-                value="Update Contact"
-                class="btn btn-primary mb1 bg-blue"
-              >
-                Update Profile
-              </button>
-            </a>
-          </div>
-          <div class="submit">
-            <a href="{% url 'user:dashboard'%}">
-              <button
-                value="Update Contact"
-                class="btn btn-primary mb1 bg-blue"
-                style="font-size: medium;"
-              >
-                Proceed to Dashboard
-              </button>
-            </a>
-          </div>
+        <div class="submit">
+          <a href="{% url 'user:details'%}">
+            <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
+              Update Profile
+            </button>
+          </a>
+        </div>
+        <div class="submit">
+          <a href="{% url 'user:dashboard'%}">
+            <button
+              value="Update Contact"
+              class="btn btn-primary mb1 bg-blue"
+              style="font-size: medium;"
+            >
+              Proceed to Dashboard
+            </button>
+          </a>
         </div>
       </div>
       {% include 'partials/_footer.html'%}
