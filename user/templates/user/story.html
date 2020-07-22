@@ -10,11 +10,12 @@
     />
     <title>Story</title>
     <link rel="stylesheet" href="{% static 'user/story.css'%}" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
     <style>
-      canvas .particles-js-canvas-el {
-        height: 100vh;
-        width: 100vw;
-      }
       .story {
         padding: 3em;
       }
@@ -123,5 +124,13 @@
         console.log("Hi Qriosity Player");
       }
     );
+  </script>
+  <script>
+    const height = $("br").next().position().top - $("br").position().top;
+    calculated_height = $(".container").height() + 4 * height;
+    $("#particles-js").css("height", calculated_height);
+    $(".particles-js-canvas-el").css("min-height", calculated_height);
+
+    console.log(height);
   </script>
 </html>
