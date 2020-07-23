@@ -1,106 +1,78 @@
-<!DOCTYPE html> {% load static %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
-    <title>Stage 1</title>
+{% extends 'base.html'%} {% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
+</head>
+<div class="content">
+  <div class="stage1">
+    <h3>
+      Question Level : {{ question.level }}
+    </h3>
 
-    <link rel="stylesheet" href="{% static 'quiz/style.css' %}" />
-  </head>
+    {% if value %}
+    <div class="wrong">
+      Your previous Answer was wrong
+      <br />
+      Please try again <br />
 
-  <script type="text/javascript">
-    function preback() {
-      window.history.forward();
-    }
-    setTimeout("preback()", 0);
-    window.onunload = function () {
-      null;
-    };
-  </script>
-
-  <body>
-    <div class="container">
-      {% include 'partials/_navbar.html' %}
-
-      <div class="content">
-        <div class="stage1">
-          <h3>
-            Question Level : {{ question.level }}
-          </h3>
-
-          {% if value %}
-          <div class="wrong">
-            Your previous Answer was wrong
-            <br />
-            Please try again <br />
-
-            {% if hint %} {% else %}
-            <div class="warning">
-              You can take the hint <br />
-              (you will loose points)
-            </div>
-            {% endif %}
-          </div>
-          {% endif %}
-
-          <h3>{{ question.title }}</h3>
-
-          <!-- description -->
-          {% if question.description %}
-          <div class="description">{{ question.description }}</div>
-          {% endif %}
-
-          <!-- image -->
-          {% if question.image %}
-          <div>
-            <img src="{{ question.image_url }}" alt="{{question.title}}" />
-          </div>
-          {% endif %}
-        </div>
-
-        <div class="anhint">
-          {% if hint %}
-          <div class="stage1 hint1">
-            <h3>
-              You Have Lost 5 points.
-            </h3>
-          </div>
-          <div class="stage1">
-            <p align="center">
-              Your Hint Is :
-            </p>
-            <p align="center">
-              {{ question.hint}}
-            </p>
-          </div>
-
-          {% else %}
-          <form action="{% url 'quiz:hint'%}" method="post">
-            {% csrf_token %}
-            <p>
-              Click Below for Hint But You Will Loose points
-            </p>
-            <button type="submit" class="btn btn-primary mb1 bg-blue">
-              Click For Hint
-            </button>
-          </form>
-
-          {% endif %}
-
-          <form action="{% url 'quiz:answer'%}" method="post">
-            {% csrf_token %} {{ form.as_p}}
-            <button type="submit" class="btn btn-primary mb1 bg-blue">
-              Submit
-            </button>
-          </form>
-        </div>
+      {% if hint %} {% else %}
+      <div class="warning">
+        You can take the hint <br />
+        (you will loose points)
       </div>
-      {% include 'partials/_footer.html' %}
+      {% endif %}
     </div>
-  </body>
-</html>
+    {% endif %}
+
+    <h3>{{ question.title }}</h3>
+
+    <!-- description -->
+    {% if question.description %}
+    <div class="description">{{ question.description }}</div>
+    {% endif %}
+
+    <!-- image -->
+    {% if question.image %}
+    <div>
+      <img src="{{ question.image_url }}" alt="{{question.title}}" />
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="anhint">
+    {% if hint %}
+    <div>
+      <h3>
+        You Have Lost 5 points.
+      </h3>
+    </div>
+    <div>
+      <p align="center">
+        Your Hint Is :
+      </p>
+      <p align="center">
+        {{ question.hint}}
+      </p>
+    </div>
+
+    {% else %}
+    <form action="{% url 'quiz:hint'%}" method="post">
+      {% csrf_token %}
+      <p>
+        Click Below for Hint But You Will Loose points
+      </p>
+      <button type="submit" class="btn btn-primary mb1 bg-blue">
+        Click For Hint
+      </button>
+    </form>
+
+    {% endif %}
+
+    <form action="{% url 'quiz:answer'%}" method="post">
+      {% csrf_token %} {{ form.as_p}}
+      <button type="submit" class="btn btn-primary mb1 bg-blue">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

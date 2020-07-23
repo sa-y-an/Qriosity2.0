@@ -1,136 +1,66 @@
-<!DOCTYPE html> {% load static %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
-    <title>Story</title>
-    <link rel="stylesheet" href="{% static 'user/story.css'%}" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-      crossorigin="anonymous"
-    ></script>
-    <style>
-      .story {
-        padding: 3em;
-      }
-    </style>
-  </head>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'user/story2.css' %}" />
+</head>
 
-  <body bgcolor="black">
-    <div id="particles-js"></div>
-    <div class="container">
-      <header>
-        <h1>
-          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-        </h1>
-        <br />
+<div class="content">
+  <p>
+    In an alternate universe, the Second World War is happening. In our world,
+    millions of lives were saved after Alan Turing cracked the cipher and the
+    plans of Germans were foiled, which played a major part in the defeat of the
+    Axis powers.
+  </p>
+  <p>
+    A war is going on between the Allies and the Axis. For the rest of the
+    world, they had to choose sides and enter the war. Thousands of people were
+    dying every day. Axis powers were dominating the Allies, and most of their
+    secrets travelled via radio signals which could be tracked by even a
+    standard receiver, but what made the messages unreadable for non-Axis powers
+    was the encryption. 159 quintillion combinations were possible in the
+    cipher, and the combinations changed at the stroke of midnight every day.
+    Allies could not afford to lose more of their citizens or soldiers. Like in
+    our universe, there was a young man, a mathematician, at Cambridge
+    University, who was interested to crack the cipher, not only because he
+    wanted to help the Allies win the war, but because he loved solving puzzles.
+    After getting his appointment letter, he joins the team and starts working
+    on the machine that could decipher the codes sent by the Germans to know
+    their plans. But Alan is not able to crack the encryption system. Now the
+    onus falls upon us to help Alan Turing decipher the cipher and defeat the
+    Axis powers. Are you up to the task at hand?
+  </p>
+  <p>
+    Will you be able to help Alan Turing and lead the Allies to victory in this
+    alternate universe?
+  </p>
+  <form action="{% url 'quiz:stageone' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn">
+      Start
+    </button>
+  </form>
+</div>
 
-        <nav>
-          <ul>
-            {% if user.is_authenticated %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:formdata' %}"> Profile</a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-            </li>
-            <li>
-              <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS.load(
+    "particles-js",
+    "{% static 'user/particles.json' %}",
+    function () {
+      console.log("callback - particles.js config loaded");
+    }
+  );
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+  integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+  crossorigin="anonymous"
+></script>
+<script>
+  // const height = $("br").next().position().top - $("br").position().top;
+  calculated_height = $(".container").height();
+  $("#particles-js").css("height", calculated_height);
+  $(".particles-js-canvas-el").css("min-height", calculated_height);
 
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'home:login' %}">Login</a>
-            </li>
-
-            {% endif %}
-          </ul>
-        </nav>
-      </header>
-
-      <div class="content">
-        <div class="story">
-          <p>
-            In an alternate universe, the Second World War is happening. In our
-            world, millions of lives were saved after Alan Turing cracked the
-            cipher and the plans of Germans were foiled, which played a major
-            part in the defeat of the Axis powers.
-          </p>
-          <p>
-            A war is going on between the Allies and the Axis. For the rest of
-            the world, they had to choose sides and enter the war. Thousands of
-            people were dying every day. Axis powers were dominating the Allies,
-            and most of their secrets travelled via radio signals which could be
-            tracked by even a standard receiver, but what made the messages
-            unreadable for non-Axis powers was the encryption. 159 quintillion
-            combinations were possible in the cipher, and the combinations
-            changed at the stroke of midnight every day. Allies could not afford
-            to lose more of their citizens or soldiers. Like in our universe,
-            there was a young man, a mathematician, at Cambridge University, who
-            was interested to crack the cipher, not only because he wanted to
-            help the Allies win the war, but because he loved solving puzzles.
-            After getting his appointment letter, he joins the team and starts
-            working on the machine that could decipher the codes sent by the
-            Germans to know their plans. But Alan is not able to crack the
-            encryption system. Now the onus falls upon us to help Alan Turing
-            decipher the cipher and defeat the Axis powers. Are you up to the
-            task at hand?
-          </p>
-          <p>
-            Will you be able to help Alan Turing and lead the Allies to victory
-            in this alternate universe?
-          </p>
-        </div>
-        <form action="{% url 'quiz:stageone' %}" method="POST">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary mb1 bg-blue">
-            Start
-          </button>
-        </form>
-      </div>
-      {% include 'partials/_footer.html'%}
-    </div>
-  </body>
-  <script src="{% static 'user/story.js' %}"></script>
-  <script>
-    particlesJS.load(
-      "particles-js",
-      "{% static 'user/particle-exp.json' %}",
-      function () {
-        console.log("Hi Qriosity Player");
-      }
-    );
-  </script>
-  <script>
-    const height = $("br").next().position().top - $("br").position().top;
-    calculated_height = $(".container").height() + 4 * height;
-    $("#particles-js").css("height", calculated_height);
-    $(".particles-js-canvas-el").css("min-height", calculated_height);
-
-    console.log(height);
-  </script>
-</html>
+  // console.log(height);
+</script>
+{% endblock %}

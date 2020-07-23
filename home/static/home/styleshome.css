@@ -3,7 +3,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -13,7 +13,6 @@ html {
 }
 
 #particles-js {
-  min-height: 100vh;
   min-width: 100vw;
   background: url("homebg.png");
   background-size: cover;

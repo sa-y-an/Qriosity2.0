@@ -1,89 +1,39 @@
-{% load static %}
-
+{% extends 'base.html'%} {% load static %} {% block content %}
 <head>
-  <style>
-    img {
-      max-height: 30vh;
-    }
-
-    .question_ind {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      max-width: 80vw;
-    }
-  </style>
-  <link rel="stylesheet" href="{% static 'quiz/style.css'%}" />
-  <link
-    rel="shortcut icon"
-    href="{% static 'home/home.ico' %}"
-    type="image/x-icon"
-  />
-  <title>Stage 2</title>
+  <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
 </head>
-
-<div class="container">
-  {% include 'partials/_nav2.html' %}
-  <div class="content">
-    <div class="question_ind">
-      <h3>
-        Question No. {{question.level}}
-      </h3>
-      {% if value %}
-      <div class="wrong">
-        Your previous Answer was wrong
-        <br />
-        Please try again <br />
-        You can take the hint (you will loose points)
-      </div>
-      {% endif %}
-      <h3>
-        <u>
-          {{ question.title }}
-        </u>
-      </h3>
-
+<div class="content">
+  <div class="stage1">
+    <h3>
+      Question No. {{question.level}}
+    </h3>
+    {% if value %}
+    <div class="wrong">
+      Your previous Answer was wrong
       <br />
-      <!-- description -->
-      {% if question.description %}
-      <div>{{ question.description }}</div>
-      {% endif %}
-      <br />
+      Please try again <br />
+      You can take the hint (you will loose points)
     </div>
-    {% if question.hint %}
-    <form action="{% url 'quiz:hint2' question.level %}" method="POST">
-      {% csrf_token %}
-      <h3>
-        Click For Hint But You will loose points
-      </h3>
-      <br />
-      <button type="submit" class="btn btn-primary mb1 bg-blue">
-        Hint
-      </button>
-    </form>
     {% endif %}
+    <h3>
+      <u>
+        {{ question.title }}
+      </u>
+    </h3>
 
-    <form action="" method="POST">
-      {% csrf_token %} {{form.as_p}}
-      <button type="submit" class="btn btn-primary mb1 bg-blue">
-        Submit
-      </button>
-    </form>
+    <br />
+    <!-- description -->
+    {% if question.description %}
+    <div>{{ question.description }}</div>
+    {% endif %}
+    <br />
   </div>
-  <footer>
-    <div class="visit">
-      Visit Question
-    </div>
-    <div class="snip">
-      {% for i in all %}
-      <div class="inds">
-        <a href="{% url 'quiz:individual' i.level %}">
-          {{i.level}} . ( {{i.title}})
-        </a>
-      </div>
-      {% endfor %}
-    </div>
-  </footer>
+
+  <form action="" method="POST" class="stage1">
+    {% csrf_token %} {{form.as_p}}
+    <button type="submit" class="btn">
+      Submit
+    </button>
+  </form>
 </div>
+{% endblock %}
