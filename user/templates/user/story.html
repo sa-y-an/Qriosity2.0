@@ -39,4 +39,28 @@
     </button>
   </form>
 </div>
+<script src="{% static 'user/story.js' %}"></script>
+<script>
+  particlesJS.load(
+    "particles-js",
+    "{% static 'user/particles.json' %}",
+    function () {
+      console.log("Hi Qriosity Player");
+    }
+  );
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+  integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+  crossorigin="anonymous"
+></script>
+<script>
+  // const height = $("br").next().position().top - $("br").position().top;
+  calculated_height = $(".container").height();
+  $("#particles-js").css("height", calculated_height);
+  $(".particles-js-canvas-el").css("min-height", calculated_height);
+
+  // console.log(height);
+</script>
+
 {% endblock %}

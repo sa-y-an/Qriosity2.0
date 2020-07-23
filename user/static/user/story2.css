@@ -5,13 +5,18 @@
   overflow-x: hidden;
 }
 
-.container {
+#particles-js {
   background: url("storybg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .content {
   max-width: 50vw;
   background-color: rgba(0, 0, 0, 0.6);
@@ -32,7 +37,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .container {
+  #particles-js {
     background: url("mobviewstorybg.png");
     background-size: cover;
     background-repeat: no-repeat;
