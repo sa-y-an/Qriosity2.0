@@ -10,6 +10,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  max-height: unset;
+  overflow: hidden;
 }
 
 .container {
