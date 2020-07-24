@@ -1,134 +1,119 @@
 <!DOCTYPE html> {% load static %}
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'home/loginstyle.css' %}" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="{% static 'home/home.ico' %}" type="image/x-icon" />
     <title>Login</title>
     <style>
-      * {
-        overflow: hidden;
-      }
-
-      .box {
-        margin: 10px;
-        pointer-events: all;
-      }
-
-      .panel {
-        max-width: 70vw;
-      }
-
-      #particles-js {
-        background: black;
-      }
-
-      @media screen and (max-width: 480px) {
-        .panel {
-          font-size: 10px;
+        * {
+            overflow: hidden;
         }
-      }
-
-      ul {
-        list-style: georgian;
-      }
-
-      li {
-        text-decoration: white;
-      }
-
-      .listr {
-        list-style: disc;
-      }
+        
+        .box {
+            margin: 10px;
+            pointer-events: all;
+        }
+        
+        .panel {
+            max-width: 70vw;
+        }
+        
+        #particles-js {
+            background: black;
+        }
+        
+        @media screen and (max-width: 480px) {
+            .panel {
+                font-size: 10px;
+            }
+        }
+        
+        ul {
+            list-style: georgian;
+        }
+        
+        li {
+            text-decoration: white;
+        }
+        
+        .listr {
+            list-style: disc;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="particles-js"></div>
     <div class="container">
-      <header>
-        <h1>
-          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-        </h1>
-        <br />
+        <header>
+            <h1>
+                <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
+            </h1>
+            <br />
 
-        <nav>
-          <ul>
-            {% if user.is_authenticated %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:formdata' %}"> Profile</a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-            </li>
-            <li>
-              <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'home:login' %}">Login</a>
-            </li>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'home:rules'%}">Rules</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:formdata' %}"> Profile</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:story' %}">Story</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'home:rules'%}">Rules</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:story' %}">Story</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home:login' %}">Login</a>
+                    </li>
 
-            {% endif %}
-          </ul>
-        </nav>
-      </header>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
 
-      <div class="content">
-        <div class="box">
-          <h3 style="font-size: x-large;">
-            Login to be Featured
-          </h3>
-          <br />
-          <br />
-          <div class="icon3">
-            <a href="{% url 'social:begin' 'facebook' %}">
-              <img src="{% static 'home/fb3.jpg'%}" alt="Login with Facebook" />
-            </a>
-            <br /><br />
-            <a href="{% url 'social:begin' 'google-oauth2' %}">
-              <img
-                src="{% static 'home/google.jpg'%}"
-                alt="Login with Google"
-              />
-            </a>
-          </div>
+        <div class="content">
+            <div class="box">
+                <h3 style="font-size: x-large;">
+                    Login to be Featured
+                </h3>
+                <br />
+                <br />
+                <div class="icon3">
+                    <a href="{% url 'social:begin' 'facebook' %}">
+                        <img src="{% static 'home/fb3.jpg'%}" alt="Login with Facebook" />
+                    </a>
+                    <br /><br />
+                    <a href="{% url 'social:begin' 'google-oauth2' %}">
+                        <img src="{% static 'home/google.jpg'%}" alt="Login with Google" />
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-      {% include 'partials/_footer.html' %}
+        {% include 'partials/_footer.html' %}
     </div>
-  </body>
-  <script src="{% static 'user/particles.js' %}"></script>
-  <script>
-    particlesJS.load(
-      "particles-js",
-      "{% static 'home/home.json' %}",
-      function () {
-        console.log("Hi Qriosity Player");
-      }
-    );
-  </script>
+</body>
+
 </html>
