@@ -71,7 +71,6 @@ header a:hover {
   color: rgb(161, 173, 201);
   text-emphasis: bold;
   text-shadow: 0 0 3px #a26d28;
-  transform: scale(1.1);
 }
 
 header nav ul {
