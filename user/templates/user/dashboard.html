@@ -29,6 +29,10 @@
         Start
       </button>
         </form>
+        <br>
+        <a href="{% url 'user:formdata' %}"> <button type="submit" class="btn btn-primary mb1 bg-blue">
+            View/Update Profile
+          </button></a>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -36,9 +40,7 @@
     particlesJS.load(
         "particles-js",
         "{% static 'home/home.json' %}",
-        function() {
-            console.log("Hello Qriosity Player !!!");
-        }
+        function() {}
     );
 </script>
 {% endblock %}
