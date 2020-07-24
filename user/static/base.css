@@ -164,8 +164,10 @@ footer img {
 
 .btn {
   background: rgba(0, 0, 0, 0.7);
-  padding: 0.5em;
+  padding: 0.2rem 1rem;
+  margin-top: 0.6rem;
   border-radius: 2em;
+  font-size: 1.02rem;
   display: flex;
   text-transform: capitalize;
   text-transform: uppercase;
