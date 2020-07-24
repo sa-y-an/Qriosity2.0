@@ -165,6 +165,9 @@ footer img {
     header nav {
         font-size: 10px;
     }
+    header nav ul {
+        margin-right: 5%;
+    }
 }
 
 .btn {
