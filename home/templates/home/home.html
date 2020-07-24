@@ -1,164 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  {% load static %}
-
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="google-site-verification"
-      content="erdtRhDLOXg-PvdCE4oD67-K04-RPQtqTtkJGWUYj9U"
-    />
-    <link rel="stylesheet" href="{% static 'home/styleshome.css'%}" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
-    <title>Qriosity 2.0</title>
-    <title>User</title>
-  </head>
-
-  <body>
-    <div id="particles-js"></div>
-    <div class="container">
-      <header>
-        <h1>
-          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-        </h1>
-        <br />
-
-        <nav>
-          <ul>
-            {% if user.is_authenticated %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:formdata' %}"> Profile</a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-            </li>
-            <li>
-              <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'home:login' %}">Login</a>
-            </li>
-
-            {% endif %}
-          </ul>
-        </nav>
-      </header>
-
-      <div class="content">
-        <div class="title glow">
-          <div class="txt">Qriosity 2.0</div>
-          <!-- <div class="n2_">2.0</div> -->
-        </div>
-        <div class="details">
-          <div class="para">
-            <p class="box-text1" id="demo">
-              Curiosity, like a mystery has a surface innocence, surprise, the
-              revelation of a concealed meaning and the catharsis of solution.
-            </p>
-          </div>
-
-          <br />
-          {% if user.is_authenticated %}
-          <a href="{% url 'quiz:stageone'  %}">
-            <button
-              class="btn btn-primary mb1 bg-blue"
-              type="submit"
-              value="Play"
-              class="dare"
-            >
-              Start
-            </button></a
-          >
-          {% else %}
-          <a href="{% url 'home:login' %}">
-            <button
-              class="btn btn-primary mb1 bg-blue"
-              type="submit"
-              value="Play"
-              class="dare"
-            >
-              Start
-            </button>
-            {% endif %}
-          </a>
-        </div>
-      </div>
-      {% include 'partials/_footer.html' %}
+{% extends 'base.html' %}{% load static %}{% block content %}
+<link rel="stylesheet" href="{% static 'home/home.css' %}" />
+<div class="content">
+  <div class="title glow">
+    <div class="txt">Qriosity 2.0</div>
+  </div>
+  <div class="box">
+    <div class="para">
+      <p class="box-text1" id="demo">
+        Curiosity, like a mystery has a surface innocence, surprise, the
+        revelation of a concealed meaning and the catharsis of solution.
+      </p>
     </div>
-  </body>
-  <script src="{% static 'user/particles.js' %}"></script>
-  <script>
-    particlesJS.load(
-      "particles-js",
-      "{% static 'home/home.json' %}",
-      function () {
-        console.log("Hi Qriosity Player");
-      }
-    );
-  </script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"
-    integrity="sha512-elauk8NI35rjTlatfRQxeqmJoieQlfm0W8AeQVps+j+KkMDdaqNxVazFzwyU7uSOyeeVn/VLbGYLwOR/D5I6Kw=="
-    crossorigin="anonymous"
-  ></script>
-  <script>
-    let tl = gsap.timeline();
-    tl.from("#particles-js", {
-      x: -500,
-      opacity: 0,
-    })
-      .from("header", {
-        y: -100,
-        opacity: 0,
-      })
-      .from("footer", {
-        y: 100,
-        opacity: 0,
-      })
-      .from(".details", {
-        height: 0,
-        opacity: 0,
-      })
-      .from(".title", {
-        x: -50,
-        opacity: 0,
-      });
-  </script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-    crossorigin="anonymous"
-  ></script>
-  <script>
-    const height = $("br").next().position().top - $("br").position().top;
-    calculated_height = $(".container").height();
-    $("#particles-js").css("height", calculated_height);
-    $(".particles-js-canvas-el").css("min-height", calculated_height);
 
-    console.log(height);
-  </script>
-</html>
+    <br />
+    {% if user.is_authenticated %}
+    <a href="{% url 'quiz:stageone'  %}">
+      <button
+        class="btn btn-primary mb1 bg-blue"
+        type="submit"
+        value="Play"
+        class="dare"
+      >
+        Start
+      </button></a
+    >
+    {% else %}
+    <a href="{% url 'home:login' %}">
+      <button
+        class="btn btn-primary mb1 bg-blue"
+        type="submit"
+        value="Play"
+        class="dare"
+      >
+        Start
+      </button>
+      {% endif %}
+    </a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS.load(
+    "particles-js",
+    "{% static 'home/home.json' %}",
+    function () {
+      console.log("Hello Qriosity Player !!!");
+    }
+  );
+</script>
+{% endblock %}

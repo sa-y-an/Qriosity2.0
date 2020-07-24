@@ -7,8 +7,8 @@
     The Algorithms to fetch the Passcode are
   </h2>
 
+  {% for question in questions %}
   <div class="stage1">
-    {% for question in questions %}
     <div class="context">
       <ul>
         <li>Question Level : {{ question.level}}</li>
@@ -20,9 +20,8 @@
       </ul>
       {{ question.algo|safe}}
     </div>
-
-    {% endfor %}
   </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
