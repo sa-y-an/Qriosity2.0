@@ -56,26 +56,6 @@
 
             <nav>
                 <ul>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'home:rules'%}">Rules</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:formdata' %}"> Profile</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story' %}">Story</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    {% else %}
                     <li>
                         <a href="{% url 'home:rules'%}">Rules</a>
                     </li>
@@ -88,8 +68,6 @@
                     <li>
                         <a href="{% url 'home:login' %}">Login</a>
                     </li>
-
-                    {% endif %}
                 </ul>
             </nav>
         </header>

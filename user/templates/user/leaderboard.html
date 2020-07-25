@@ -1,105 +1,82 @@
 {% load static %}
 <html>
-  <head>
+
+<head>
     <title>Leaderboard</title>
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link
-      href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap"
-      type="text/css"
-    />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap" type="text/css" />
+    <link rel="shortcut icon" href="{% static 'home/home.ico' %}" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'user/leaderboard.css' %}" />
     <style>
-      footer {
-        z-index: 100 !important;
-      }
+        footer {
+            z-index: 100 !important;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <h1>
-        <a class="qriosity" href="{% url 'home:home' %}">Qriosity 2.0</a>
-      </h1>
+        <h1>
+            <a class="qriosity" href="{% url 'home:home' %}">Qriosity 2.0</a>
+        </h1>
 
-      <nav>
-        <ul>
-          {% if user.is_authenticated %}
-          <li>
-            <a href="{% url 'home:rules'%}">Rules</a>
-          </li>
-          <li>
-            <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-          </li>
-          <li>
-            <a href="{% url 'user:formdata' %}">Profile</a>
-          </li>
-          <li>
-            <a href="{% url 'user:story' %}">Story</a>
-          </li>
-          <li>
-            <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-          </li>
-          <li>
-            <a href="{% url 'logout' %}">Logout</a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home:rules'%}">Rules</a>
+                </li>
+                <li>
+                    <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
+                </li>
+                <li>
+                    <a href="{% url 'quiz:stageone' %}">Arena</a>
+                </li>
+                <li>
+                    <a href="{% url 'user:story' %}">Story</a>
+                </li>
+                <li>
+                    <a href="{% url 'user:dashboard' %}"> Dashboard </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <div class="content">
-      <div class="topper">
-        {% for top in leader%}
-        <img src="{{top.image}}" alt="{{top.name}}" class="tpic" />
-        <h3 class="thname">
-          {{top.name}}
-        </h3>
-        {% endfor %}
-      </div>
-      <div class="box">
-        <br />
-        <div class="search">
-          <input
-            type="text"
-            id="searchbox"
-            placeholder="Search Your Name Here ...."
-            onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Search Your Name Here ....'"
-          />
-          <br />
+        <div class="topper">
+            {% for top in leader%}
+            <img src="{{top.image}}" alt="{{top.name}}" class="tpic" />
+            <h3 class="thname">
+                {{top.name}}
+            </h3>
+            {% endfor %}
         </div>
-        <div class="list">
-          <br />
-          {% for i in leaderboard %}
-          <div class="item">
-            <div class="pos">
-              {{ forloop.counter }}
+        <div class="box">
+            <br />
+            <div class="search">
+                <input type="text" id="searchbox" placeholder="Search Your Name Here ...." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Your Name Here ....'" />
+                <br />
             </div>
-            <div
-              class="pic"
-              style="background-image: url({{ i.image }});"
-            ></div>
-            <div class="name">
-              {{ i.name }}
+            <div class="list">
+                <br /> {% for i in leaderboard %}
+                <div class="item">
+                    <div class="pos">
+                        {{ forloop.counter }}
+                    </div>
+                    <div class="pic" style="background-image: url({{ i.image }});"></div>
+                    <div class="name">
+                        {{ i.name }}
+                    </div>
+                    <div class="score">
+                        {{ i.score }}
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <div class="score">
-              {{ i.score }}
-            </div>
-          </div>
-          {% endfor %}
         </div>
-      </div>
     </div>
     <br /><br /><br /><br /><br />
     <div class="newline"><br /><br /><br /></div>
@@ -108,36 +85,37 @@
     <!-- <div class="parallax"></div> -->
 
     <script type="text/javascript">
-      var no = "{{n}}";
-      console.log(no);
-      $(document).ready(function () {
-        $("#searchbox").on("keyup", function () {
-          for (i = 0; i < no; i++) {
-            let inp = document.querySelector("#searchbox").value;
-            let msg = document.querySelector(".searchResult");
-            let org = document.querySelectorAll(".item")[i];
-            if (
-              org
-                .querySelector(".name")
-                .innerText.toUpperCase()
-                .indexOf(inp.toUpperCase()) > -1
-            ) {
-              org.style.display = "";
-            } else {
-              org.style.display = "none";
-            }
-          }
+        var no = "{{n}}";
+        console.log(no);
+        $(document).ready(function() {
+            $("#searchbox").on("keyup", function() {
+                for (i = 0; i < no; i++) {
+                    let inp = document.querySelector("#searchbox").value;
+                    let msg = document.querySelector(".searchResult");
+                    let org = document.querySelectorAll(".item")[i];
+                    if (
+                        org
+                        .querySelector(".name")
+                        .innerText.toUpperCase()
+                        .indexOf(inp.toUpperCase()) > -1
+                    ) {
+                        org.style.display = "";
+                    } else {
+                        org.style.display = "none";
+                    }
+                }
+            });
         });
-      });
 
-      function myFunction() {
-        var x = document.getElementById("myLinks");
-        if (x.style.display === "block") {
-          x.style.display = "none";
-        } else {
-          x.style.display = "block";
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
         }
-      }
     </script>
-  </body>
+</body>
+
 </html>
