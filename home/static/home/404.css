@@ -1,148 +1,44 @@
 html,
 body {
-  background: url("redbg.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 110vh;
-  min-width: 100%;
-  overflow: hidden;
+    background: url("redbg.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-.container {
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  width: 100vw !important;
-  /* background-color: black; */
-  color: white;
-  pointer-events: none;
-  /* background: black;
-    mix-blend-mode: lighten; */
+.outer-wrapper {
+    display: inline-block;
+    margin: 20px;
 }
 
-header {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  color: white;
-  padding: 10px;
-  flex-wrap: wrap;
-  min-height: 10vh;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 0 6px 6px var(--myNumber);
-  pointer-events: all;
-}
-
-header h1 {
-  color: white;
-  flex: 1.5;
-  flex-shrink: 0;
-  display: flex;
-  margin-left: 5px;
-  padding: 5px;
-  padding-top: 3px;
-}
-
-nav {
-  flex: 1;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100vw;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-nav ul,
-a:any-link {
-  text-decoration: none;
-  list-style: none;
-  color: white;
-  text-align: justify;
-}
-
-header a:hover {
-  color: rgb(161, 173, 201);
-  text-emphasis: bold;
-  text-shadow: 0 0 3px #a26d28;
-  transform: scale(1.1);
-}
-
-header nav ul {
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: wrap; */
-  justify-content: space-around;
-  align-items: center;
-  align-content: space-around;
-  width: 100%;
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
 .qriosity {
-  font-family: "Electro Shackle";
-}
-
-header a:hover {
-  color: #d08c34;
-  text-emphasis: bold;
-  text-decoration: underline;
-  text-shadow: none;
-  box-shadow: none;
+    font-family: "Electro Shackle";
 }
 
 h1 {
-  overflow: visible;
-  padding-left: 5px;
-  padding-right: 5px;
+    overflow: visible;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 h1 a {
-  padding: 5px;
+    padding: 5px;
 }
 
 h1 a:hover {
-  text-decoration: none;
-  color: #d99236;
+    text-decoration: none;
+    color: #d99236;
 }
 
-footer {
-  height: 5vh;
-  width: 100vw;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.9);
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  /* flex-direction: row-reverse; */
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 3px 3px 3px var(--myNumber);
-  pointer-events: all;
-}
 
-footer img {
-  display: flex;
-  height: 4.5vh;
-}
+/* footer {
+    padding-bottom: 28px;
 
-.footmid {
-  display: flex;
-  flex-direction: row;
-}
-
-@media screen and (max-width: 480px) {
-  nav {
-    font-size: 10px;
-  }
-  header nav ul {
-    margin-right: 8%;
-  }
-}
+} */
