@@ -4,9 +4,9 @@
 </head>
 <div class="content">
   <div class="stage1">
-    <h3>
+    <p>
       Question Level : {{ question.level }}
-    </h3>
+    </p>
 
     {% if value %}
     <div class="wrong">
@@ -23,7 +23,7 @@
     </div>
     {% endif %}
 
-    <h3>{{ question.title }}</h3>
+    <h3 class="qtitle">{{ question.title }}</h3>
 
     <!-- description -->
     {% if question.description %}
@@ -41,15 +41,15 @@
   <div class="anhint">
     {% if hint %}
     <div>
-      <h3>
+      <h3 class="qtitle">
         You Have Lost 5 points.
       </h3>
     </div>
-    <div>
+    <div class="hint">
       <p align="center">
         Your Hint Is :
       </p>
-      <p align="center">
+      <p align="center" class="ohint">
         {{ question.hint}}
       </p>
     </div>
@@ -60,7 +60,7 @@
       <p>
         Click Below for Hint But You Will Loose points
       </p>
-      <button type="submit" class="btn btn-primary mb1 bg-blue">
+      <button type="submit" class="btn">
         Click For Hint
       </button>
     </form>
@@ -69,7 +69,7 @@
 
     <form action="{% url 'quiz:answer'%}" method="post">
       {% csrf_token %} {{ form.as_p}}
-      <button type="submit" class="btn btn-primary mb1 bg-blue">
+      <button type="submit" class="btn">
         Submit
       </button>
     </form>

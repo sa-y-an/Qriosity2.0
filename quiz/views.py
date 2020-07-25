@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from .models import Stage_1, StageTwo
 from django.contrib.auth.decorators import login_required
@@ -16,15 +17,16 @@ question1 = Stage_1.objects.all()
 
 @login_required(login_url='/login', redirect_field_name=None)
 def Algo(request):
-    player = get_object_or_404(Player, user=request.user)
-    n = player.question_level
-    print(n)
-    if (n < Stage_1.objects.count()):
-        question = Stage_1.objects.order_by('-level')[n:]
+    if request.method == "POST":
+        player = get_object_or_404(Player, user=request.user)
+        n = player.question_level
+        if n > Stage_1.objects.count():
+            question = Stage_1.objects.order_by('-level')
+            return render(request, 'quiz/algorithm.html', {"questions": question})
+        else:
+            raise Http404("Page does not exist")
     else:
-        question = Stage_1.objects.order_by('-level')
-
-    return render(request, 'quiz/algorithm.html', {"questions": question})
+        raise Http404("Page does not exist")
 
 
 @login_required(login_url='/login', redirect_field_name=None)

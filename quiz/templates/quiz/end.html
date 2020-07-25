@@ -17,6 +17,13 @@
     your answer was incorrect
   </p>
   {% endif %}
+
+  <form action="{% url 'quiz:algo'%}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn">
+      Algorithms
+    </button>
+  </form>
   <div class="stage1">
     <form action="{% url 'quiz:passcode' %}" method="POST">
       {% csrf_token %}
