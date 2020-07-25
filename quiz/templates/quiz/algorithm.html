@@ -16,9 +16,23 @@
         <li>
           Question Title : {{ question.title }}
         </li>
-        <li>Algorithm :</li>
+
+        <li>
+          <p>Algorithm :</p>
+          <p>
+            {{ question.algo|safe}}
+          </p>
+        </li>
+
+        <li>
+          <p>
+            In case you forgot
+          </p>
+          <p>
+            Answer : {{question.answer}}
+          </p>
+        </li>
       </ul>
-      {{ question.algo|safe}}
     </div>
   </div>
   {% endfor %}
