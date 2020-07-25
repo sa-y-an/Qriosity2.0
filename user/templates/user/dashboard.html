@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" href="{% static 'user/styles.css' %}" /> {% block title %}
 <title>Dashboard</title>{% endblock %}
-
 <style>
     .imageusr {
         height: 20vh;
@@ -11,16 +10,16 @@
 </style>
 <div class="content">
     <div class="user">
-        <img src="{{ user.image }}" alt="{{ user.name }}" class="imageusr" /><br />
+        <img src="{{ player.image }}" alt="{{ player.name }}" class="imageusr" /><br />
         <div class="name" style="font-size: x-large; font-weight: 600;">
-            {{ user.name }}
+            {{ player.name }}
         </div>
 
         <div class="score" style="font-size: medium;">
-            Your Score : {{ user.score}}
+            Your Score : {{ player.score }}
         </div>
         <div class="rank" style="font-size: medium;">
-            Your rank : {{j}}
+            Your rank : {{rank}}
         </div>
 
         <form action="{% url 'quiz:stageone' %}" method="POST">

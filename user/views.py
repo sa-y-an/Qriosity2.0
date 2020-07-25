@@ -16,23 +16,17 @@ def logout(request):
 
 @login_required(login_url='/login', redirect_field_name=None)
 def dashboard(request):
-    if request.user:
-        if request.user.is_authenticated:
-            player = models.Player.objects.get(user=request.user)
-            print("In dashboard - Name - {}  User - {}".format(player.name, player.user))
-            cl = models.Player.objects.order_by(
-                '-score', '-last_submit')
-            j = 0
-            for i in cl:
-                j += 1
-                if i.user == player.user:
-                    print(j)
-                    break
-            return render(request, 'user/dashboard.html', {'user': player, "j": j})
-        else:
-            return redirect('home:home')
-    else:
-        return redirect('home:home')
+    player = models.Player.objects.get(user=request.user)
+    print("In dashboard - Name - {}  User - {}".format(player.name, player.user))
+    cl = models.Player.objects.order_by(
+        '-score', '-last_submit')
+    j = 0
+    for i in cl:
+        j += 1
+        if i.user == player.user:
+            print(j)
+            break
+    return render(request, 'user/dashboard.html', {'player': player, "rank": j})
 
 
 def save_profile(backend, user, response, *args, **kwargs):

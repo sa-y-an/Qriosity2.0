@@ -27,7 +27,10 @@
                         <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
                     </li>
                     <li>
-                        <a href="{% url 'user:formdata' %}"> Profile</a>
+                        <a href="{% url 'quiz:stageone' %}">Arena</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'user:story' %}">Story</a>
                     </li>
                     <li>
                         <a href="{% url 'user:dashboard' %}"> Dashboard </a>
@@ -43,13 +46,10 @@
                         <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
                     </li>
                     <li>
-                        <a href="{% url 'quiz:algo' %}"> Algorithm</a>
+                        <a href="{% url 'user:story'%}">Story </a>
                     </li>
                     <li>
                         <a href="{% url 'home:login' %}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'user:story'%}">Story </a>
                     </li>
                     {% endif %}
                 </ul>
