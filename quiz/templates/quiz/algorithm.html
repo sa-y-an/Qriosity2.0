@@ -1,6 +1,12 @@
 {% extends 'base.html'%} {% load static %} {% block content %}
 <head>
   <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
+  <style>
+    .content {
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <div class="content">
   <h2 align="center">
