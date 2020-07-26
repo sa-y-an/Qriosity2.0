@@ -1,39 +1,38 @@
 {% extends 'base.html'%} {% load static %} {% block content %}
+
 <head>
-  <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
+    <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
 </head>
 <div class="content">
-  <div class="stage1">
-    <h3>
-      Question No. {{question.level}}
-    </h3>
-    {% if value %}
-    <div class="wrong">
-      Your previous Answer was wrong
-      <br />
-      Please try again <br />
-      You can take the hint (you will loose points)
-    </div>
-    {% endif %}
-    <h3>
-      <u>
+    <div class="stage1">
+        <h3>
+            Question No. {{question.level}}
+        </h3>
+        {% if value %}
+        <div class="wrong">
+            Wrong Answer &#10060;
+            <br /> Try Again <br />
+        </div>
+        {% endif %}
+        <h3>
+            <u>
         {{ question.title }}
       </u>
-    </h3>
+        </h3>
 
-    <br />
-    <!-- description -->
-    {% if question.description %}
-    <div>{{ question.description }}</div>
-    {% endif %}
-    <br />
-  </div>
+        <br />
+        <!-- description -->
+        {% if question.description %}
+        <div>{{ question.description }}</div>
+        {% endif %}
+        <br />
+    </div>
 
-  <form action="" method="POST" class="stage1">
-    {% csrf_token %} {{form.as_p}}
-    <button type="submit" class="btn">
+    <form action="" method="POST" class="stage1">
+        {% csrf_token %} {{form.as_p}}
+        <button type="submit" class="btn">
       Submit
     </button>
-  </form>
+    </form>
 </div>
 {% endblock %}
