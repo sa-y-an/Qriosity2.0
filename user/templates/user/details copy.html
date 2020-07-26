@@ -1,0 +1,36 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'home/home.ico' %}"
+      type="image/x-icon"
+    />
+    <title>Details</title>
+  </head>
+  <link rel="stylesheet" href="{% static 'user/forms.css' %}" />
+
+  <body>
+    <div class="container">
+      {% include 'partials/_navbar.html'%}
+
+      <div class="content">
+        <form action="{% url 'user:formdata' %}" method="POST">
+          <h2 align="center">
+            Fill your details
+          </h2>
+
+          {% csrf_token %} {{ form.as_p }}
+
+          <button type="submit" class="btn btn-primary mb1 bg-blue">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      {% include 'partials/_footer.html'%}
+    </div>
+  </body>
+</html>

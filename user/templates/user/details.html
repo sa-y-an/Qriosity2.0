@@ -1,36 +1,18 @@
-<!DOCTYPE html> {% load static %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
-    <title>Details</title>
-  </head>
-  <link rel="stylesheet" href="{% static 'user/forms.css' %}" />
+{%extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'user/forms.css' %}" />
+<div class="content">
+  <form action="{% url 'user:formdata' %}" method="POST">
+    <h2 align="center">
+      Fill your details
+    </h2>
 
-  <body>
-    <div class="container">
-      {% include 'partials/_navbar.html'%}
+    {% csrf_token %} {{ form.as_p }}
 
-      <div class="content">
-        <form action="{% url 'user:formdata' %}" method="POST">
-          <h2 align="center">
-            Fill your details
-          </h2>
+    <button type="submit" class="btn btn-primary mb1 bg-blue">
+      Submit
+    </button>
+    <br />
+  </form>
+</div>
 
-          {% csrf_token %} {{ form.as_p }}
-
-          <button type="submit" class="btn btn-primary mb1 bg-blue">
-            Submit
-          </button>
-        </form>
-      </div>
-
-      {% include 'partials/_footer.html'%}
-    </div>
-  </body>
-</html>
+{% endblock %}
