@@ -1,127 +1,60 @@
-<!DOCTYPE html> {% load static %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="{% static 'home/home.ico' %}"
-      type="image/x-icon"
-    />
+{%extends 'base.html' %} {% load static %} {% block content %}
 
-    <title>Form Status</title>
-    <link rel="stylesheet" href="{% static 'user/forms2.css' %}" />
-  </head>
-  <style>
-    .content {
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: fit-content;
+<link rel="stylesheet" href="{% static 'user/forms1.css' %}" />
+
+<div class="content">
+  <br /><br />
+
+  <div class="box">
+    <h3>
+      Your current Profile details :
+    </h3>
+    <br />
+    <p>
+      Name : {{details.full_name}}
+    </p>
+    <br />
+    <p>
+      College : {{details.college}}
+    </p>
+    <br />
+    <p>
+      Year : {{details.year}}
+    </p>
+    <br />
+    <p>
+      Contact Number : {{details.contact}}
+    </p>
+  </div>
+
+  <div class="submit">
+    <a href="{% url 'user:details'%}">
+      <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
+        Update Profile
+      </button>
+    </a>
+  </div>
+  <div class="submit">
+    <a href="{% url 'user:dashboard'%}">
+      <button
+        value="Update Contact"
+        class="btn btn-primary mb1 bg-blue"
+        style="font-size: medium;"
+      >
+        Proceed to Dashboard
+      </button>
+    </a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS.load(
+    "particles-js",
+    "{% static 'home/home.json' %}",
+    function () {
+      console.log("Hello Qriosity Player !!!");
     }
-  </style>
-
-  <body>
-    <div id="particles-js"></div>
-    <div class="container">
-      <header>
-        <h1>
-          <a href="{% url 'home:home' %}" class="qriosity">Qriosity 2.0</a>
-        </h1>
-        <br />
-        <nav>
-          <ul>
-            <li>
-              <a href="{% url 'home:rules'%}">Rules</a>
-            </li>
-            <li>
-              <a href="{% url 'user:leaderboard' %}"> LeaderBoard </a>
-            </li>
-            <li>
-              <a href="{% url 'user:formdata' %}">Profile</a>
-            </li>
-            <li>
-              <a href="{% url 'user:story' %}">Story</a>
-            </li>
-            <li>
-              <a href="{% url 'user:dashboard' %}"> Dashboard </a>
-            </li>
-            <li>
-              <a href="{% url 'logout' %}">Logout</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      <div class="content">
-        <br /><br />
-        <div class="title">
-          Your current Profile details :
-        </div>
-
-        <div class="box">
-          <p>
-            Name : {{details.full_name}}
-          </p>
-          <br />
-          <p>
-            College : {{details.college}}
-          </p>
-          <br />
-          <p>
-            Year : {{details.year}}
-          </p>
-          <br />
-          <p>
-            Contact Number : {{details.contact}}
-          </p>
-        </div>
-
-        <div class="submit">
-          <a href="{% url 'user:details'%}">
-            <button value="Update Contact" class="btn btn-primary mb1 bg-blue">
-              Update Profile
-            </button>
-          </a>
-        </div>
-        <div class="submit">
-          <a href="{% url 'user:dashboard'%}">
-            <button
-              value="Update Contact"
-              class="btn btn-primary mb1 bg-blue"
-              style="font-size: medium;"
-            >
-              Proceed to Dashboard
-            </button>
-          </a>
-        </div>
-      </div>
-      {% include 'partials/_footer.html'%}
-    </div>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS.load(
-      "particles-js",
-      "{% static 'home/home.json' %}",
-      function () {
-        console.log("Hello Qriosity Player !!!");
-      }
-    );
-  </script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-    crossorigin="anonymous"
-  ></script>
-  <script>
-    const height = $("br").next().position().top - $("br").position().top;
-    calculated_height = $(".container").height() + 4 * height;
-    $("#particles-js").css("height", calculated_height);
-    $(".particles-js-canvas-el").css("min-height", calculated_height);
-
-    console.log(height);
-  </script>
-</html>
+  );
+</script>
+{% endblock %}
