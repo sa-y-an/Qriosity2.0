@@ -201,76 +201,82 @@ def Passcode(request):
 # individual questions of stage 2
 @login_required(login_url='/login', redirect_field_name=None)
 def Individual(request, qid):
-    value = False  # this marks if the question is solved (and shows the popup)
-    all = StageTwo.objects.all()
     player = get_object_or_404(Player, user=request.user)
-    s = player.solved_set.all()     # solved class has 2 objects 1. level_on 2. solved
-    question = get_object_or_404(StageTwo, level=qid)
-    p = get_object_or_404(Player, user=request.user)
-    p.level2 = int(qid)
-    p.save()            # sets the current level of the user to the visiting question
+    if(player.level2 < 0):
+        return render(request, 'quiz/smart.html')
+    else:
+        # this marks if the question is solved (and shows the popup)
+        value = False
+        all = StageTwo.objects.all()
+        player = get_object_or_404(Player, user=request.user)
+        s = player.solved_set.all()     # solved class has 2 objects 1. level_on 2. solved
+        question = get_object_or_404(StageTwo, level=qid)
+        p = get_object_or_404(Player, user=request.user)
+        p.level2 = int(qid)
+        p.save()            # sets the current level of the user to the visiting question
 
-    flag = False        # player solved it or not
-    for i in s:         # checks if player have already visited the question
-        if (i.level_on == qid):
-            if (i.solved == True):  # checks if player have solved the question
-                flag = True
-                # then returns the solved page
-                return render(request, 'quiz/solved.html', {"all": all})
-            else:
-                flag = True
-                if request.method == "GET":     # if the player comes for the question
-                    my_form = UserAnswer
-                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value, "all": all})
-                if request.method == "POST":    # if the player submits the question
-                    my_form = UserAnswer(request.POST)
-
-                    if my_form.is_valid():
-                        ans = my_form.cleaned_data.get("answer")
-                        organs = get_object_or_404(StageTwo, level=qid).answer
-
-                        # correct answer
-                        if (str(organs).lower() == str(ans).lower()):   # if the answer is correct
-                            player.score += 20
-                            player.last_submit = timezone.now()
-                            player.count2 += 1          # count of solved questions
-                            i.solved = True         # the question is set to solved corrosponding to that level
-                            i.save()
-                            player.save()
-                            return render(request, 'quiz/solved.html', {"all": all})
-
-                        # incorrect answer
-                        else:   # returns the same question
-                            value = True
-                            return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value, "all": all})
-                    else:
-                        return HttpResponse('<h2> Your Form Data was Invalid </h2>')
-                        # invalid form data submitted by tampering with developer console
-
-    if (flag == False):  # the player didnot visited the question before
-        # creates a Solved object with level_on = question level and solved set to False
-        player.solved_set.create(level_on=qid, solved=False)
-
-        if request.method == "GET":
-            my_form = UserAnswer
-            return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "all": all})
-        if request.method == "POST":
-            my_form = UserAnswer(request.POST)
-            if my_form.is_valid():
-                ans = my_form.cleaned_data.get("answer")
-                organs = get_object_or_404(StageTwo, level=qid).answer
-                # if the player succesfully solves the question
-                if (str(organs).lower() == str(ans).lower()):
-                    player.score += 5
-                    player.last_submit = timezone.now()
-                    player.count2 += 1          # count of solved questions
-                    i = player.solved_set.get(level_on=qid)
-                    i.solved = True  # sets the solved to true
-                    i.save()
-                    player.save()
+        flag = False        # player solved it or not
+        for i in s:         # checks if player have already visited the question
+            if (i.level_on == qid):
+                if (i.solved == True):  # checks if player have solved the question
+                    flag = True
+                    # then returns the solved page
                     return render(request, 'quiz/solved.html', {"all": all})
-                else:   # returns the same question
-                    value = False
-                    return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "all": all})
-            else:
-                return HttpResponse('<h2> Your Form data was Invalid </h2>')
+                else:
+                    flag = True
+                    if request.method == "GET":     # if the player comes for the question
+                        my_form = UserAnswer
+                        return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value, "all": all})
+                    if request.method == "POST":    # if the player submits the question
+                        my_form = UserAnswer(request.POST)
+
+                        if my_form.is_valid():
+                            ans = my_form.cleaned_data.get("answer")
+                            organs = get_object_or_404(
+                                StageTwo, level=qid).answer
+
+                            # correct answer
+                            if (str(organs).lower() == str(ans).lower()):   # if the answer is correct
+                                player.score += 20
+                                player.last_submit = timezone.now()
+                                player.count2 += 1          # count of solved questions
+                                i.solved = True         # the question is set to solved corrosponding to that level
+                                i.save()
+                                player.save()
+                                return render(request, 'quiz/solved.html', {"all": all})
+
+                            # incorrect answer
+                            else:   # returns the same question
+                                value = True
+                                return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "value": value, "all": all})
+                        else:
+                            return HttpResponse('<h2> Your Form Data was Invalid </h2>')
+                            # invalid form data submitted by tampering with developer console
+
+        if (flag == False):  # the player didnot visited the question before
+            # creates a Solved object with level_on = question level and solved set to False
+            player.solved_set.create(level_on=qid, solved=False)
+
+            if request.method == "GET":
+                my_form = UserAnswer
+                return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "all": all})
+            if request.method == "POST":
+                my_form = UserAnswer(request.POST)
+                if my_form.is_valid():
+                    ans = my_form.cleaned_data.get("answer")
+                    organs = get_object_or_404(StageTwo, level=qid).answer
+                    # if the player succesfully solves the question
+                    if (str(organs).lower() == str(ans).lower()):
+                        player.score += 5
+                        player.last_submit = timezone.now()
+                        player.count2 += 1          # count of solved questions
+                        i = player.solved_set.get(level_on=qid)
+                        i.solved = True  # sets the solved to true
+                        i.save()
+                        player.save()
+                        return render(request, 'quiz/solved.html', {"all": all})
+                    else:   # returns the same question
+                        value = False
+                        return render(request, 'quiz/individual.html', {"question": question, "form": my_form, "all": all})
+                else:
+                    return HttpResponse('<h2> Your Form data was Invalid </h2>')
