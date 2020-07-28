@@ -2,6 +2,10 @@
 <head>
   <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
   <style>
+    .container {
+      background: black;
+      color: blanchedalmond;
+    }
     .content {
       pointer-events: none;
       cursor: not-allowed;
@@ -9,6 +13,15 @@
     .htit {
       margin-top: 1em;
       margin-bottom: 1em;
+    }
+    .question {
+      background: rgba(255, 2555, 255, 0.1);
+      padding: 1em;
+      margin: 1em;
+      border-radius: 1em;
+    }
+    .title {
+      color: burlywood;
     }
   </style>
 </head>
@@ -23,8 +36,15 @@
       <ul>
         <li>Question Level : {{ question.level}}</li>
 
-        <li>
+        <li class="title">
           Question Title : {{ question.title }}
+        </li>
+
+        <li>
+          <p class="question">
+            {{question.description}}
+          </p>
+          <br />
         </li>
 
         <li>
@@ -35,16 +55,18 @@
         </li>
 
         <li>
-          <p>
-            In case you forgot 🥱🥱
-          </p>
-          <p>
-            Answer : {{question.answer}}
+          <p class="question">
+            In case you forgot
+            <br />
+            Answer : <font color="#a26d2"> {{question.answer}}</font>
           </p>
         </li>
+        <br />
       </ul>
     </div>
   </div>
+  <br />
+
   {% endfor %}
 </div>
 
