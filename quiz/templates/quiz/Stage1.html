@@ -1,75 +1,83 @@
 {% extends 'base.html'%} {% load static %} {% block content %}
 
 <head>
-    <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
+  <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" />
+  {% block title %}
+  <title>
+    {{question.title}}
+  </title>
+  {% endblock %}
 </head>
 <div class="content">
-    <div class="stage1">
-        <p>
-            Question Level : {{ question.level }}
-        </p>
+  <div class="stage1">
+    <p>
+      Question Level : {{ question.level }}
+    </p>
 
-        {% if value %}
-        <div class="wrong">
-            Wrong Answer &#10060;
-            <br /> Try Again <br /> {% if hint %} {% else %}
-            <div class="warning">
-                Stuck ? Take a Hint. <br /> (You will loose points)
-            </div>
-            {% endif %}
-        </div>
-        {% endif %}
+    {% if value %}
+    <div class="wrong">
+      Wrong Answer &#10060;
+      <br />
+      Try Again <br />
+      {% if hint %} {% else %}
+      <div class="warning">
+        Stuck ? Take a Hint. <br />
+        (You will loose points)
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
 
-        <h3 class="qtitle">{{ question.title }}</h3>
+    <h3 class="qtitle">{{ question.title }}</h3>
 
-        <!-- description -->
-        {% if question.description %}
-        <div class="description">{{ question.description }}</div>
-        {% endif %}
+    <!-- description -->
+    {% if question.description %}
+    <div class="description">{{ question.description }}</div>
+    {% endif %}
 
-        <!-- image -->
-        {% if question.image %}
-        <div>
-            <img src="{{ question.image_url }}" alt="{{question.title}}" />
-        </div>
-        {% endif %}
+    <!-- image -->
+    {% if question.image %}
+    <div>
+      <img src="{{ question.image_url }}" alt="{{question.title}}" />
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="anhint">
+    {% if hint %}
+    <div>
+      <h3 class="qtitle">
+        You Have Lost 5 points.
+      </h3>
+    </div>
+    <div class="hint">
+      <p align="center">
+        Hint :
+      </p>
+      <p align="center" class="ohint">
+        {{ question.hint}}
+      </p>
     </div>
 
-    <div class="anhint">
-        {% if hint %}
-        <div>
-            <h3 class="qtitle">
-                You Have Lost 5 points.
-            </h3>
-        </div>
-        <div class="hint">
-            <p align="center">
-                Hint :
-            </p>
-            <p align="center" class="ohint">
-                {{ question.hint}}
-            </p>
-        </div>
-
-        {% else %}
-        <form action="{% url 'quiz:hint'%}" method="post">
-            {% csrf_token %}
-            <p>
-                Stuck ? Take a Hint. ( You will loose points )
-            </p>
-            <button type="submit" class="btn">
+    {% else %}
+    <form action="{% url 'quiz:hint'%}" method="post">
+      {% csrf_token %}
+      <p>
+        Stuck ? Take a Hint. ( You will loose points )
+      </p>
+      <button type="submit" class="btn">
         Click For Hint
       </button>
-        </form>
+    </form>
 
-        {% endif %}
+    {% endif %}
 
-        <form action="{% url 'quiz:answer'%}" method="post">
-            {% csrf_token %} {{ form.as_p}}
-            <button type="submit" class="btn">
+    <form action="{% url 'quiz:answer'%}" method="post">
+      {% csrf_token %} {{ form.as_p}}
+      <button type="submit" class="btn">
         Submit
       </button>
-        </form>
-    </div>
+    </form>
+  </div>
 </div>
 {% endblock %}

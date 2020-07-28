@@ -1,5 +1,10 @@
 {% extends 'base.html' %}{% load static %}{% block content %}
 <link rel="stylesheet" href="{% static 'home/home.css' %}" />
+<head>
+  {% block title %}
+  <title>Welcome 👋</title>
+  {% endblock %}
+</head>
 <div class="content">
   <div class="title glow">
     <div class="txt">Qriosity 2.0</div>
@@ -45,8 +50,11 @@
     "particles-js",
     "{% static 'home/home.json' %}",
     function () {
-      console.log("Hello Qriosity Player !!!");
+      console.log("Hello Qriosity Player 🤗!!!");
     }
   );
+</script>
+<script>
+  console.log("Thanks For Playing with us 😊");
 </script>
 {% endblock %}

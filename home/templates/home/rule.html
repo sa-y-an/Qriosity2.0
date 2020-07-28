@@ -1,4 +1,9 @@
 {% extends 'base.html'%} {% load static %} {% block content %}
+<head>
+  {% block title %}
+  <title>📜 Rules 📜</title>
+  {% endblock %}
+</head>
 <link rel="stylesheet" href="{% static 'home/rule.css' %}" />
 
 <div class="content">
@@ -75,4 +80,8 @@
   </div>
 </div>
 
+<script>
+  console.log("Please Read these rules carefully.");
+  console.log("We wish all the best");
+</script>
 {% endblock %}
